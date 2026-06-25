@@ -1,0 +1,37 @@
+name: Docs Quality
+
+on:
+  pull_request:
+    paths:
+      - "**/*.md"
+      - ".github/workflows/docs-quality.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  markdown-check:
+    name: Markdown structure check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check required beginner files
+        run: |
+          test -f README.md
+          test -f START-HERE.md
+          test -f AGENTS.md
+          test -f docs/05-beginner-glossary.md
+
+      - name: Check for real secrets in docs
+        run: |
+          if grep -RInE "(sk-[A-Za-z0-9]|api[_-]?key\s*=\s*['\"][A-Za-z0-9_-]{20,}|secret\s*=\s*['\"][A-Za-z0-9_-]{20,})" . --include="*.md"; then
+            echo "Possible secret found in Markdown. Remove it before merge."
+            exit 1
+          fi
+
+      - name: Check beginner promise exists
+        run: |
+          grep -R "Simple explanation first" README.md docs AGENTS.md || true
