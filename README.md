@@ -98,16 +98,18 @@ Read START-HERE.md and AGENTS.md. I am a beginner. Explain each step simply. Do 
 
 ## Roadmap
 
+See the full public roadmap in [`ROADMAP.md`](ROADMAP.md).
+
 - [x] Product vision and first README
 - [x] AI agent operating rules
 - [x] Newcomer roadmap
 - [x] Cloudflare decision engine
 - [x] Production readiness scorecard
-- [ ] Beginner glossary
-- [ ] Secure Mini CMS reference application
+- [x] Beginner glossary
+- [x] Secure Mini CMS reference architecture
 - [ ] Complete Cloudflare service catalog
-- [ ] Cloudflare update watcher
-- [ ] Debug playbook library
+- [x] Cloudflare update watcher foundation
+- [x] Debug playbook library foundation
 
 ## Repository map
 
@@ -115,6 +117,7 @@ Read START-HERE.md and AGENTS.md. I am a beginner. Explain each step simply. Do 
 .
 ├── START-HERE.md              # First page for beginners
 ├── AGENTS.md                  # AI coding-agent rules
+├── ROADMAP.md                 # Public product roadmap
 ├── docs/                      # Guides and roadmaps
 ├── catalog/                   # Cloudflare product knowledge
 ├── architectures/             # Reference application designs
