@@ -1,0 +1,35 @@
+name: Cloudflare Update Watch
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  watch:
+    name: Watch official Cloudflare sources
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Explain current scope
+        run: |
+          echo "This workflow is a safe placeholder."
+          echo "Future versions should check official Cloudflare docs, changelog, blog, Wrangler releases, and relevant GitHub releases."
+          echo "Detected changes must open a draft PR or issue for human review."
+          echo "This workflow must never auto-merge documentation or guidance changes."
+
+      - name: Print source checklist
+        run: |
+          echo "Official sources to monitor:"
+          echo "- Cloudflare Developer Docs"
+          echo "- Cloudflare Changelog"
+          echo "- Cloudflare Blog"
+          echo "- Wrangler releases"
+          echo "- Relevant Cloudflare GitHub repositories"

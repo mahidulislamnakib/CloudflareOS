@@ -1,0 +1,27 @@
+# Wrangler template for Secure Mini CMS
+# Copy this into your project as wrangler.toml and replace placeholder values.
+
+name = "secure-mini-cms"
+main = "worker/index.ts"
+compatibility_date = "2026-06-01"
+
+# D1 database binding
+[[d1_databases]]
+binding = "DB"
+database_name = "secure-mini-cms-db"
+database_id = "replace-with-your-d1-database-id"
+
+# R2 bucket binding
+[[r2_buckets]]
+binding = "MEDIA_BUCKET"
+bucket_name = "secure-mini-cms-media"
+
+# Optional KV binding for simple cache/settings
+# [[kv_namespaces]]
+# binding = "CACHE"
+# id = "replace-with-your-kv-namespace-id"
+
+# Optional queue for background jobs later
+# [[queues.producers]]
+# binding = "JOBS"
+# queue = "secure-mini-cms-jobs"
