@@ -1,45 +1,79 @@
 # Cloudflare Engineering OS
 
-> **Build Cloudflare-native applications like a senior platform engineer.**
+> **Build Cloudflare apps step by step — from beginner to production.**
 
-[![Foundation](https://img.shields.io/badge/status-foundation-orange)](#roadmap) [![Cloudflare First](https://img.shields.io/badge/architecture-Cloudflare--first-F38020)](#cloudflare-product-domains) [![AI Ready](https://img.shields.io/badge/AI%20agents-ready-5A67D8)](AGENTS.md) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![Foundation](https://img.shields.io/badge/status-foundation-orange)](#roadmap) [![Beginner Friendly](https://img.shields.io/badge/beginner-friendly-brightgreen)](START-HERE.md) [![Cloudflare First](https://img.shields.io/badge/architecture-Cloudflare--first-F38020)](#cloudflare-product-domains) [![AI Ready](https://img.shields.io/badge/AI%20agents-ready-5A67D8)](AGENTS.md)
 
-Cloudflare Engineering OS is an AI-ready engineering system for planning, architecting, building, debugging, deploying, securing, monitoring, and continuously improving Cloudflare-native applications.
+Cloudflare Engineering OS helps people and AI coding tools plan, build, debug, deploy, and improve apps using Cloudflare.
+
+You do **not** need to be an expert to start.
+
+👉 **New here? Start with [`START-HERE.md`](START-HERE.md).**
 
 ```mermaid
 flowchart LR
-  Idea[Product Idea] --> Architect[Architect]
-  Architect --> Builder[Builder]
-  Builder --> Debugger[Debugger]
-  Debugger --> Deploy[Deployment]
-  Deploy --> Observe[Observability]
-  Observe --> Update[Update Engine]
-  Update --> Architect
+  Idea[Idea] --> Simple[Simple Plan]
+  Simple --> Build[Build Small]
+  Build --> Test[Test]
+  Test --> Deploy[Deploy]
+  Deploy --> Improve[Improve]
 ```
 
-## What this is
+## What this project does
 
-This is **not** a starter template.
+It helps you answer simple questions:
 
-It is a practical engineering operating system that combines:
+- What should I build first?
+- Which Cloudflare tool should I use?
+- Where does my data go?
+- How do I upload files?
+- How do I deploy safely?
+- How do I fix common errors?
+- How do I know my project is ready?
 
-- Cloudflare product knowledge and selection guidance
-- AI coding-agent rules for Codex, Cursor, Claude Code, Gemini, and ChatGPT
-- Production reference architectures
-- Security, performance, cost, and deployment checklists
-- Debug playbooks based on root causes—not vague fixes
-- A review-first update system for Cloudflare product changes
+Advanced users also get service decision guides, architecture patterns, AI-agent rules, production scorecards, and update automation.
+
+## Simple Cloudflare toolbox
+
+| Need | Use this |
+| --- | --- |
+| Website page | Pages |
+| Backend/API code | Workers |
+| Database | D1 |
+| File upload | R2 |
+| Small cache | KV |
+| Background task | Queues |
+| Step-by-step business process | Workflows |
+| AI feature | Workers AI |
+| Protect a form | Turnstile |
+| Protect admin area | Access |
 
 ## What it helps you build
 
-| Build type | Typical Cloudflare stack |
+| Project | Beginner stack |
 | --- | --- |
-| CMS / News Portal | Workers, D1, R2, KV, Queues, Turnstile, WAF |
-| SaaS / CRM / ERP | Workers, D1, Durable Objects, R2, Queues, Workflows, Access |
-| AI App / RAG | Workers AI, AI Gateway, Vectorize, D1, R2, Workers |
-| Marketplace | Workers, D1, R2, Queues, Workflows, Turnstile, API Shield |
-| Media Platform | Images, Stream, R2, Workers, Cache Rules, Web Analytics |
-| Internal Tool | Workers, D1, Access, Tunnel, Gateway, Audit Logs |
+| Blog / CMS | Pages or Workers, D1, R2 |
+| News portal | Workers, D1, R2, Turnstile |
+| AI chat | Workers, Workers AI, D1 |
+| File manager | Workers, R2, D1 |
+| Admin tool | Workers, D1, Access |
+| Marketplace | Workers, D1, R2, Queues |
+
+## Start path
+
+1. Read [`START-HERE.md`](START-HERE.md).
+2. Read [`docs/02-newcomer-roadmap.md`](docs/02-newcomer-roadmap.md).
+3. Build one small project first.
+4. Deploy it.
+5. Add advanced Cloudflare services only when needed.
+
+## For AI coding agents
+
+Give your AI tool this instruction:
+
+```text
+Read START-HERE.md and AGENTS.md. I am a beginner. Explain each step simply. Do not add advanced Cloudflare services unless needed.
+```
 
 ## Cloudflare product domains
 
@@ -54,38 +88,24 @@ It is a practical engineering operating system that combines:
 | **Network & Delivery** | DNS, CDN, Cache Rules, Argo, Load Balancing, Waiting Room, Spectrum |
 | **Observe** | Workers Observability, Logs, Analytics, Web Analytics, Health Checks, Audit Logs |
 
-## Quick start
-
-### For people
-
-1. Start with [`docs/00-product-charter.md`](docs/00-product-charter.md).
-2. Read the [`newcomer roadmap`](docs/02-newcomer-roadmap.md).
-3. Choose a pattern from `architectures/`.
-4. Use the production readiness checklist before deployment.
-
-### For AI coding agents
-
-1. Give the agent [`AGENTS.md`](AGENTS.md).
-2. Ask it to inspect the project before proposing changes.
-3. Require an architecture decision before adding Cloudflare services.
-4. Require the deployment and safety checklist before production changes.
-
 ## Design principles
 
-- **Cloudflare-native first:** use a Cloudflare product when it fits the requirement.
-- **Simple before clever:** start with the smallest reliable architecture.
-- **Production-safe by default:** no destructive database action without a recovery plan.
-- **Explain trade-offs:** every recommended service must say why it fits and what it costs.
-- **Review before trust:** automated Cloudflare knowledge updates must arrive as reviewable pull requests.
+- **Simple first:** beginners should never face advanced architecture on page one.
+- **Cloudflare-first:** use Cloudflare tools when they fit the job.
+- **Small steps:** build a working small version before adding complexity.
+- **Safe by default:** protect secrets, data, admin areas, and deployments.
+- **Two levels:** every major topic should have a simple explanation and an engineering explanation.
 
 ## Roadmap
 
 - [x] Product vision and first README
-- [ ] AI agent operating rules
-- [ ] Complete Cloudflare service catalog
-- [ ] Architecture decision engine
-- [ ] Production readiness scorecard
+- [x] AI agent operating rules
+- [x] Newcomer roadmap
+- [x] Cloudflare decision engine
+- [x] Production readiness scorecard
+- [ ] Beginner glossary
 - [ ] Secure Mini CMS reference application
+- [ ] Complete Cloudflare service catalog
 - [ ] Cloudflare update watcher
 - [ ] Debug playbook library
 
@@ -93,8 +113,9 @@ It is a practical engineering operating system that combines:
 
 ```text
 .
-├── AGENTS.md                  # AI coding-agent operating rules
-├── docs/                      # Product charter and onboarding
+├── START-HERE.md              # First page for beginners
+├── AGENTS.md                  # AI coding-agent rules
+├── docs/                      # Guides and roadmaps
 ├── catalog/                   # Cloudflare product knowledge
 ├── architectures/             # Reference application designs
 ├── prompts/                   # Build, debug, deploy, audit prompts
@@ -105,4 +126,4 @@ It is a practical engineering operating system that combines:
 
 ## The promise
 
-> Do not just explain Cloudflare. Teach people—and AI agents—how to engineer with it.
+> Make Cloudflare engineering simple enough for beginners and strong enough for production.
