@@ -1,0 +1,50 @@
+name: Repository Quality
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  markdown-quality:
+    name: Markdown quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check required root files
+        run: |
+          test -f README.md
+          test -f ROADMAP.md
+          test -f AGENTS.md
+          test -f START-HERE.md
+
+      - name: Check required directory indexes
+        run: |
+          test -f catalog/README.md
+          test -f playbooks/README.md
+          test -f templates/README.md
+          test -f prompts/README.md
+          test -f architectures/README.md
+
+      - name: Check Markdown files are not empty
+        run: |
+          empty_files=$(find . -name "*.md" -type f -size 0)
+          if [ -n "$empty_files" ]; then
+            echo "Empty Markdown files found:"
+            echo "$empty_files"
+            exit 1
+          fi
+
+      - name: Summary
+        run: |
+          echo "Repository quality checks passed."
