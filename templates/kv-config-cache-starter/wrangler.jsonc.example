@@ -1,0 +1,11 @@
+{
+  "name": "kv-config-cache-starter",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-06-26",
+  "kv_namespaces": [
+    {
+      "binding": "CONFIG_KV",
+      "id": "PASTE_KV_NAMESPACE_ID"
+    }
+  ]
+}
