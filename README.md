@@ -33,6 +33,12 @@ It helps you answer simple questions:
 
 Advanced users also get service decision guides, architecture patterns, AI-agent rules, production scorecards, and update automation.
 
+## Why this exists
+
+This project exists to save solo developers and small teams from repeating years of stack confusion.
+
+Read the mission: [`docs/08-why-this-exists.md`](docs/08-why-this-exists.md)
+
 ## Simple Cloudflare toolbox
 
 | Need | Use this |
@@ -96,6 +102,8 @@ Read START-HERE.md and AGENTS.md. I am a beginner. Explain each step simply. Do 
 - **Safe by default:** protect secrets, data, admin areas, and deployments.
 - **Two levels:** every major topic should have a simple explanation and an engineering explanation.
 
+More principles: [`docs/09-project-principles.md`](docs/09-project-principles.md)
+
 ## Roadmap
 
 See the full public roadmap in [`ROADMAP.md`](ROADMAP.md).
@@ -118,6 +126,7 @@ See the full public roadmap in [`ROADMAP.md`](ROADMAP.md).
 ├── START-HERE.md              # First page for beginners
 ├── AGENTS.md                  # AI coding-agent rules
 ├── ROADMAP.md                 # Public product roadmap
+├── CONTRIBUTING.md            # Contribution and writing standards
 ├── docs/                      # Guides and roadmaps
 ├── catalog/                   # Cloudflare product knowledge
 ├── architectures/             # Reference application designs
@@ -126,6 +135,10 @@ See the full public roadmap in [`ROADMAP.md`](ROADMAP.md).
 ├── scripts/                   # Setup and verification tools
 └── .github/workflows/         # Quality checks and update automation
 ```
+
+## Contributing
+
+This project is beginner-first and production-aware. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) before adding guides.
 
 ## The promise
 
