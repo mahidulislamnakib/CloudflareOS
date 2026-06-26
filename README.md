@@ -2,7 +2,7 @@
 
 > **A practical operating system for building production-ready applications on Cloudflare.**
 
-[![Status](https://img.shields.io/badge/status-foundation-orange)](#roadmap)
+[![Status](https://img.shields.io/badge/status-growing-blue)](#roadmap)
 [![Beginner Friendly](https://img.shields.io/badge/beginner-friendly-brightgreen)](START-HERE.md)
 [![Cloudflare First](https://img.shields.io/badge/architecture-Cloudflare--first-F38020)](#cloudflare-product-domains)
 [![AI Ready](https://img.shields.io/badge/AI%20agents-ready-5A67D8)](AGENTS.md)
@@ -10,23 +10,20 @@
 
 CloudflareOS helps developers, founders, solo builders, and AI coding agents plan, build, debug, deploy, and improve Cloudflare-first apps.
 
-You do **not** need to be a Cloudflare expert to start.
-
 👉 **New here? Start with [`START-HERE.md`](START-HERE.md).**  
-🤖 **Using an AI coding agent? Read [`AGENTS.md`](AGENTS.md).**
+🤖 **Using an AI coding agent? Read [`AGENTS.md`](AGENTS.md).**  
+🏗️ **Choosing a system design? Browse [`architectures/README.md`](architectures/README.md).**
 
 ---
 
 ## What is CloudflareOS?
 
-CloudflareOS is not one application. It is a reusable engineering handbook for projects that want to run on Cloudflare.
-
-It gives you:
+CloudflareOS is a reusable engineering handbook for projects that want to run on Cloudflare.
 
 | Area | What you get |
 | --- | --- |
 | **Learning** | Beginner-friendly explanations and roadmaps |
-| **Architecture** | Clear patterns for real apps |
+| **Architecture** | Reference designs for real application types |
 | **Templates** | Reusable configs, folder structures, and starter files |
 | **Prompts** | AI-ready build, audit, debug, and deploy prompts |
 | **Checklists** | Production readiness, security, and deployment checks |
@@ -45,19 +42,6 @@ flowchart LR
   Test --> Deploy[Deploy to Cloudflare]
   Deploy --> Improve[Monitor + Improve]
 ```
-
----
-
-## What this helps you answer
-
-- What should I build first?
-- Which Cloudflare service should I use?
-- Should this use Workers, Pages, D1, R2, KV, Queues, or Durable Objects?
-- Where should my database, uploads, cache, and background jobs go?
-- How do I deploy safely?
-- How do I debug common Cloudflare errors?
-- How do I make an AI coding agent follow my Cloudflare-first rules?
-- How do I know my project is production-ready?
 
 ---
 
@@ -82,72 +66,43 @@ flowchart LR
 
 ## What you can build with it
 
-| Project type | Good starting stack |
+| Project type | Good starting guide |
 | --- | --- |
-| Blog / CMS | Pages or Workers + D1 + R2 |
-| News portal | Workers + D1 + R2 + Turnstile |
-| AI chat app | Workers + Workers AI + D1 |
-| File manager | Workers + R2 + D1 |
-| Admin dashboard | Workers + D1 + Access |
-| Marketplace | Workers + D1 + R2 + Queues |
-| Server-side tracking | Workers + Queues + Analytics Engine |
-| SaaS app | Workers + D1 + R2 + Queues + Access |
+| Blog / CMS | [CMS](architectures/cms.md) |
+| News portal | [News Portal](architectures/news-portal.md) |
+| AI chat app | [AI Chatbot](architectures/ai-chatbot.md) |
+| Marketplace | [Marketplace](architectures/marketplace.md) |
+| SaaS app | [Multi-tenant SaaS](architectures/multi-tenant-saas.md) |
+| Online store | [E-commerce](architectures/e-commerce.md) |
+| Course platform | [LMS](architectures/lms.md) |
+| Travel lead platform | [Travel Platform](architectures/travel-platform.md) |
+| Real-time app | [Real-time Collaboration](architectures/realtime-collaboration.md) |
+| Public API | [API Platform](architectures/api-platform.md) |
 
 ---
 
 ## How to use this repo
 
-### 1. Use it as a learning guide
+### Learn
 
-Start here:
+Start with [`START-HERE.md`](START-HERE.md), then follow [`docs/02-newcomer-roadmap.md`](docs/02-newcomer-roadmap.md).
 
-```text
-START-HERE.md
-```
+### Plan a project
 
-Then follow:
+Choose the closest application design in [`architectures/README.md`](architectures/README.md). Start with its smallest useful version before adding advanced services.
 
-```text
-docs/02-newcomer-roadmap.md
-```
-
-### 2. Use it inside another project
-
-Copy only the guide, prompt, or template you need.
+### Use with AI coding tools
 
 ```text
-CloudflareOS/templates/example
-↓
-your-project/
-```
-
-Do **not** copy the whole repository into every project unless you want it as a reference folder.
-
-### 3. Use it with AI coding tools
-
-Give your AI tool this instruction:
-
-```text
-Read START-HERE.md and AGENTS.md from CloudflareOS.
+Read START-HERE.md, AGENTS.md, and the closest guide in architectures/.
 Review my project and recommend the simplest Cloudflare-first architecture.
 Do not add advanced services unless they are truly needed.
-Explain every step clearly.
+Explain every decision and keep secrets out of source code.
 ```
 
-### 4. Use it as an audit checklist
+### Audit before deployment
 
-Before deployment, use the production readiness guides and prompts to check:
-
-- environment variables
-- database bindings
-- R2 buckets
-- secrets
-- route safety
-- upload rules
-- build command
-- deployment target
-- security gaps
-- monitoring gaps
+Review environment variables, bindings, uploads, secrets, route safety, deployment target, security gaps, and monitoring gaps.
 
 ---
 
@@ -176,8 +131,8 @@ Before deployment, use the production readiness guides and prompts to check:
 
 | Domain | Included capabilities |
 | --- | --- |
-| **Build** | Workers, Pages, Durable Objects, Containers, Queues, Workflows, Browser Rendering, Email Workers, Wrangler |
-| **Data** | D1, R2, R2 Data Catalog, Workers KV, Hyperdrive, Vectorize, Analytics Engine, Pipelines |
+| **Build** | Workers, Pages, Durable Objects, Containers, Queues, Workflows, Browser Rendering, Wrangler |
+| **Data** | D1, R2, Workers KV, Hyperdrive, Vectorize, Analytics Engine, Pipelines |
 | **AI** | Workers AI, AI Gateway, Agents, AI Search, Vectorize |
 | **Media** | Images, Stream, Realtime, Image Transformations |
 | **Security** | WAF, Turnstile, API Shield, Bot Management, Rate Limiting, SSL/TLS |
@@ -194,7 +149,7 @@ Before deployment, use the production readiness guides and prompts to check:
 - **Production-aware:** think about security, data, deploys, and monitoring early.
 - **Beginner-safe:** explain decisions in plain language before deep engineering detail.
 - **AI-ready:** write instructions clearly enough for coding agents to follow.
-- **Copy responsibly:** templates should be adapted, not blindly pasted.
+- **Freshness-aware:** verify changing Cloudflare facts against official sources.
 
 More principles: [`docs/09-project-principles.md`](docs/09-project-principles.md)
 
@@ -209,11 +164,11 @@ See the detailed plan in [`ROADMAP.md`](ROADMAP.md).
 | **v0.1** | Foundation — beginner path, agent rules, core guidance | ✅ Complete |
 | **v0.2** | Project Engine — playbooks, templates, and prompts | 🚧 In progress |
 | **v0.3** | Cloudflare Product Catalog | 🚧 In progress |
-| **v0.4** | Production Assistant — deploy, security, cost, and rollback checks | ⏳ Planned |
+| **v0.4** | Production Assistant — deployment, security, operations | 🚧 In progress |
 | **v0.5** | Living Knowledge Engine — update watching and freshness checks | ⏳ Planned |
 | **v1.0** | Public stable handbook, templates, and examples | 🎯 Future |
 
-**Currently building:** Cloudflare Product Catalog (Workers, D1, R2, KV, Queues, Durable Objects, Pages, Wrangler, Turnstile, Access, and Workflows), production-ready starter templates, server-side tracking architecture, and real-world example apps.
+**Currently building:** architecture patterns, catalog coverage, practical playbooks, starter examples, production checklists, and a freshness system for changing Cloudflare guidance.
 
 ---
 
@@ -221,13 +176,7 @@ See the detailed plan in [`ROADMAP.md`](ROADMAP.md).
 
 CloudflareOS is beginner-first and production-aware. Before adding guides, read [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
-Good contributions should be:
-
-- simple enough for beginners
-- useful for real projects
-- Cloudflare-first but not blindly Cloudflare-only
-- safe for production use
-- clear enough for AI coding agents
+Good contributions should be simple, useful for real projects, justified, safe for production, and clear enough for AI coding agents.
 
 ---
 

@@ -2,20 +2,59 @@
 
 Architecture patterns explain how Cloudflare services fit together for real application designs.
 
-Use this folder when you need to understand the structure of a Cloudflare-first system before writing code.
+Use this folder before writing code to choose the smallest useful design, understand data flow, and identify the production controls that matter.
 
 ---
 
-## What architecture patterns are for
+## Start here
 
-Architecture patterns help answer:
+Choose the guide closest to your product:
 
-- Which Cloudflare services should work together?
-- Where should frontend, API, database, storage, and background jobs live?
-- What is the beginner version?
-- What is the production version?
-- What are the tradeoffs?
-- What can go wrong?
+| Need | Guide |
+| --- | --- |
+| Content, articles, resources | [CMS](./cms.md) or [News Portal](./news-portal.md) |
+| Workspace product | [SaaS](./saas.md) or [Multi-tenant SaaS](./multi-tenant-saas.md) |
+| Buyers and sellers | [Marketplace](./marketplace.md) |
+| Online store | [E-commerce](./e-commerce.md) |
+| Courses and certificates | [LMS](./lms.md) |
+| Travel leads and quotations | [Travel Platform](./travel-platform.md) |
+| AI assistant or document Q&A | [AI Chatbot](./ai-chatbot.md) |
+| Live rooms, chat, collaboration | [Real-time Collaboration](./realtime-collaboration.md) |
+| Public or partner API | [API Platform](./api-platform.md) |
+
+---
+
+## Available architecture guides
+
+### Product and business systems
+
+- [News Portal](./news-portal.md)
+- [CMS](./cms.md)
+- [SaaS](./saas.md)
+- [Multi-tenant SaaS](./multi-tenant-saas.md)
+- [Marketplace](./marketplace.md)
+- [E-commerce](./e-commerce.md)
+- [Learning Management System](./lms.md)
+- [Travel Platform](./travel-platform.md)
+- [Event Management](./event-management.md)
+- [Healthcare & Clinic](./healthcare-clinic.md)
+- [POS](./pos.md)
+- [IoT Platform](./iot-platform.md)
+
+### Platform and engineering systems
+
+- [Authentication & Authorization](./authentication-authorization.md)
+- [AI Chatbot](./ai-chatbot.md)
+- [API Platform](./api-platform.md)
+- [Microservices](./microservices.md)
+- [Real-time Collaboration](./realtime-collaboration.md)
+- [Search & Discovery](./search-discovery.md)
+- [Data Pipeline & Reporting](./data-pipeline-reporting.md)
+- [Notifications & Communication](./notifications-communication.md)
+- [Internationalization & Localization](./internationalization-localization.md)
+- [Security & Threat Modeling](./security-threat-modeling.md)
+- [Observability & Operations](./observability-operations.md)
+- [Deployment & Release](./deployment-release.md)
 
 ---
 
@@ -24,113 +63,70 @@ Architecture patterns help answer:
 ```text
 Project requirement
   ↓
-Choose architecture pattern
+Choose closest architecture
   ↓
-Map services
+Build the smallest useful version
   ↓
-Choose template
-  ↓
-Build MVP
+Add data, storage, and access rules
   ↓
 Apply production checklist
+  ↓
+Use deployment and operations guides before launch
 ```
-
----
-
-## Planned architecture patterns
-
-| Pattern | Status | Good for |
-| --- | --- | --- |
-| Static site + forms | Planned | Marketing sites, landing pages |
-| Full-stack app on Workers | Planned | SaaS, dashboards, portals |
-| Next.js on Cloudflare | Planned | Full-stack React apps |
-| Worker API + D1 | Planned | API services and CRUD apps |
-| R2 file upload system | Planned | Documents, images, media uploads |
-| Queue-based background jobs | Planned | Email, tracking, webhooks, processing |
-| Durable Object coordination | Planned | Realtime state, rooms, counters, locks |
-| Server-side tracking | Planned | Analytics and conversion pipelines |
-| Secure Mini CMS | Existing / improving | Content publishing systems |
-| Admin dashboard with Access | Planned | Internal tools and admin panels |
-| AI app with Workers AI | Planned | Chat, summarization, classification |
-| Marketplace MVP | Planned | Jobs, orders, payouts, disputes |
 
 ---
 
 ## Standard architecture format
 
-Every architecture guide should follow this structure:
+New or substantially revised architecture guides should include:
 
 ```md
 # Architecture Name
 
 ## Goal
-
-What this architecture is designed to solve.
-
 ## Best for
-
-Which projects should use it.
-
 ## Not ideal for
-
-When this pattern is a bad fit.
-
-## Beginner architecture
-
-Smallest useful version.
-
-## Production architecture
-
-Safer and more scalable version.
-
+## Smallest useful version
+## Production upgrades
 ## Cloudflare services used
-
-List each service and why it is used.
-
-## Data flow
-
-Show how requests, files, jobs, and events move through the system.
-
-## Folder structure
-
-Recommended project structure.
-
-## Required bindings
-
-D1, R2, KV, Queues, Durable Objects, AI, etc.
-
-## Deployment workflow
-
-Local setup and production deploy steps.
-
-## Security notes
-
-Secrets, auth, abuse protection, upload safety, admin protection.
-
+## Data and request flow
+## Security and access rules
+## Background jobs and failure handling
+## Deployment and verification
 ## Cost and scaling notes
-
-What affects cost and complexity.
-
+## Production checklist
 ## Common mistakes
-
-What beginners and AI agents often get wrong.
-
-## Related playbooks and templates
-
-Links to matching resources.
+## Related guides
 ```
+
+A guide may use a shorter format only when it links clearly to shared foundation patterns.
+
+---
+
+## Freshness metadata
+
+Cloudflare services change. New or substantially revised guides should include this block near the top:
+
+```md
+> Source: Official Cloudflare documentation
+> Last checked: YYYY-MM-DD
+> Risk level: Low / Medium / High
+```
+
+Use **Low** for stable general guidance, **Medium** for product behavior or pricing-sensitive advice, and **High** for preview, beta, or fast-changing features.
 
 ---
 
 ## Architecture rules
 
 - Start with the simplest working design.
-- Add production complexity only when needed.
 - Explain why each Cloudflare service is used.
-- Mention when a service is not required.
-- Include data flow where possible.
+- Say when a service is not required.
+- Keep authentication, authorization, tenant isolation, and file permissions server-side.
+- Use queues for work that does not need to block the user.
 - Include failure modes and common mistakes.
 - Link related catalog pages, playbooks, prompts, and templates.
+- Keep Cloudflare facts fresh against official sources.
 - Make the guide useful for both humans and AI coding agents.
 
 ---
