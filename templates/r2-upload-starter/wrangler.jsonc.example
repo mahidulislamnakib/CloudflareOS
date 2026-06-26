@@ -1,0 +1,11 @@
+{
+  "name": "r2-upload-starter",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-06-26",
+  "r2_buckets": [
+    {
+      "binding": "BUCKET",
+      "bucket_name": "my-app-uploads"
+    }
+  ]
+}
