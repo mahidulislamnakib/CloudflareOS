@@ -162,6 +162,8 @@ Before deployment, use the production readiness guides and prompts to check:
 ├── docs/                      # Learning guides, principles, checklists
 ├── catalog/                   # Cloudflare product knowledge
 ├── architectures/             # Reference application designs
+├── playbooks/                 # Project-specific implementation guides
+├── examples/                  # Real-world application examples
 ├── prompts/                   # Build, debug, deploy, and audit prompts
 ├── templates/                 # Safe reusable starter configs/files
 ├── scripts/                   # Setup and verification tools
@@ -206,12 +208,12 @@ See the detailed plan in [`ROADMAP.md`](ROADMAP.md).
 | --- | --- | --- |
 | **v0.1** | Foundation — beginner path, agent rules, core guidance | ✅ Complete |
 | **v0.2** | Project Engine — playbooks, templates, and prompts | 🚧 In progress |
-| **v0.3** | Cloudflare Product Catalog | ⏳ Planned |
+| **v0.3** | Cloudflare Product Catalog | 🚧 In progress |
 | **v0.4** | Production Assistant — deploy, security, cost, and rollback checks | ⏳ Planned |
 | **v0.5** | Living Knowledge Engine — update watching and freshness checks | ⏳ Planned |
 | **v1.0** | Public stable handbook, templates, and examples | 🎯 Future |
 
-**Currently building:** Cloudflare Product Catalog, production-ready starter templates, server-side tracking architecture, and real-world example apps.
+**Currently building:** Cloudflare Product Catalog (Workers, D1, R2, KV, Queues, Durable Objects, Pages, Wrangler, Turnstile, Access, and Workflows), production-ready starter templates, server-side tracking architecture, and real-world example apps.
 
 ---
 
