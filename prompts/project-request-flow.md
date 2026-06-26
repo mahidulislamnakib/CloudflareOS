@@ -28,7 +28,25 @@ For a news portal, version 1 can include:
 - Basic SEO fields
 - Cloudflare deployment
 
-### 3. Choose Cloudflare tools
+### 3. Add professional product checkpoints
+
+Do not guide users as if frontend and backend are enough.
+
+Every project answer should mention these professional areas:
+
+| Area | Version 1 expectation |
+| --- | --- |
+| UI/UX | Clear layout, mobile-friendly, easy next step |
+| SEO | Page titles, descriptions, clean URLs, sitemap later |
+| Security | Protected admin, safe secrets, validated forms |
+| Privacy/Terms | Plan privacy policy and terms pages |
+| Performance | Fast pages, optimized images, caching awareness |
+| Accessibility | Readable text, alt text, keyboard-friendly basics |
+| Analytics/Logs | Basic visitor analytics and error logs |
+| Support | Contact or help path |
+| Operations | Deployment checklist and rollback note |
+
+### 4. Choose Cloudflare tools
 
 | Need | Cloudflare tool |
 | --- | --- |
@@ -41,7 +59,7 @@ For a news portal, version 1 can include:
 | Background tasks later | Queues |
 | Logs and analytics | Workers Logs and Web Analytics |
 
-### 4. Give beginner steps
+### 5. Give beginner steps
 
 1. Create the project.
 2. Build the public pages.
@@ -49,11 +67,12 @@ For a news portal, version 1 can include:
 4. Build admin create/edit pages.
 5. Add image upload to R2.
 6. Add basic security.
-7. Test locally.
-8. Deploy to Cloudflare.
-9. Add advanced features later.
+7. Add SEO basics and required public pages.
+8. Test locally.
+9. Deploy to Cloudflare.
+10. Add advanced features later.
 
-### 5. Ask only useful questions
+### 6. Ask only useful questions
 
 Ask at most 3 questions.
 
@@ -65,7 +84,7 @@ Good questions:
 
 Do not ask many questions before helping.
 
-### 6. Starter diagram
+### 7. Starter diagram
 
 ```mermaid
 flowchart LR
@@ -77,7 +96,7 @@ flowchart LR
   API --> R2[(R2 Images)]
 ```
 
-### 7. Do not overbuild first
+### 8. Do not overbuild first
 
 For version 1, avoid:
 
@@ -88,3 +107,9 @@ For version 1, avoid:
 - Multi-tenant SaaS mode
 
 Add these after the simple version works.
+
+## Product quality rule
+
+A small version 1 can still be professional.
+
+Do not skip UI/UX, SEO, security, privacy, terms, performance, accessibility, analytics, support, deployment, and rollback thinking.
