@@ -1,0 +1,19 @@
+{
+  "name": "durable-object-starter",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-06-26",
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "COUNTER_OBJECT",
+        "class_name": "CounterObject"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["CounterObject"]
+    }
+  ]
+}
