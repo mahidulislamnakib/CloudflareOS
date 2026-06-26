@@ -1,85 +1,174 @@
-# Cloudflare Engineering OS
+# CloudflareOS
 
-> **Build Cloudflare apps step by step — from beginner to production.**
+> **A practical operating system for building production-ready applications on Cloudflare.**
 
-[![Foundation](https://img.shields.io/badge/status-foundation-orange)](#roadmap) [![Beginner Friendly](https://img.shields.io/badge/beginner-friendly-brightgreen)](START-HERE.md) [![Cloudflare First](https://img.shields.io/badge/architecture-Cloudflare--first-F38020)](#cloudflare-product-domains) [![AI Ready](https://img.shields.io/badge/AI%20agents-ready-5A67D8)](AGENTS.md)
+[![Status](https://img.shields.io/badge/status-foundation-orange)](#roadmap)
+[![Beginner Friendly](https://img.shields.io/badge/beginner-friendly-brightgreen)](START-HERE.md)
+[![Cloudflare First](https://img.shields.io/badge/architecture-Cloudflare--first-F38020)](#cloudflare-product-domains)
+[![AI Ready](https://img.shields.io/badge/AI%20agents-ready-5A67D8)](AGENTS.md)
+[![Public Knowledge Base](https://img.shields.io/badge/knowledge%20base-public-blue)](#how-to-use-this-repo)
 
-Cloudflare Engineering OS helps people and AI coding tools plan, build, debug, deploy, and improve apps using Cloudflare.
+CloudflareOS helps developers, founders, solo builders, and AI coding agents plan, build, debug, deploy, and improve Cloudflare-first apps.
 
-You do **not** need to be an expert to start.
+You do **not** need to be a Cloudflare expert to start.
 
-👉 **New here? Start with [`START-HERE.md`](START-HERE.md).**
+👉 **New here? Start with [`START-HERE.md`](START-HERE.md).**  
+🤖 **Using an AI coding agent? Read [`AGENTS.md`](AGENTS.md).**
+
+---
+
+## What is CloudflareOS?
+
+CloudflareOS is not one application. It is a reusable engineering handbook for projects that want to run on Cloudflare.
+
+It gives you:
+
+| Area | What you get |
+| --- | --- |
+| **Learning** | Beginner-friendly explanations and roadmaps |
+| **Architecture** | Clear patterns for real apps |
+| **Templates** | Reusable configs, folder structures, and starter files |
+| **Prompts** | AI-ready build, audit, debug, and deploy prompts |
+| **Checklists** | Production readiness, security, and deployment checks |
+| **Catalog** | Simple explanations of Cloudflare services |
+
+---
+
+## Build path
 
 ```mermaid
 flowchart LR
-  Idea[Idea] --> Simple[Simple Plan]
-  Simple --> Build[Build Small]
-  Build --> Test[Test]
-  Test --> Deploy[Deploy]
-  Deploy --> Improve[Improve]
+  Idea[Idea] --> Plan[Choose Architecture]
+  Plan --> Template[Copy Template]
+  Template --> Build[Build Small]
+  Build --> Test[Test + Audit]
+  Test --> Deploy[Deploy to Cloudflare]
+  Deploy --> Improve[Monitor + Improve]
 ```
 
-## What this project does
+---
 
-It helps you answer simple questions:
+## What this helps you answer
 
 - What should I build first?
-- Which Cloudflare tool should I use?
-- Where does my data go?
-- How do I upload files?
+- Which Cloudflare service should I use?
+- Should this use Workers, Pages, D1, R2, KV, Queues, or Durable Objects?
+- Where should my database, uploads, cache, and background jobs go?
 - How do I deploy safely?
-- How do I fix common errors?
-- How do I know my project is ready?
+- How do I debug common Cloudflare errors?
+- How do I make an AI coding agent follow my Cloudflare-first rules?
+- How do I know my project is production-ready?
 
-Advanced users also get service decision guides, architecture patterns, AI-agent rules, production scorecards, and update automation.
-
-## Why this exists
-
-This project exists to save solo developers and small teams from repeating years of stack confusion.
-
-Read the mission: [`docs/08-why-this-exists.md`](docs/08-why-this-exists.md)
+---
 
 ## Simple Cloudflare toolbox
 
 | Need | Use this |
 | --- | --- |
-| Website page | Pages |
-| Backend/API code | Workers |
-| Database | D1 |
-| File upload | R2 |
-| Small cache | KV |
-| Background task | Queues |
-| Step-by-step business process | Workflows |
-| AI feature | Workers AI |
-| Protect a form | Turnstile |
-| Protect admin area | Access |
+| Website / frontend | Pages or Workers |
+| Backend/API | Workers |
+| SQL database | D1 |
+| File uploads | R2 |
+| Small cache/config | KV |
+| Background jobs | Queues |
+| Long-running business flow | Workflows |
+| Shared live state | Durable Objects |
+| AI features | Workers AI / AI Gateway |
+| Form protection | Turnstile |
+| Admin protection | Access |
+| Observability | Workers Observability / Logs / Analytics |
 
-## What it helps you build
+---
 
-| Project | Beginner stack |
+## What you can build with it
+
+| Project type | Good starting stack |
 | --- | --- |
-| Blog / CMS | Pages or Workers, D1, R2 |
-| News portal | Workers, D1, R2, Turnstile |
-| AI chat | Workers, Workers AI, D1 |
-| File manager | Workers, R2, D1 |
-| Admin tool | Workers, D1, Access |
-| Marketplace | Workers, D1, R2, Queues |
+| Blog / CMS | Pages or Workers + D1 + R2 |
+| News portal | Workers + D1 + R2 + Turnstile |
+| AI chat app | Workers + Workers AI + D1 |
+| File manager | Workers + R2 + D1 |
+| Admin dashboard | Workers + D1 + Access |
+| Marketplace | Workers + D1 + R2 + Queues |
+| Server-side tracking | Workers + Queues + Analytics Engine |
+| SaaS app | Workers + D1 + R2 + Queues + Access |
 
-## Start path
+---
 
-1. Read [`START-HERE.md`](START-HERE.md).
-2. Read [`docs/02-newcomer-roadmap.md`](docs/02-newcomer-roadmap.md).
-3. Build one small project first.
-4. Deploy it.
-5. Add advanced Cloudflare services only when needed.
+## How to use this repo
 
-## For AI coding agents
+### 1. Use it as a learning guide
+
+Start here:
+
+```text
+START-HERE.md
+```
+
+Then follow:
+
+```text
+docs/02-newcomer-roadmap.md
+```
+
+### 2. Use it inside another project
+
+Copy only the guide, prompt, or template you need.
+
+```text
+CloudflareOS/templates/example
+↓
+your-project/
+```
+
+Do **not** copy the whole repository into every project unless you want it as a reference folder.
+
+### 3. Use it with AI coding tools
 
 Give your AI tool this instruction:
 
 ```text
-Read START-HERE.md and AGENTS.md. I am a beginner. Explain each step simply. Do not add advanced Cloudflare services unless needed.
+Read START-HERE.md and AGENTS.md from CloudflareOS.
+Review my project and recommend the simplest Cloudflare-first architecture.
+Do not add advanced services unless they are truly needed.
+Explain every step clearly.
 ```
+
+### 4. Use it as an audit checklist
+
+Before deployment, use the production readiness guides and prompts to check:
+
+- environment variables
+- database bindings
+- R2 buckets
+- secrets
+- route safety
+- upload rules
+- build command
+- deployment target
+- security gaps
+- monitoring gaps
+
+---
+
+## Repository map
+
+```text
+.
+├── START-HERE.md              # First page for beginners
+├── AGENTS.md                  # AI coding-agent rules
+├── ROADMAP.md                 # Public roadmap
+├── CONTRIBUTING.md            # Contribution and writing standards
+├── docs/                      # Learning guides, principles, checklists
+├── catalog/                   # Cloudflare product knowledge
+├── architectures/             # Reference application designs
+├── prompts/                   # Build, debug, deploy, and audit prompts
+├── templates/                 # Safe reusable starter configs/files
+├── scripts/                   # Setup and verification tools
+└── .github/workflows/         # Quality checks and update automation
+```
+
+---
 
 ## Cloudflare product domains
 
@@ -94,51 +183,54 @@ Read START-HERE.md and AGENTS.md. I am a beginner. Explain each step simply. Do 
 | **Network & Delivery** | DNS, CDN, Cache Rules, Argo, Load Balancing, Waiting Room, Spectrum |
 | **Observe** | Workers Observability, Logs, Analytics, Web Analytics, Health Checks, Audit Logs |
 
+---
+
 ## Design principles
 
-- **Simple first:** beginners should never face advanced architecture on page one.
-- **Cloudflare-first:** use Cloudflare tools when they fit the job.
-- **Small steps:** build a working small version before adding complexity.
-- **Safe by default:** protect secrets, data, admin areas, and deployments.
-- **Two levels:** every major topic should have a simple explanation and an engineering explanation.
+- **Simple first:** start with the smallest working architecture.
+- **Cloudflare-first:** use Cloudflare services when they fit the job.
+- **Production-aware:** think about security, data, deploys, and monitoring early.
+- **Beginner-safe:** explain decisions in plain language before deep engineering detail.
+- **AI-ready:** write instructions clearly enough for coding agents to follow.
+- **Copy responsibly:** templates should be adapted, not blindly pasted.
 
 More principles: [`docs/09-project-principles.md`](docs/09-project-principles.md)
 
+---
+
 ## Roadmap
 
-See the full public roadmap in [`ROADMAP.md`](ROADMAP.md).
+See the full roadmap in [`ROADMAP.md`](ROADMAP.md).
 
-- [x] Product vision and first README
+- [x] Product vision and public README
 - [x] AI agent operating rules
 - [x] Newcomer roadmap
 - [x] Cloudflare decision engine
 - [x] Production readiness scorecard
 - [x] Beginner glossary
 - [x] Secure Mini CMS reference architecture
-- [ ] Complete Cloudflare service catalog
 - [x] Cloudflare update watcher foundation
 - [x] Debug playbook library foundation
+- [ ] Complete Cloudflare service catalog
+- [ ] Add more starter templates
+- [ ] Add real-world example apps
+- [ ] Add server-side tracking architecture
 
-## Repository map
-
-```text
-.
-├── START-HERE.md              # First page for beginners
-├── AGENTS.md                  # AI coding-agent rules
-├── ROADMAP.md                 # Public product roadmap
-├── CONTRIBUTING.md            # Contribution and writing standards
-├── docs/                      # Guides and roadmaps
-├── catalog/                   # Cloudflare product knowledge
-├── architectures/             # Reference application designs
-├── prompts/                   # Build, debug, deploy, audit prompts
-├── templates/                 # Safe reusable configurations
-├── scripts/                   # Setup and verification tools
-└── .github/workflows/         # Quality checks and update automation
-```
+---
 
 ## Contributing
 
-This project is beginner-first and production-aware. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) before adding guides.
+CloudflareOS is beginner-first and production-aware. Before adding guides, read [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+Good contributions should be:
+
+- simple enough for beginners
+- useful for real projects
+- Cloudflare-first but not blindly Cloudflare-only
+- safe for production use
+- clear enough for AI coding agents
+
+---
 
 ## The promise
 
