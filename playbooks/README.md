@@ -1,144 +1,123 @@
 # Project Playbooks
 
-Project playbooks turn common app ideas into practical Cloudflare-first implementation plans.
+Playbooks turn common Cloudflare-first product and engineering work into practical, production-aware implementation guidance.
 
-Use this folder when you know what you want to build but need help choosing the right architecture, services, folder structure, starter template, prompts, and deployment path.
+Use this folder when you know what you need to build, launch, improve, or recover—but want a safer path than starting from a blank prompt.
 
 ---
 
-## How playbooks work
+## Start with the right guide
 
-Each playbook should guide a project from idea to deployable plan.
+| Your situation | Start here |
+| --- | --- |
+| I need a product architecture | [`../architectures/README.md`](../architectures/README.md) |
+| I need a safe pre-launch checklist | [Production Readiness Checklist](../docs/production-readiness-checklist.md) |
+| I need to test a feature or release | [Testing Strategy](./testing-strategy.md) |
+| I need a recovery and continuity plan | [Disaster Recovery & Business Continuity](./disaster-recovery-business-continuity.md) |
+| I need to reduce avoidable cost | [Cost Optimization](./cost-optimization.md) |
+| I need faster core journeys | [Performance Optimization](./performance-optimization.md) |
+| I need a more usable, inclusive interface | [Accessibility & Inclusive UX](./accessibility-inclusive-ux.md) |
+| I need an AI-agent prompt for a task | [`../prompts/README.md`](../prompts/README.md) |
+
+---
+
+## Recommended workflow
 
 ```text
-Project idea
+Project idea or existing product
   ↓
-MVP scope
+Choose architecture guide
   ↓
-Cloudflare architecture
+Define smallest useful scope
   ↓
-Data and storage plan
+Build in small, reviewable tasks
   ↓
-Folder structure
+Use relevant engineering playbooks
   ↓
-Starter template
+Test, audit, and deploy safely
   ↓
-AI build prompt
-  ↓
-Deployment checklist
+Measure, improve, and document lessons
 ```
 
 ---
 
-## Priority playbooks
+## Available engineering playbooks
 
-| Playbook | Status | Starting stack |
+| Playbook | Use for | Key outcomes |
 | --- | --- | --- |
-| Blog / CMS | Planned | Workers or Pages + D1 + R2 |
-| News portal | Planned | Workers + D1 + R2 + Turnstile |
-| AI chat app | Planned | Workers + Workers AI + D1 |
-| SaaS dashboard | Planned | Workers + D1 + R2 + Queues |
-| Admin dashboard | Planned | Workers + D1 + Access |
-| Marketplace | Planned | Workers + D1 + R2 + Queues |
-| Job portal | Planned | Workers + D1 + R2 + Queues |
-| Travel agency website | Planned | Pages or Workers + D1 + R2 |
-| Course / LMS site | Planned | Workers + D1 + R2 + Queues |
-| E-commerce starter | Planned | Workers + D1 + R2 + Queues |
-| CRM | Planned | Workers + D1 + Queues |
-| API service | Planned | Workers + D1/KV + Queues |
-| File manager | Planned | Workers + R2 + D1 |
-| Server-side tracking service | Planned | Workers + Queues + Analytics Engine |
+| [Testing Strategy](./testing-strategy.md) | Creating meaningful coverage for core flows and releases | Test layers, risk-based cases, smoke checks, release gates |
+| [Disaster Recovery & Business Continuity](./disaster-recovery-business-continuity.md) | Preparing for outages, bad deploys, data problems, and provider failures | Response roles, recovery flows, communication, exercises |
+| [Cost Optimization](./cost-optimization.md) | Preventing avoidable infrastructure, AI, storage, and provider spend | Cost inventory, limits, monthly review, incident response |
+| [Performance Optimization](./performance-optimization.md) | Improving real user speed across frontend, API, D1, R2, caching, and mobile | Performance budget, bottleneck checks, resilience, release QA |
+| [Accessibility & Inclusive UX](./accessibility-inclusive-ux.md) | Making core journeys usable across devices, input methods, languages, and abilities | Keyboard access, forms, content, mobile, testing, acceptance criteria |
+
+---
+
+## Project playbook direction
+
+Product-specific architecture guides live in [`../architectures/README.md`](../architectures/README.md). Use those for the overall product design, then use this folder for the engineering practices that apply across products.
+
+Typical combinations:
+
+```text
+Marketplace architecture
+  + Testing Strategy
+  + Accessibility & Inclusive UX
+  + Cost Optimization
+  + Disaster Recovery
+
+News portal architecture
+  + Performance Optimization
+  + Accessibility & Inclusive UX
+  + Disaster Recovery
+
+SaaS architecture
+  + Testing Strategy
+  + Cost Optimization
+  + Performance Optimization
+  + Disaster Recovery
+```
 
 ---
 
 ## Standard playbook format
 
-Every playbook should follow this structure:
+Each new playbook should include:
 
 ```md
-# Project Name
+# Playbook Name
 
 ## Goal
-
-What this project helps users do.
-
 ## Best for
-
-Who should build this and when.
-
-## MVP features
-
-Smallest useful version.
-
-## Beginner architecture
-
-Simple Cloudflare-first setup.
-
-## Production architecture
-
-Safer, more scalable setup.
-
-## Cloudflare services used
-
-List each service and why it is used.
-
-## Data model direction
-
-Core D1 tables or data entities.
-
-## File storage plan
-
-R2 bucket layout and upload rules.
-
-## Background jobs
-
-Queue usage if needed.
-
-## Auth and access
-
-User login, admin protection, permissions.
-
-## Folder structure
-
-Recommended project structure.
-
-## Starter template
-
-Which template to copy.
-
-## AI build prompt
-
-Prompt for Codex, Cursor, Claude Code, Copilot, or ChatGPT.
-
-## Deployment workflow
-
-Local setup, bindings, secrets, deploy command.
-
+## Start with the critical journey
+## Practical implementation guidance
+## Testing workflow
 ## Production checklist
-
-Security, performance, cost, rollback, observability.
-
 ## Common mistakes
-
-What beginners and AI agents often get wrong.
+## Related guides
 ```
+
+A playbook should explain both the smallest safe version and the upgrades that are worth adding only when the product needs them.
 
 ---
 
 ## Playbook rules
 
 - Start with the smallest useful version.
-- Do not add advanced Cloudflare services unless needed.
-- Explain why each service is used.
-- Include both beginner and production architecture.
-- Keep examples practical and copy-friendly.
-- Link to related catalog pages, templates, and prompts.
-- Make the guidance clear enough for AI coding agents.
+- Do not add advanced Cloudflare services without a clear need.
+- Tie advice to a real user or operational journey.
+- Keep private data, permissions, tenant boundaries, and secrets safe.
+- Include practical tests and verification steps.
+- Include recovery or rollback notes for production-impacting work.
+- Keep guidance useful for solo builders and small teams.
+- Link to the related architecture, checklist, prompt, or catalog guide.
 
 ---
 
 ## Related docs
 
-- [`docs/PROJECT-ENGINE.md`](../docs/PROJECT-ENGINE.md)
-- [`catalog/README.md`](../catalog/README.md)
-- [`ROADMAP.md`](../ROADMAP.md)
+- [`../architectures/README.md`](../architectures/README.md)
+- [`../prompts/README.md`](../prompts/README.md)
+- [`../docs/production-readiness-checklist.md`](../docs/production-readiness-checklist.md)
+- [`../catalog/README.md`](../catalog/README.md)
+- [`../ROADMAP.md`](../ROADMAP.md)
