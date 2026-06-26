@@ -200,21 +200,18 @@ More principles: [`docs/09-project-principles.md`](docs/09-project-principles.md
 
 ## Roadmap
 
-See the full roadmap in [`ROADMAP.md`](ROADMAP.md).
+See the detailed plan in [`ROADMAP.md`](ROADMAP.md).
 
-- [x] Product vision and public README
-- [x] AI agent operating rules
-- [x] Newcomer roadmap
-- [x] Cloudflare decision engine
-- [x] Production readiness scorecard
-- [x] Beginner glossary
-- [x] Secure Mini CMS reference architecture
-- [x] Cloudflare update watcher foundation
-- [x] Debug playbook library foundation
-- [ ] Complete Cloudflare service catalog
-- [ ] Add more starter templates
-- [ ] Add real-world example apps
-- [ ] Add server-side tracking architecture
+| Version | Focus | Status |
+| --- | --- | --- |
+| **v0.1** | Foundation — beginner path, agent rules, core guidance | ✅ Complete |
+| **v0.2** | Project Engine — playbooks, templates, and prompts | 🚧 In progress |
+| **v0.3** | Cloudflare Product Catalog | ⏳ Planned |
+| **v0.4** | Production Assistant — deploy, security, cost, and rollback checks | ⏳ Planned |
+| **v0.5** | Living Knowledge Engine — update watching and freshness checks | ⏳ Planned |
+| **v1.0** | Public stable handbook, templates, and examples | 🎯 Future |
+
+**Currently building:** Cloudflare Product Catalog, production-ready starter templates, server-side tracking architecture, and real-world example apps.
 
 ---
 
