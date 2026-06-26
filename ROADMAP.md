@@ -52,6 +52,8 @@ The goal is simple:
 
 **Goal:** when someone has a project idea, CloudflareOS should help them choose the right Cloudflare-first path.
 
+Read the full Project Engine spec: [`docs/PROJECT-ENGINE.md`](docs/PROJECT-ENGINE.md)
+
 ### Priority project playbooks
 
 - [ ] Blog / CMS
