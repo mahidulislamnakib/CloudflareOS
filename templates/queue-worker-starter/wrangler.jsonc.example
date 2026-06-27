@@ -1,17 +1,36 @@
 {
-  "name": "queue-worker-starter",
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "background-jobs-worker",
   "main": "src/index.ts",
-  "compatibility_date": "2026-06-26",
+  "compatibility_date": "2025-01-01",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "background-jobs-db",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
   "queues": {
     "producers": [
       {
-        "binding": "JOB_QUEUE",
-        "queue": "my-app-jobs"
+        "binding": "JOBS",
+        "queue": "background-jobs"
       }
     ],
     "consumers": [
       {
-        "queue": "my-app-jobs"
+        "queue": "background-jobs",
+        "max_batch_size": 10,
+        "max_batch_timeout": 10,
+        "max_retries": 3,
+        "dead_letter_queue": "background-jobs-dlq"
+      },
+      {
+        "queue": "background-jobs-dlq",
+        "max_batch_size": 10,
+        "max_batch_timeout": 10,
+        "max_retries": 3
       }
     ]
   }
