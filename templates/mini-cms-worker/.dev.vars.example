@@ -1,0 +1,2 @@
+# Local development only. Never commit the real file.
+ADMIN_API_TOKEN=replace-this-for-local-dev
