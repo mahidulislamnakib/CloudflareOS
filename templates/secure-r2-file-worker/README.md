@@ -126,7 +126,7 @@ printf 'hello from CloudflareOS' > hello.txt
 curl -X PUT http://127.0.0.1:8787/api/admin/files/docs/hello.txt \
   -H "Authorization: Bearer replace-this-for-local-dev" \
   -H "Content-Type: text/plain" \
-  -H "Content-Length: 26" \
+  -H "Content-Length: 23" \
   --data-binary @hello.txt
 
 curl -I http://127.0.0.1:8787/api/admin/files/docs/hello.txt \
@@ -143,7 +143,7 @@ To make a file public:
 curl -X PUT "http://127.0.0.1:8787/api/admin/files/public/hello.txt?visibility=public" \
   -H "Authorization: Bearer replace-this-for-local-dev" \
   -H "Content-Type: text/plain" \
-  -H "Content-Length: 26" \
+  -H "Content-Length: 23" \
   --data-binary @hello.txt
 
 curl http://127.0.0.1:8787/files/public/hello.txt --output public-hello.txt
