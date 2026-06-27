@@ -161,9 +161,15 @@ Risk accepted by a named owner with a documented mitigation and due date
 
 ## Related guides
 
+- [`observability-checklist.md`](observability-checklist.md)
+- [`performance-checklist.md`](performance-checklist.md)
+- [`cost-checklist.md`](cost-checklist.md)
+- [`data-backup-export-checklist.md`](data-backup-export-checklist.md)
+- [`environment-variable-checklist.md`](environment-variable-checklist.md)
+- [`incident-response-checklist.md`](incident-response-checklist.md)
+- [`rollback-checklist.md`](rollback-checklist.md)
 - [`../architectures/deployment-release.md`](../architectures/deployment-release.md)
 - [`../architectures/security-threat-modeling.md`](../architectures/security-threat-modeling.md)
 - [`../architectures/observability-operations.md`](../architectures/observability-operations.md)
-- [`../architectures/payments-billing.md`](../architectures/payments-billing.md)
 - [`../architectures/data-pipeline-reporting.md`](../architectures/data-pipeline-reporting.md)
 - [`../architectures/authentication-authorization.md`](../architectures/authentication-authorization.md)

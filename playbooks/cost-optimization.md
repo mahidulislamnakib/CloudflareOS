@@ -354,6 +354,7 @@ Review monthly with the product or engineering owner.
 
 ## Related guides
 
+- [`../docs/cost-checklist.md`](../docs/cost-checklist.md)
 - [`../docs/production-readiness-checklist.md`](../docs/production-readiness-checklist.md)
 - [`../playbooks/disaster-recovery-business-continuity.md`](./disaster-recovery-business-continuity.md)
 - [`../architectures/deployment-release.md`](../architectures/deployment-release.md)

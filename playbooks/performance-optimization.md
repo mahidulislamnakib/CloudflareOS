@@ -361,6 +361,7 @@ Document root cause and prevention action
 
 ## Related guides
 
+- [`../docs/performance-checklist.md`](../docs/performance-checklist.md)
 - [`../docs/production-readiness-checklist.md`](../docs/production-readiness-checklist.md)
 - [`../playbooks/testing-strategy.md`](./testing-strategy.md)
 - [`../playbooks/cost-optimization.md`](./cost-optimization.md)
