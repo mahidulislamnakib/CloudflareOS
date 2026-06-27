@@ -208,7 +208,7 @@ Write incident note
 Create follow-up tasks
 ```
 
-Keep incident notes factual: time, impact, root cause, mitigation, and prevention work.
+Keep incident notes factual: time, impact, root cause, mitigation, and prevention work. For an operational response checklist, use [`../docs/incident-response-checklist.md`](../docs/incident-response-checklist.md).
 
 ## Backup and recovery model
 

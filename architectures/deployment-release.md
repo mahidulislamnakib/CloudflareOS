@@ -163,6 +163,8 @@ Do not leave unmaintained flags forever. Assign an owner and removal date.
 
 ## Rollback model
 
+For a step-by-step operational checklist, use [`../docs/rollback-checklist.md`](../docs/rollback-checklist.md) before production launches and during incidents.
+
 ```text
 Issue detected
   ↓
