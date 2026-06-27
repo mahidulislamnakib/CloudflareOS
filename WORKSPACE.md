@@ -1,99 +1,53 @@
-# CloudflareOS Workspace
+# DeveloperB Workspace
 
-This repository contains a Cloudflare Worker + Static Assets application at the repository root. It is the first graphical interface for CloudflareOS.
+> **From real problems to build-ready products.**
 
-## What is included
+This repository serves the DeveloperB private-alpha workspace through a Cloudflare Worker with Static Assets. DeveloperB is the product name; Cloudflare is the underlying infrastructure.
 
-- Developer-project style workspace interface at `/`
-- `GET /api/health` health endpoint
-- `GET /api/workspace` safe read-only seed data for the interface
-- `POST /api/ai/coach` guarded Workers AI Project Coach endpoint
-- Sidebar views for architecture, tasks, database decisions, templates, verification, deployment, and debugging
-- Cloudflare-inspired developer-preview visual theme
-- No login, saved workspaces, database binding, personal data, or AI chat history storage
+## Purpose
 
-## Why the first release is read-only
+DeveloperB begins with a real problem in natural language. It should clarify facts, assumptions, unanswered questions, and possible solution paths before anyone creates a software project.
 
-The goal is to validate the developer-workspace experience before introducing D1 records, authentication, permission rules, migrations, privacy obligations, or recovery workflows.
-
-D1 should be added only after a user needs to save a workspace and return to it.
-
-## Workers AI Project Coach
-
-The Project Coach is deliberately disabled unless the `AI_PREVIEW_ENABLED` Worker variable is set to `true`.
-
-Before enabling it:
-
-1. Protect the developer-preview audience with Cloudflare Access or another approved access layer.
-2. Add a Cloudflare rate-limiting rule for `POST /api/ai/*`.
-3. Enable the `AI_PREVIEW_ENABLED=true` Worker variable only for the protected preview environment.
-4. Monitor Workers AI usage in the Cloudflare dashboard.
-
-The endpoint accepts one JSON field only:
-
-```json
-{
-  "message": "I need a private upload flow for a small team. What is the smallest safe Cloudflare-first version?"
-}
+```text
+Real problem
+→ discovery conversation
+→ solution options
+→ accepted project blueprint
+→ build workspace
+→ tasks, evidence, approvals, and delivery
 ```
 
-It limits input to 600 characters, does not store prompts or responses, and returns a concise task-oriented answer. It uses `@cf/meta/llama-3.2-1b-instruct` for the developer preview.
+A project should be created only after a blueprint is accepted.
 
-Workers AI includes a daily free allocation of 10,000 Neurons; usage above that requires Workers Paid. Limits reset at 00:00 UTC. Pricing and model availability can change, so verify the current Cloudflare documentation before expanding the preview.
+## Current routes
 
-## Local development
+- `/` — DeveloperB workspace
+- `/api/health` — safe health response
+- `/api/workspace` — read-only workspace metadata
+- `POST /api/ai/coach` — guarded DeveloperB Guide
+
+## Preview controls
+
+Keep the preview limited to approved developers. The Guide remains disabled unless `AI_PREVIEW_ENABLED=true` is set in a protected environment. Add a rate limit for `POST /api/ai/*` before enabling it.
+
+The Guide accepts one `message` field, limited to 600 characters, and does not store conversation history.
+
+## Future provider routes
+
+DeveloperB will choose providers by capability and approved model profile, not by a hard-coded vendor. Planned route types include Workers AI, AI Gateway-supported providers, OpenRouter through AI Gateway, compatible APIs, and future external coding-agent adapters after verification.
+
+## Local verification
 
 ```bash
 npm install
 npm run typecheck
 npm run dev
-```
-
-Then open:
-
-```text
-http://127.0.0.1:8787/
-```
-
-Verify the Worker API separately:
-
-```bash
 curl http://127.0.0.1:8787/api/health
 curl http://127.0.0.1:8787/api/workspace
 ```
 
-The AI binding accesses the Cloudflare account even during local development. Keep `AI_PREVIEW_ENABLED` disabled until the developer-preview controls are in place.
+## Data foundation
 
-## Cloudflare deployment
+The private-alpha migrations in [`private-alpha/migrations/`](private-alpha/migrations/) are not connected to the live Worker yet. Apply them only to a dedicated preview database after a local rehearsal with synthetic fixtures.
 
-The root `wrangler.jsonc` deploys this app. It uses `src/workspace-app.ts` as the Worker entry point, serves files from `public/` through the `ASSETS` binding, and exposes a Workers AI binding named `AI`.
-
-For a Git-connected Cloudflare Worker deployment:
-
-1. Connect this repository in Cloudflare.
-2. Use the repository root as the build root.
-3. Install dependencies with `npm install`.
-4. Use `npx wrangler deploy` as the deploy command if the Cloudflare build configuration requires one.
-5. Deploy a preview branch first, then verify `/`, `/api/health`, and `/api/workspace` before promoting it.
-6. Protect the preview before setting `AI_PREVIEW_ENABLED=true`.
-
-## Version 1 verification
-
-A UI task is not complete until the following are checked:
-
-- `npm run typecheck`
-- `npm run dev`
-- `/` loads and sidebar navigation works
-- Cloudflare-style visual theme is visible
-- mobile layout is usable
-- keyboard navigation reaches visible controls
-- `/api/health` returns JSON
-- `/api/workspace` returns JSON
-- the Project Coach returns the disabled response before it is enabled
-- after preview protection and explicit enablement, one valid Project Coach request returns a bounded answer
-
-Record results in [`WORKSPACE-STATUS.md`](WORKSPACE-STATUS.md).
-
-## Next planned capability
-
-A local-only project planning wizard that creates a project brief, version-one scope, task list, and Codex prompt in the browser. It should not create user accounts or persistence yet.
+The current Worker name and `cf.openpathfy.com` domain remain technical preview infrastructure. Treat a Worker rename as a separate deployment task after this preview is verified.
