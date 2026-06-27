@@ -91,7 +91,7 @@ Use clear environment names:
 - `staging`
 - `production`
 
-Document which services and private values each environment needs.
+Document which services and private values each environment needs. Use [`environment-variable-checklist.md`](environment-variable-checklist.md) before adding, rotating, deploying, or removing configuration values.
 
 ## Dependency best practices
 

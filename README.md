@@ -102,7 +102,7 @@ Explain every decision and keep secrets out of source code.
 
 ### Audit before deployment
 
-Review environment variables, bindings, uploads, secrets, route safety, deployment target, security gaps, and monitoring gaps.
+Review environment variables, bindings, uploads, secrets, route safety, deployment target, security gaps, monitoring gaps, and rollback readiness. Start with [`docs/production-readiness-checklist.md`](docs/production-readiness-checklist.md) and [`docs/rollback-checklist.md`](docs/rollback-checklist.md).
 
 ---
 
