@@ -1,0 +1,133 @@
+:root {
+  --blue: #f6821f;
+  --orange: #fbad41;
+  --purple: #f6821f;
+  --surface: #14100d;
+  --surface-2: #21170f;
+  --surface-3: #32200f;
+  --line: rgba(255, 171, 89, 0.16);
+  --line-strong: rgba(255, 171, 89, 0.38);
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(246, 130, 31, 0.28), transparent 32rem),
+    radial-gradient(circle at 92% 0%, rgba(255, 176, 65, 0.15), transparent 28rem),
+    #100c09;
+}
+
+.brand-mark {
+  border-color: rgba(255, 194, 135, 0.7);
+  background: linear-gradient(135deg, #f6821f, #d8530a);
+  box-shadow: 0 8px 24px rgba(246, 130, 31, 0.25);
+}
+
+.nav-item.is-active {
+  border-color: rgba(246, 130, 31, 0.42);
+  background: linear-gradient(90deg, rgba(246, 130, 31, 0.24), rgba(160, 70, 9, 0.08));
+}
+
+.nav-icon,
+.meta-icon,
+.text-button,
+.eyebrow,
+.muted-label,
+.decision-number {
+  color: #ffb46e;
+}
+
+.primary-button {
+  border-color: rgba(255, 200, 141, 0.68);
+  background: linear-gradient(180deg, #fa9136, #e16412);
+  box-shadow: 0 8px 22px rgba(246, 130, 31, 0.28);
+}
+
+.primary-button:hover {
+  background: linear-gradient(180deg, #ff9f4e, #ec6e18);
+}
+
+.project-hero {
+  border-color: rgba(246, 130, 31, 0.34);
+  background: linear-gradient(125deg, rgba(246, 130, 31, 0.3), rgba(26, 17, 11, 0.9) 46%, rgba(105, 48, 10, 0.3)), var(--surface);
+}
+
+.project-hero::before {
+  content: "CLOUDFLARE DEVELOPER PREVIEW";
+  display: inline-block;
+  position: absolute;
+  right: 22px;
+  top: 12px;
+  color: rgba(255, 208, 164, 0.72);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+}
+
+.project-hero { position: relative; overflow: hidden; }
+.project-progress { border-color: rgba(255, 185, 113, 0.24); background: rgba(41, 21, 8, 0.38); }
+.progress-track span { background: linear-gradient(90deg, #f6821f, #ffbd75); }
+
+.panel,
+.metric-card,
+.template-card,
+.architecture-node {
+  background: rgba(23, 16, 11, 0.9);
+}
+
+.terminal-panel { border-color: rgba(246, 130, 31, 0.3); }
+.terminal-prompt { color: #ffae68; }
+.terminal-dots span:nth-child(2) { background: #f6821f; }
+
+.status-progress,
+.binding-state.gated {
+  background: rgba(246, 130, 31, 0.16);
+  color: #ffc18c;
+}
+
+.binding-state.gated { text-transform: capitalize; }
+
+.ai-coach-panel {
+  margin-top: 18px;
+  border-color: rgba(246, 130, 31, 0.36);
+  background:
+    linear-gradient(135deg, rgba(246, 130, 31, 0.13), transparent 44%),
+    rgba(23, 16, 11, 0.92);
+}
+
+.ai-coach-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.ai-coach-header h2 { margin-top: 5px; }
+.ai-coach-header p { margin: 7px 0 0; color: var(--muted); font-size: 12px; }
+.ai-preview-badge { color: #ffd0a7; background: rgba(246, 130, 31, 0.18); }
+
+.ai-coach-form { display: grid; gap: 10px; margin-top: 16px; }
+.ai-coach-label { color: #f5d0ae; font-size: 11px; font-weight: 800; }
+.ai-coach-input {
+  min-height: 90px;
+  width: 100%;
+  resize: vertical;
+  border: 1px solid rgba(255, 181, 107, 0.25);
+  border-radius: 10px;
+  background: rgba(9, 8, 7, 0.58);
+  color: var(--text);
+  padding: 11px;
+}
+.ai-coach-input::placeholder { color: #887762; }
+.ai-coach-input:focus { border-color: rgba(255, 183, 110, 0.8); outline: 0; }
+.ai-coach-actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; align-items: center; }
+.ai-coach-hint { color: var(--subtle); font-size: 10px; }
+.ai-coach-output { margin-top: 14px; border-top: 1px solid rgba(255, 176, 94, 0.15); padding-top: 14px; }
+.ai-coach-output[hidden] { display: none; }
+.ai-coach-output strong { display: block; color: #ffd5b0; font-size: 11px; }
+.ai-coach-output p { margin: 8px 0 0; white-space: pre-wrap; color: #dce5f4; font-size: 12px; line-height: 1.62; }
+.ai-coach-error { color: #ffb0a9 !important; }
+
+@media (max-width: 560px) {
+  .project-hero::before { display: none; }
+  .ai-coach-actions .primary-button { width: 100%; }
+}
