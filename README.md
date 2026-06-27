@@ -1,24 +1,47 @@
-# CloudflareOS
+# DeveloperB
 
-> **A practical operating system for building production-ready applications on Cloudflare.**
+> **From real problems to build-ready products.**
 
-[![Status](https://img.shields.io/badge/status-growing-blue)](#roadmap)
-[![Beginner Friendly](https://img.shields.io/badge/beginner-friendly-brightgreen)](START-HERE.md)
-[![Cloudflare First](https://img.shields.io/badge/architecture-Cloudflare--first-F38020)](#cloudflare-product-domains)
+DeveloperB helps founders, clients, team members, and developers turn a real-world problem into a clear decision, useful documentation, a project blueprint, and a verified path to build.
+
+The repository name remains `CloudflareOS` for now because it also contains a Cloudflare-first engineering handbook. **DeveloperB is the product brand.** Cloudflare is used as technical infrastructure and knowledge scope, not as the DeveloperB product identity.
+
+[![Status](https://img.shields.io/badge/status-private--alpha-6C5CE7)](WORKSPACE.md)
+[![Problem First](https://img.shields.io/badge/flow-problem--to--product-5ED3A5)](private-alpha/README.md)
 [![AI Ready](https://img.shields.io/badge/AI%20agents-ready-5A67D8)](AGENTS.md)
-[![Public Knowledge Base](https://img.shields.io/badge/knowledge%20base-public-blue)](#how-to-use-this-repo)
+[![Cloudflare Infrastructure](https://img.shields.io/badge/infrastructure-Cloudflare--first-F38020)](#cloudflare-product-domains)
 
-CloudflareOS helps developers, founders, solo builders, and AI coding agents plan, build, debug, deploy, and improve Cloudflare-first apps.
+## DeveloperB private alpha
 
-👉 **New here? Start with [`START-HERE.md`](START-HERE.md).**  
-🤖 **Using an AI coding agent? Read [`AGENTS.md`](AGENTS.md).**  
-🏗️ **Choosing a system design? Browse [`architectures/README.md`](architectures/README.md).**
+A person should be able to say:
 
----
+> “This is the problem I face every day. I do not know whether I need a tool, a process change, automation, or a full product.”
 
-## What is CloudflareOS?
+DeveloperB should guide the next decision:
 
-CloudflareOS is a reusable engineering handbook for projects that want to run on Cloudflare.
+```text
+Natural language problem
+→ confirmed facts, assumptions, and unanswered questions
+→ solution options
+→ recommendation and what not to build yet
+→ accepted project blueprint
+→ build workspace, tasks, AI guidance, evidence, and delivery
+```
+
+DeveloperB does not assume that a software product is always the answer. It considers:
+
+- Do not build yet
+- Use an existing tool
+- Improve the manual process
+- Automate one workflow
+- Build a lightweight internal tool
+- Build a full software product
+
+Start the private workspace at [`WORKSPACE.md`](WORKSPACE.md). Product architecture, data model, and build order are in [`private-alpha/README.md`](private-alpha/README.md).
+
+## Cloudflare-first engineering handbook
+
+This repository also remains a practical handbook for building production-ready applications on Cloudflare.
 
 | Area | What you get |
 | --- | --- |
@@ -29,21 +52,22 @@ CloudflareOS is a reusable engineering handbook for projects that want to run on
 | **Checklists** | Production readiness, security, and deployment checks |
 | **Catalog** | Simple explanations of Cloudflare services |
 
----
+👉 **New here? Start with [`START-HERE.md`](START-HERE.md).**  
+🤖 **Using an AI coding agent? Read [`AGENTS.md`](AGENTS.md).**  
+🏗️ **Choosing a system design? Browse [`architectures/README.md`](architectures/README.md).**
 
 ## Build path
 
 ```mermaid
 flowchart LR
-  Idea[Idea] --> Plan[Choose Architecture]
-  Plan --> Template[Copy Template]
-  Template --> Build[Build Small]
-  Build --> Test[Test + Audit]
-  Test --> Deploy[Deploy to Cloudflare]
-  Deploy --> Improve[Monitor + Improve]
+  Problem[Real problem] --> Discovery[Understand the situation]
+  Discovery --> Decision[Choose build, buy, automate, improve, or wait]
+  Decision --> Blueprint[Accept a project blueprint]
+  Blueprint --> Build[Build small]
+  Build --> Test[Test and verify]
+  Test --> Deploy[Deploy]
+  Deploy --> Improve[Monitor and improve]
 ```
-
----
 
 ## Simple Cloudflare toolbox
 
@@ -62,8 +86,6 @@ flowchart LR
 | Admin protection | Access |
 | Observability | Workers Observability / Logs / Analytics |
 
----
-
 ## What you can build with it
 
 | Project type | Good starting guide |
@@ -73,59 +95,56 @@ flowchart LR
 | AI chat app | [AI Chatbot](architectures/ai-chatbot.md) |
 | Marketplace | [Marketplace](architectures/marketplace.md) |
 | SaaS app | [Multi-tenant SaaS](architectures/multi-tenant-saas.md) |
-| Online store | [E-commerce](architectures/e-commerce.md) |
+| Online store | [E-commerce](architectures/ecommerce.md) |
 | Course platform | [LMS](architectures/lms.md) |
 | Travel lead platform | [Travel Platform](architectures/travel-platform.md) |
 | Real-time app | [Real-time Collaboration](architectures/realtime-collaboration.md) |
 | Public API | [API Platform](architectures/api-platform.md) |
 
----
+## How to use this repository
 
-## How to use this repo
+### Solve a real problem
 
-### Learn
+Start with the DeveloperB discovery flow in [`WORKSPACE.md`](WORKSPACE.md). Do not write a feature list before the problem, users, current workaround, cost, and success criteria are clear.
 
-Start with [`START-HERE.md`](START-HERE.md), then follow [`docs/02-newcomer-roadmap.md`](docs/02-newcomer-roadmap.md).
+### Plan a Cloudflare-first project
 
-### Plan a project
-
-Choose the closest application design in [`architectures/README.md`](architectures/README.md). Start with its smallest useful version before adding advanced services.
+Choose the closest design in [`architectures/README.md`](architectures/README.md). Start with the smallest useful version before adding advanced services.
 
 ### Use with AI coding tools
 
 ```text
-Read START-HERE.md, AGENTS.md, and the closest guide in architectures/.
-Review my project and recommend the simplest Cloudflare-first architecture.
-Do not add advanced services unless they are truly needed.
-Explain every decision and keep secrets out of source code.
+Read BUILD-STATUS.md, WORKSPACE-STATUS.md, AGENTS.md, and the closest architecture guide.
+Start from the real problem.
+Separate confirmed facts, assumptions, and unanswered questions.
+Consider build, buy, automate, process improvement, and do-not-build options.
+Create a project only after an accepted blueprint.
+Keep secrets out of source code and verify every important decision.
 ```
 
 ### Audit before deployment
 
 Review environment variables, bindings, uploads, secrets, route safety, deployment target, security gaps, monitoring gaps, and rollback readiness. Start with [`docs/production-readiness-checklist.md`](docs/production-readiness-checklist.md) and [`docs/rollback-checklist.md`](docs/rollback-checklist.md).
 
----
-
 ## Repository map
 
 ```text
 .
-├── START-HERE.md              # First page for beginners
-├── AGENTS.md                  # AI coding-agent rules
-├── ROADMAP.md                 # Public roadmap
-├── CONTRIBUTING.md            # Contribution and writing standards
-├── docs/                      # Learning guides, principles, checklists
-├── catalog/                   # Cloudflare product knowledge
-├── architectures/             # Reference application designs
-├── playbooks/                 # Project-specific implementation guides
-├── examples/                  # Real-world application examples
-├── prompts/                   # Build, debug, deploy, and audit prompts
-├── templates/                 # Safe reusable starter configs/files
-├── scripts/                   # Setup and verification tools
-└── .github/workflows/         # Quality checks and update automation
+├── WORKSPACE.md                # DeveloperB private-alpha workspace guide
+├── private-alpha/              # Problem-to-product data model and migration guidance
+├── START-HERE.md               # First page for handbook beginners
+├── AGENTS.md                   # AI coding-agent rules
+├── ROADMAP.md                  # Handbook roadmap
+├── docs/                       # Learning guides, principles, checklists
+├── catalog/                    # Cloudflare product knowledge
+├── architectures/              # Reference application designs
+├── playbooks/                  # Project-specific implementation guides
+├── examples/                   # Real-world application examples
+├── prompts/                    # Build, debug, deploy, and audit prompts
+├── templates/                  # Safe reusable starter configs/files
+├── scripts/                    # Setup and verification tools
+└── .github/workflows/          # Quality checks and update automation
 ```
-
----
 
 ## Cloudflare product domains
 
@@ -140,12 +159,11 @@ Review environment variables, bindings, uploads, secrets, route safety, deployme
 | **Network & Delivery** | DNS, CDN, Cache Rules, Argo, Load Balancing, Waiting Room, Spectrum |
 | **Observe** | Workers Observability, Logs, Analytics, Web Analytics, Health Checks, Audit Logs |
 
----
-
 ## Design principles
 
-- **Simple first:** start with the smallest working architecture.
-- **Cloudflare-first:** use Cloudflare services when they fit the job.
+- **Problem first:** understand the lived problem before proposing a product.
+- **Simple first:** start with the smallest working solution.
+- **Cloudflare-first when suitable:** use Cloudflare services when they fit the job.
 - **Production-aware:** think about security, data, deploys, and monitoring early.
 - **Beginner-safe:** explain decisions in plain language before deep engineering detail.
 - **AI-ready:** write instructions clearly enough for coding agents to follow.
@@ -153,33 +171,10 @@ Review environment variables, bindings, uploads, secrets, route safety, deployme
 
 More principles: [`docs/09-project-principles.md`](docs/09-project-principles.md)
 
----
-
-## Roadmap
-
-See the detailed plan in [`ROADMAP.md`](ROADMAP.md).
-
-| Version | Focus | Status |
-| --- | --- | --- |
-| **v0.1** | Foundation — beginner path, agent rules, core guidance | ✅ Complete |
-| **v0.2** | Project Engine — playbooks, templates, and prompts | 🚧 In progress |
-| **v0.3** | Cloudflare Product Catalog | 🚧 In progress |
-| **v0.4** | Production Assistant — deployment, security, operations | 🚧 In progress |
-| **v0.5** | Living Knowledge Engine — update watching and freshness checks | ⏳ Planned |
-| **v1.0** | Public stable handbook, templates, and examples | 🎯 Future |
-
-**Currently building:** architecture patterns, catalog coverage, practical playbooks, starter examples, production checklists, and a freshness system for changing Cloudflare guidance.
-
----
-
 ## Contributing
 
-CloudflareOS is beginner-first and production-aware. Before adding guides, read [`CONTRIBUTING.md`](CONTRIBUTING.md).
-
-Good contributions should be simple, useful for real projects, justified, safe for production, and clear enough for AI coding agents.
-
----
+DeveloperB and the handbook should be useful for real projects, justified, safe, clear about uncertainty, and understandable by both people and AI coding agents. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) before adding guides.
 
 ## The promise
 
-> Make Cloudflare engineering simple enough for beginners and strong enough for production.
+> Help people move from real problems to build-ready products without wasting developer time, money, or AI effort.
