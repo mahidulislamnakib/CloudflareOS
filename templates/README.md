@@ -11,6 +11,7 @@ Use this folder when you want a safe starting point that can be copied into a re
 | Template | Best for | Includes |
 | --- | --- | --- |
 | [Mini CMS Worker](./mini-cms-worker/README.md) | Blog, news, resources, or simple content backend | Workers API, D1 schema, public posts, admin-protected CRUD, local setup, deploy and smoke tests |
+| [Secure R2 File Worker](./secure-r2-file-worker/README.md) | Controlled public/private file uploads and downloads | Workers API, R2 binding, admin-protected file operations, visibility metadata, size/key validation, local setup and smoke tests |
 
 ---
 
@@ -59,7 +60,6 @@ Use checklist before production
 | Simple Workers API | Backend/API projects |
 | Next.js on Cloudflare | Full-stack web apps |
 | D1 CRUD starter | Apps needing SQL data |
-| R2 upload starter | File upload systems |
 | KV config/cache starter | Cache, flags, small config |
 | Queue worker starter | Background jobs |
 | Durable Object starter | Shared live state |
