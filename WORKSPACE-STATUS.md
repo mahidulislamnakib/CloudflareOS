@@ -12,10 +12,10 @@ This file tracks the graphical interface work separately while the root `BUILD-S
 ## Task ledger
 
 ### UI-001 — Workspace foundation
-- Status: In Progress
+- Status: Ready for Verification
 - Goal: Add a deployable Cloudflare Worker static-assets application with a developer-project workspace interface.
 - Scope: Root Worker config, static application shell, and read-only seed API only.
-- Files: `package.json`, `tsconfig.json`, `wrangler.jsonc`, `src/index.ts`, `public/index.html`, `public/styles.css`, `public/app.js`, `.gitignore`, `WORKSPACE-STATUS.md`.
+- Files: `package.json`, `tsconfig.json`, `wrangler.jsonc`, `src/index.ts`, `public/index.html`, `public/styles.css`, `public/app.js`, `.gitignore`, `WORKSPACE.md`, `WORKSPACE-STATUS.md`.
 - Dependencies: Cloudflare Worker Git deployment is connected by the project owner.
 - Acceptance criteria:
   - The Worker serves the workspace shell at `/`.
@@ -26,8 +26,12 @@ This file tracks the graphical interface work separately while the root `BUILD-S
 - Verification reference: WV-001 through WV-004.
 - Risk: medium.
 - Rollback or recovery: Remove root Worker files and restore this repository to documentation-only deployment configuration.
-- Evidence: Pending local verification; this environment cannot resolve GitHub or npm registry network hosts for a local install/run.
-- Notes: D1 is deliberately deferred until users need saved workspaces. Content/API responses are static seed data in version 1.
+- Evidence:
+  - Worker configuration follows the Cloudflare Static Assets pattern: a Worker entry point plus `ASSETS` binding and API-first routing.
+  - `src/index.ts` exposes only `GET /api/health` and `GET /api/workspace`, with unknown API routes returning JSON 404 responses.
+  - `WORKSPACE.md` records the local and Cloudflare verification path.
+  - Local verification is pending because this execution environment cannot resolve GitHub or npm registry network hosts for `git clone` or dependency installation.
+- Notes: D1 is deliberately deferred until users need saved workspaces. Content/API responses are static seed data in version 1. Do not mark this task complete until the local commands and browser checks below are run.
 
 ## Verification matrix
 
@@ -51,4 +55,4 @@ This file tracks the graphical interface work separately while the root `BUILD-S
 
 ## Next safe task
 
-- After UI-001 verification: add a small project-planning wizard that generates a local-only draft build plan in the browser. Do not add login or persistence yet.
+- Complete WV-001 through WV-004 using the connected Cloudflare Worker preview. After that, add a small project-planning wizard that generates a local-only draft build plan in the browser. Do not add login or persistence yet.
