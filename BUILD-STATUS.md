@@ -53,7 +53,7 @@ Prepared migrations: private-alpha/migrations/0001_control_plane.sql and 0002_di
 - Status: Ready for Verification
 - Goal: make DeveloperB independent from infrastructure branding and make natural-language problem discovery the first product journey.
 - Scope: user-facing rebrand, discovery-first workspace, problem-oriented AI guide, discovery control-plane migration, provider capability additions, and handoff documentation.
-- Files: `public/index.html`, `public/app.js`, `public/ai-coach.js`, `src/workspace-app.ts`, `src/project-coach.ts`, `src/private-alpha/provider-types.ts`, `private-alpha/README.md`, `private-alpha/migrations/0002_discovery.sql`, `private-alpha/migrations/README.md`, `WORKSPACE.md`, `WORKSPACE-STATUS.md`, `BUILD-STATUS.md`.
+- Files: `public/index.html`, `public/app.js`, `public/ai-coach.js`, `public/preview.css`, `src/workspace-app.ts`, `src/project-coach.ts`, `src/private-alpha/provider-types.ts`, `private-alpha/README.md`, `private-alpha/migrations/0002_discovery.sql`, `private-alpha/migrations/README.md`, `WORKSPACE.md`, `WORKSPACE-STATUS.md`, `BUILD-STATUS.md`.
 - Acceptance criteria:
   - DeveloperB is the customer-facing brand in the workspace and private-alpha documentation.
   - The first user journey is problem discovery, with facts, assumptions, questions, solution options, recommendations, and what not to build.
@@ -63,7 +63,11 @@ Prepared migrations: private-alpha/migrations/0001_control_plane.sql and 0002_di
 - Verification references: V-009 through V-015.
 - Risk: medium.
 - Recovery: revert the focused UI/documentation/code changes; the new migration remains un-applied until B-002.
-- Evidence: pending repository-level typecheck, migration rehearsal, link review, and connected-preview inspection.
+- Evidence:
+  - `0002_discovery.sql` was rehearsed with SQLite 3.46.1 against the required parent-table shape.
+  - Result: syntax applied successfully, 11 tables and 19 indexes existed in the rehearsal fixture, and `PRAGMA foreign_key_check` returned zero errors.
+  - `0001_control_plane.sql` had already passed a full SQLite rehearsal with 16 tables, 23 named indexes, and zero foreign-key errors.
+  - Repository dependency installation/typecheck, link review, and connected-preview UI inspection remain pending.
 
 ## Verification matrix
 
@@ -78,7 +82,7 @@ Prepared migrations: private-alpha/migrations/0001_control_plane.sql and 0002_di
 | V-007 | AI Guide response | Protected preview returns a bounded discovery answer after enablement | Apply access/rate limit then make one request | Pending |
 | V-008 | Provider safety | No provider value appears in source or schema | Review changed files | Pending |
 | V-009 | Control-plane schema | `0001` applies in a local SQLite-compatible rehearsal | Empty database rehearsal | Complete in prior SQLite rehearsal |
-| V-010 | Discovery schema | `0002` applies after `0001` and foreign keys pass | Empty database rehearsal | Pending |
+| V-010 | Discovery schema | `0002` applies after the required parent tables and foreign keys pass | SQLite rehearsal plus `PRAGMA foreign_key_check` | Complete in SQLite rehearsal |
 | V-011 | Provider contract | Discovery capabilities compile in strict TypeScript | `npm run typecheck` | Pending |
 | V-012 | Migration runbook | Both migrations, fixtures, first queries, and recovery are documented | Manual review and link check | Pending |
 | V-013 | Brand boundary | Customer-facing workspace uses DeveloperB; Cloudflare remains infrastructure wording only | Search UI/documentation and inspect preview | Pending |
@@ -108,7 +112,8 @@ Prepared migrations: private-alpha/migrations/0001_control_plane.sql and 0002_di
 ```text
 current task: B-001 ready for verification
 implemented: DeveloperB brand, problem discovery workspace, discovery-first AI guide prompt, discovery migration, blueprint-to-project design, provider capabilities, migration and product documentation
-unverified: repository typecheck, migration 0002 rehearsal, markdown link review, connected preview UI, private-preview AI guide checks
+verification completed: SQLite rehearsal for 0001 and 0002; 0002 foreign-key check passed
+unverified: repository typecheck, markdown link review, connected preview UI, private-preview AI guide checks
 known risks: Worker technical name/domain remain unchanged intentionally; no D1 binding or server-side identity exists yet
 next safe task: B-002 preview D1 binding, both migration rehearsals, synthetic fixtures, and tenant-isolation queries
 ```
