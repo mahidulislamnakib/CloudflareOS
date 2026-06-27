@@ -29,7 +29,7 @@ function textFromResult(result: unknown): string | null {
 
 export async function projectCoach(request: Request, env: ProjectCoachEnv): Promise<Response> {
   if (env.AI_PREVIEW_ENABLED !== "true") {
-    return failure("AI_PREVIEW_DISABLED", "Project coach is disabled until the developer preview is protected and enabled.", 503);
+    return failure("AI_PREVIEW_DISABLED", "DeveloperB Guide is disabled until the private preview is protected and explicitly enabled.", 503);
   }
 
   if (!request.headers.get("content-type")?.includes("application/json")) {
@@ -59,10 +59,11 @@ export async function projectCoach(request: Request, env: ProjectCoachEnv): Prom
   }
 
   const prompt = [
-    "You are the CloudflareOS Project Coach for developers.",
-    "Answer in five short parts: Goal, Smallest next task, Files or settings, Verification, Risk.",
-    "Keep it under 140 words and state uncertainty clearly.",
-    "Question:",
+    "You are DeveloperB Guide. You help people turn a real-world problem into a clear next decision before they spend money on software.",
+    "Do not assume a custom app is needed. Consider: do not build yet, use an existing tool, improve a manual process, automate one workflow, build a small internal tool, or build a software product.",
+    "Answer in these short sections: What I understood; Confirmed facts; Assumptions; Questions still unanswered; Solution options; Recommended next step; What not to build yet.",
+    "Use simple English. Keep the answer under 180 words. State uncertainty clearly. Do not ask for passwords, secret values, or private account access. Do not claim that a plan is complete or production-ready.",
+    "User message:",
     message,
   ].join("\n\n");
 
@@ -72,6 +73,6 @@ export async function projectCoach(request: Request, env: ProjectCoachEnv): Prom
     if (!text) return failure("AI_RESPONSE_INVALID", "No usable response. Try again later.", 502);
     return response({ data: { response: text, model: MODEL } });
   } catch {
-    return failure("AI_UNAVAILABLE", "Project coach is unavailable. Try again later.", 503);
+    return failure("AI_UNAVAILABLE", "DeveloperB Guide is unavailable. Try again later.", 503);
   }
 }

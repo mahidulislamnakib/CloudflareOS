@@ -1,0 +1,18 @@
+:root { --blue: #9f8cff; --orange: #fb8b5b; --purple: #7c6cf2; --green: #5ed3a5; }
+.brand-mark { background: #6554d5; border-color: #c7bdff; }
+.nav-item.is-active { border-color: #9f8cff; background: rgba(124, 108, 242, 0.24); }
+.primary-button { background: #6554d5; border-color: #c7bdff; }
+.project-hero { position: relative; overflow: hidden; border-color: rgba(159, 140, 255, 0.38); background: #171a2c; }
+.project-hero::before { content: "DEVELOPERB PRIVATE ALPHA"; position: absolute; right: 22px; top: 12px; color: #ded8ff; font-size: 9px; font-weight: 900; letter-spacing: 0.12em; }
+.ai-coach-panel { margin-top: 18px; border-color: rgba(159, 140, 255, 0.42); }
+.ai-coach-header { display: flex; justify-content: space-between; gap: 16px; }
+.ai-coach-form { display: grid; gap: 10px; margin-top: 16px; }
+.ai-coach-label { color: #ded8ff; font-size: 11px; font-weight: 800; }
+.ai-coach-input { width: 100%; min-height: 110px; resize: vertical; padding: 11px; border: 1px solid rgba(181, 171, 255, 0.35); border-radius: 10px; background: #0b0d18; color: #eff5ff; }
+.ai-coach-actions { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; align-items: center; }
+.ai-coach-hint { color: var(--subtle); font-size: 10px; }
+.ai-coach-output { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(181, 171, 255, 0.18); }
+.ai-coach-output[hidden] { display: none; }
+.ai-coach-output p { white-space: pre-wrap; line-height: 1.62; }
+.ai-coach-error { color: #ffb0a9 !important; }
+@media (max-width: 700px) { .project-hero::before { display: none; } .ai-coach-actions .primary-button { width: 100%; } }

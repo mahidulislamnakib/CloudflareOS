@@ -3,276 +3,167 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="CloudflareOS Workspace — a developer-project interface for planning, verifying, and shipping Cloudflare-first projects."
-    />
+    <meta name="description" content="DeveloperB turns real problems into clear solutions and build-ready products." />
     <meta name="theme-color" content="#0b1020" />
-    <title>CloudflareOS Workspace</title>
+    <title>DeveloperB — From real problems to build-ready products</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <a class="skip-link" href="#workspace-main">Skip to workspace content</a>
 
     <div class="app-shell">
-      <aside class="sidebar" aria-label="Workspace navigation">
+      <aside class="sidebar" aria-label="DeveloperB navigation">
         <div class="brand">
-          <div class="brand-mark" aria-hidden="true">CF</div>
+          <div class="brand-mark" aria-hidden="true">DB</div>
           <div>
-            <span class="brand-name">CloudflareOS</span>
-            <span class="brand-subtitle">Developer workspace</span>
+            <span class="brand-name">DeveloperB</span>
+            <span class="brand-subtitle">Problem to product</span>
           </div>
         </div>
 
-        <button class="project-switcher" type="button" aria-label="Current project">
-          <span class="project-avatar" aria-hidden="true">C</span>
+        <button class="project-switcher" type="button" aria-label="Current workspace">
+          <span class="project-avatar" aria-hidden="true">D</span>
           <span>
-            <strong>CloudflareOS</strong>
-            <small>Workspace preview</small>
+            <strong>Private Alpha</strong>
+            <small>Approved developer preview</small>
           </span>
           <span class="chevron" aria-hidden="true">⌄</span>
         </button>
 
-        <nav class="nav-list" aria-label="Project sections">
-          <button class="nav-item is-active" type="button" data-view="overview">
-            <span class="nav-icon" aria-hidden="true">⌘</span> Overview
-          </button>
-          <button class="nav-item" type="button" data-view="architecture">
-            <span class="nav-icon" aria-hidden="true">◈</span> Architecture
-          </button>
-          <button class="nav-item" type="button" data-view="tasks">
-            <span class="nav-icon" aria-hidden="true">✓</span> Tasks
-          </button>
-          <button class="nav-item" type="button" data-view="database">
-            <span class="nav-icon" aria-hidden="true">▤</span> Database
-          </button>
-          <button class="nav-item" type="button" data-view="templates">
-            <span class="nav-icon" aria-hidden="true">⌁</span> Templates
-          </button>
-          <button class="nav-item" type="button" data-view="verification">
-            <span class="nav-icon" aria-hidden="true">◌</span> Verification
-          </button>
-          <button class="nav-item" type="button" data-view="deploy">
-            <span class="nav-icon" aria-hidden="true">↗</span> Deploy
-          </button>
-          <button class="nav-item" type="button" data-view="debug">
-            <span class="nav-icon" aria-hidden="true">⌕</span> Debug
-          </button>
+        <nav class="nav-list" aria-label="Workspace sections">
+          <button class="nav-item is-active" type="button" data-view="discovery"><span class="nav-icon" aria-hidden="true">◌</span> Problem discovery</button>
+          <button class="nav-item" type="button" data-view="blueprint"><span class="nav-icon" aria-hidden="true">◇</span> Project blueprint</button>
+          <button class="nav-item" type="button" data-view="workspace"><span class="nav-icon" aria-hidden="true">⌘</span> Build workspace</button>
+          <button class="nav-item" type="button" data-view="tasks"><span class="nav-icon" aria-hidden="true">✓</span> Tasks</button>
+          <button class="nav-item" type="button" data-view="architecture"><span class="nav-icon" aria-hidden="true">◈</span> Architecture</button>
+          <button class="nav-item" type="button" data-view="verification"><span class="nav-icon" aria-hidden="true">◌</span> Verification</button>
+          <button class="nav-item" type="button" data-view="deploy"><span class="nav-icon" aria-hidden="true">↗</span> Deploy</button>
+          <button class="nav-item" type="button" data-view="learn"><span class="nav-icon" aria-hidden="true">⌁</span> Learn</button>
         </nav>
 
         <div class="sidebar-bottom">
           <div class="connection-card">
             <span class="connection-dot" aria-hidden="true"></span>
-            <div>
-              <strong>Worker connected</strong>
-              <small>Static Assets + API</small>
-            </div>
+            <div><strong>Private preview</strong><small>Built on Cloudflare</small></div>
           </div>
-          <button class="help-button" type="button" data-action="show-help">?</button>
+          <button class="help-button" type="button" data-action="show-help" aria-label="Show build guidance">?</button>
         </div>
       </aside>
 
       <div class="workspace">
         <header class="topbar">
           <button class="mobile-menu" type="button" data-action="toggle-menu" aria-label="Open navigation">☰</button>
-          <div class="breadcrumb">
-            <span>Projects</span>
-            <span aria-hidden="true">/</span>
-            <strong>CloudflareOS</strong>
-          </div>
+          <div class="breadcrumb"><span>DeveloperB</span><span aria-hidden="true">/</span><strong>Private Alpha</strong></div>
           <div class="topbar-actions">
-            <span class="branch-chip" title="Current branch">
-              <span aria-hidden="true">⑂</span>
-              <span data-branch>ui-foundation</span>
-            </span>
-            <span class="environment-chip" data-environment>Preview</span>
+            <span class="branch-chip" title="Current branch"><span aria-hidden="true">⑂</span><span data-branch>main</span></span>
+            <span class="environment-chip" data-environment>Private alpha</span>
             <button class="icon-button" type="button" data-action="copy-prompt" aria-label="Copy current build prompt">⧉</button>
           </div>
         </header>
 
         <main id="workspace-main" class="workspace-main" tabindex="-1">
-          <section class="view-panel is-visible" data-panel="overview" aria-labelledby="overview-title">
+          <section class="view-panel is-visible" data-panel="discovery" aria-labelledby="discovery-title">
             <div class="page-heading">
               <div>
-                <p class="eyebrow">PROJECT CONTROL</p>
-                <h1 id="overview-title">Build without losing the thread.</h1>
-                <p class="page-summary">A developer workspace for turning CloudflareOS knowledge into small, verified implementation tasks.</p>
+                <p class="eyebrow">PROBLEM DISCOVERY</p>
+                <h1 id="discovery-title">Tell us what happened.</h1>
+                <p class="page-summary">Explain a real problem in Bangla or English. DeveloperB helps decide whether to improve a process, use an existing tool, automate one workflow, or build a focused product.</p>
               </div>
               <div class="heading-actions">
-                <button class="primary-button" type="button" data-action="copy-prompt">Copy Codex prompt</button>
-                <button class="secondary-button" type="button" data-action="open-task">Open active task</button>
+                <button class="primary-button" type="button" data-action="start-discovery">Start discovery</button>
+                <button class="secondary-button" type="button" data-view-target="blueprint">See the blueprint flow</button>
               </div>
             </div>
 
-            <section class="project-hero" aria-label="Current project summary">
+            <section class="project-hero" aria-label="DeveloperB mission">
               <div class="hero-grid">
                 <div>
-                  <p class="muted-label">CURRENT PROJECT</p>
-                  <h2 data-product>CloudflareOS Workspace</h2>
+                  <p class="muted-label">DEVELOPERB</p>
+                  <h2 data-product>DeveloperB</h2>
                   <div class="metadata-row">
-                    <span><span class="meta-icon" aria-hidden="true">◒</span><span data-repository>mahidulislamnakib/CloudflareOS</span></span>
-                    <span><span class="meta-icon" aria-hidden="true">⑂</span><span data-branch>ui-foundation</span></span>
-                    <span><span class="meta-icon" aria-hidden="true">◎</span><span data-stage>Foundation</span></span>
+                    <span><span class="meta-icon" aria-hidden="true">◒</span>From real problems to build-ready products.</span>
+                    <span><span class="meta-icon" aria-hidden="true">◎</span><span data-stage>Problem-to-product foundation</span></span>
+                    <span><span class="meta-icon" aria-hidden="true">◌</span>Private alpha</span>
                   </div>
                 </div>
                 <div class="project-progress">
-                  <div class="progress-label"><span>Workspace foundation</span><strong>1 / 4</strong></div>
-                  <div class="progress-track" aria-label="Project progress"><span></span></div>
-                  <p>Start with a visible shell. Add persistence only after the workflow proves useful.</p>
+                  <div class="progress-label"><span>Decision path</span><strong>1 / 4</strong></div>
+                  <div class="progress-track" aria-label="Product decision path"><span></span></div>
+                  <p>Problem first. A project is created only after a solution and blueprint are accepted.</p>
                 </div>
               </div>
             </section>
 
-            <section class="metrics-grid" aria-label="Project metrics">
-              <article class="metric-card">
-                <span class="metric-icon accent-blue" aria-hidden="true">◈</span>
-                <div><p>Architecture</p><strong>Worker + Static Assets</strong><small>No database yet</small></div>
-              </article>
-              <article class="metric-card">
-                <span class="metric-icon accent-orange" aria-hidden="true">✓</span>
-                <div><p>Active task</p><strong data-current-task>UI-001</strong><small>Workspace foundation</small></div>
-              </article>
-              <article class="metric-card">
-                <span class="metric-icon accent-green" aria-hidden="true">◌</span>
-                <div><p>Verification</p><strong>0 / 4 checked</strong><small>Local run required</small></div>
-              </article>
-              <article class="metric-card">
-                <span class="metric-icon accent-purple" aria-hidden="true">↗</span>
-                <div><p>Deployment</p><strong>Git-connected</strong><small>Preview environment</small></div>
-              </article>
+            <section class="metrics-grid" aria-label="Problem discovery stages">
+              <article class="metric-card"><span class="metric-icon accent-blue" aria-hidden="true">1</span><div><p>Understand</p><strong>Real situation</strong><small>Who, what, and why</small></div></article>
+              <article class="metric-card"><span class="metric-icon accent-orange" aria-hidden="true">2</span><div><p>Clarify</p><strong>Facts and gaps</strong><small>Assumptions stay visible</small></div></article>
+              <article class="metric-card"><span class="metric-icon accent-green" aria-hidden="true">3</span><div><p>Decide</p><strong>Best solution</strong><small>Build is not automatic</small></div></article>
+              <article class="metric-card"><span class="metric-icon accent-purple" aria-hidden="true">4</span><div><p>Prepare</p><strong>Build-ready plan</strong><small>Blueprint before code</small></div></article>
             </section>
 
             <section class="content-grid overview-grid">
               <article class="panel current-task-panel">
-                <div class="panel-heading">
-                  <div>
-                    <p class="muted-label">NOW BUILDING</p>
-                    <h2>Developer workspace shell</h2>
-                  </div>
-                  <span class="status-badge status-progress">In progress</span>
+                <div class="panel-heading"><div><p class="muted-label">WHAT DEVELOPERB WILL CLARIFY</p><h2>Before any developer starts coding</h2></div><span class="status-badge status-progress">Private alpha</span></div>
+                <p>DeveloperB does not jump directly to software. It makes uncertainty visible so the next decision is safer.</p>
+                <div class="task-checklist">
+                  <label><input type="checkbox" checked disabled /> Confirmed facts from the user’s real situation</label>
+                  <label><input type="checkbox" checked disabled /> Assumptions that need validation</label>
+                  <label><input type="checkbox" checked disabled /> Questions still unanswered</label>
+                  <label><input type="checkbox" checked disabled /> Solution options, recommendation, and what not to build yet</label>
                 </div>
-                <p>Establish a visual project control center before adding user accounts, saved workspaces, or database state.</p>
-                <div class="task-checklist" data-current-checklist>
-                  <label><input type="checkbox" checked disabled /> Worker API routes defined</label>
-                  <label><input type="checkbox" checked disabled /> Static Assets configuration added</label>
-                  <label><input type="checkbox" /> Run typecheck locally</label>
-                  <label><input type="checkbox" /> Open workspace in browser</label>
-                </div>
-                <div class="task-footer">
-                  <span><span class="small-dot"></span>Risk: medium</span>
-                  <button class="text-button" type="button" data-view-target="tasks">View all tasks →</button>
-                </div>
+                <div class="task-footer"><span><span class="small-dot"></span>Goal: clarity before cost</span><button class="text-button" type="button" data-view-target="blueprint">Open blueprint →</button></div>
               </article>
 
               <article class="panel terminal-panel">
-                <div class="terminal-topbar">
-                  <div class="terminal-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-                  <span>workspace / local verification</span>
-                  <button class="terminal-copy" type="button" data-action="copy-command">Copy</button>
-                </div>
-                <pre><code><span class="terminal-prompt">$</span> npm install
-<span class="terminal-prompt">$</span> npm run typecheck
-<span class="terminal-prompt">$</span> npm run dev
+                <div class="terminal-topbar"><div class="terminal-dots" aria-hidden="true"><span></span><span></span><span></span></div><span>developerb / decision path</span><button class="terminal-copy" type="button" data-action="copy-command">Copy</button></div>
+                <pre><code><span class="terminal-prompt">&gt;</span> Tell us what happened
+<span class="terminal-prompt">&gt;</span> Confirm facts and unanswered questions
+<span class="terminal-prompt">&gt;</span> Compare solution options
+<span class="terminal-prompt">&gt;</span> Accept a focused blueprint
 
-<span class="terminal-muted"># verify in a second terminal</span>
-<span class="terminal-prompt">$</span> curl http://127.0.0.1:8787/api/health
-<span class="terminal-prompt">$</span> curl http://127.0.0.1:8787/api/workspace</code></pre>
+<span class="terminal-muted"># only then</span>
+<span class="terminal-prompt">&gt;</span> Create project, tasks, and build plan</code></pre>
               </article>
             </section>
 
             <section class="content-grid lower-grid">
-              <article class="panel task-board-panel">
-                <div class="panel-heading">
-                  <div><p class="muted-label">BUILD QUEUE</p><h2>Small tasks, clear handoff</h2></div>
-                  <button class="text-button" type="button" data-view-target="tasks">Task board →</button>
-                </div>
-                <div class="task-list" data-task-list></div>
-              </article>
-
-              <article class="panel verification-panel">
-                <div class="panel-heading">
-                  <div><p class="muted-label">QUALITY GATE</p><h2>Verification matrix</h2></div>
-                  <button class="text-button" type="button" data-view-target="verification">Open checks →</button>
-                </div>
-                <div class="verification-list" data-verification-list></div>
-              </article>
+              <article class="panel task-board-panel"><div class="panel-heading"><div><p class="muted-label">BUILD QUEUE</p><h2>Private-alpha foundation</h2></div><button class="text-button" type="button" data-view-target="tasks">Task board →</button></div><div class="task-list" data-task-list></div></article>
+              <article class="panel verification-panel"><div class="panel-heading"><div><p class="muted-label">QUALITY GATE</p><h2>Verification matrix</h2></div><button class="text-button" type="button" data-view-target="verification">Open checks →</button></div><div class="verification-list" data-verification-list></div></article>
             </section>
           </section>
 
-          <section class="view-panel" data-panel="architecture" aria-labelledby="architecture-title">
-            <div class="page-heading compact"><div><p class="eyebrow">SYSTEM DESIGN</p><h1 id="architecture-title">Architecture decisions</h1><p class="page-summary">Start with a deployable interface. Add services only when a real user journey needs them.</p></div></div>
+          <section class="view-panel" data-panel="blueprint" aria-labelledby="blueprint-title">
+            <div class="page-heading compact"><div><p class="eyebrow">PROJECT BLUEPRINT</p><h1 id="blueprint-title">A project starts after a decision.</h1><p class="page-summary">A blueprint is the bridge between a natural conversation and work that a developer, client, or AI coding agent can understand.</p></div></div>
             <div class="architecture-board">
-              <article class="architecture-node active"><span>01</span><h2>Static Assets</h2><p>Serve the responsive workspace interface globally.</p><small>Configured now</small></article>
-              <article class="architecture-node active"><span>02</span><h2>Worker API</h2><p>Expose safe health and seed-workspace endpoints.</p><small>Configured now</small></article>
-              <article class="architecture-node pending"><span>03</span><h2>D1</h2><p>Store workspaces only after persistence is a proven user need.</p><small>Deferred</small></article>
-              <article class="architecture-node pending"><span>04</span><h2>Identity</h2><p>Add roles after users need saved projects or collaboration.</p><small>Deferred</small></article>
+              <article class="architecture-node active"><span>01</span><h2>Problem</h2><p>Capture the real situation, people affected, current workaround, and cost of doing nothing.</p><small>Discovery intake</small></article>
+              <article class="architecture-node active"><span>02</span><h2>Solution</h2><p>Compare build, buy, automate, process improvement, and do-not-build options.</p><small>Decision review</small></article>
+              <article class="architecture-node active"><span>03</span><h2>Blueprint</h2><p>Define MVP scope, non-goals, users, risks, verification, and technical direction.</p><small>Accepted before project</small></article>
+              <article class="architecture-node pending"><span>04</span><h2>Build workspace</h2><p>Create tasks, repository context, AI runs, approvals, and deployment evidence.</p><small>After acceptance</small></article>
             </div>
-            <article class="panel decision-panel"><div class="panel-heading"><div><p class="muted-label">CURRENT DECISION</p><h2>No database in the foundation</h2></div><span class="status-badge status-ready">Intentional</span></div><p>Saved workspaces require ownership, privacy rules, authorization, migrations, recovery, and demo data. This release proves the workflow before taking on that operational cost.</p></article>
+            <article class="panel decision-panel"><div class="panel-heading"><div><p class="muted-label">CORE RULE</p><h2>No project without an accepted blueprint.</h2></div><span class="status-badge status-ready">Problem first</span></div><p>This protects founders, clients, developers, and AI agents from spending time on an unclear idea. A blueprint keeps the problem, selected solution, MVP, non-goals, and evidence together.</p></article>
           </section>
 
-          <section class="view-panel" data-panel="tasks" aria-labelledby="tasks-title">
-            <div class="page-heading compact"><div><p class="eyebrow">BUILD PLAN</p><h1 id="tasks-title">Task board</h1><p class="page-summary">Only one small task should be in progress until it has evidence.</p></div></div>
-            <div class="task-board" data-task-board></div>
+          <section class="view-panel" data-panel="workspace" aria-labelledby="workspace-title">
+            <div class="page-heading compact"><div><p class="eyebrow">BUILD WORKSPACE</p><h1 id="workspace-title">Build only what has been decided.</h1><p class="page-summary">The project workspace will hold repository context, tasks, architecture, agent sessions, approvals, evidence, and release history.</p></div></div>
+            <article class="panel database-panel"><div class="decision-header"><span class="decision-number">B-001</span><span class="status-badge status-ready">Foundation ready</span></div><h2>DeveloperB keeps problem clarity connected to implementation.</h2><dl><div><dt>Source</dt><dd>Every project can point back to the approved blueprint that created it.</dd></div><div><dt>Tasks</dt><dd>Each task includes acceptance criteria, risk, verification, and approval state.</dd></div><div><dt>Agent work</dt><dd>AI planning and future coding runs are linked to a task, provider route, model profile, and audit record.</dd></div><div><dt>Evidence</dt><dd>Plans, diffs, logs, reports, and deployments are kept as artifacts, not invisible chat history.</dd></div></dl></article>
           </section>
 
-          <section class="view-panel" data-panel="database" aria-labelledby="database-title">
-            <div class="page-heading compact"><div><p class="eyebrow">DATA DECISIONS</p><h1 id="database-title">Database is deferred</h1><p class="page-summary">The foundation is public and read-only. No user data is collected or stored.</p></div></div>
-            <article class="panel database-panel"><div class="decision-header"><span class="decision-number">DB-001</span><span class="status-badge status-ready">No migration</span></div><h2>Use D1 only when saved workspaces are needed.</h2><dl><div><dt>User journey</dt><dd>Users return to saved project briefs, tasks, decisions, and verification evidence.</dd></div><div><dt>Ownership</dt><dd>Must be explicit: a user or organization owns every saved workspace.</dd></div><div><dt>Access policy</dt><dd>Server-side authorization is required before reads, updates, exports, or deletion.</dd></div><div><dt>Upgrade trigger</dt><dd>Validated demand for saved workspaces, not an imagined future feature.</dd></div></dl></article>
-          </section>
+          <section class="view-panel" data-panel="tasks" aria-labelledby="tasks-title"><div class="page-heading compact"><div><p class="eyebrow">BUILD PLAN</p><h1 id="tasks-title">One safe task at a time</h1><p class="page-summary">A task is not complete because code exists. It needs evidence and a clear next step.</p></div></div><div class="task-board" data-task-board></div></section>
 
-          <section class="view-panel" data-panel="templates" aria-labelledby="templates-title">
-            <div class="page-heading compact"><div><p class="eyebrow">STARTER LIBRARY</p><h1 id="templates-title">Templates ready to adapt</h1><p class="page-summary">Use a proven worker pattern rather than rebuilding common infrastructure from scratch.</p></div></div>
-            <div class="template-grid">
-              <article class="template-card"><span class="template-symbol">▤</span><h2>Mini CMS Worker</h2><p>Public content with protected administration and D1.</p><button type="button" class="text-button" data-action="show-template">Open template →</button></article>
-              <article class="template-card"><span class="template-symbol">▱</span><h2>Secure R2 File Worker</h2><p>Private-by-default file management and protected actions.</p><button type="button" class="text-button" data-action="show-template">Open template →</button></article>
-              <article class="template-card"><span class="template-symbol">↻</span><h2>Queue Worker</h2><p>Background jobs, retries, job status, and dead-letter handling.</p><button type="button" class="text-button" data-action="show-template">Open template →</button></article>
-              <article class="template-card muted-template"><span class="template-symbol">+</span><h2>Planner workspace</h2><p>This application is the next reusable interface pattern.</p><span class="status-badge status-progress">Building</span></article>
-            </div>
-          </section>
+          <section class="view-panel" data-panel="architecture" aria-labelledby="architecture-title"><div class="page-heading compact"><div><p class="eyebrow">PLATFORM ARCHITECTURE</p><h1 id="architecture-title">Private-alpha control plane</h1><p class="page-summary">DeveloperB uses Cloudflare as infrastructure, while its own product identity stays independent.</p></div></div><div class="architecture-board"><article class="architecture-node active"><span>01</span><h2>Worker + Assets</h2><p>Serve the private preview and safe read-only API.</p><small>Configured</small></article><article class="architecture-node active"><span>02</span><h2>Workers AI</h2><p>Guide natural-language discovery only when the preview is protected and enabled.</p><small>Gated</small></article><article class="architecture-node pending"><span>03</span><h2>D1</h2><p>Store discovery, solution, blueprint, project, task, and approval records.</p><small>Next</small></article><article class="architecture-node pending"><span>04</span><h2>R2 + identity</h2><p>Keep artifacts and enforce private organization access.</p><small>Planned</small></article></div></section>
 
-          <section class="view-panel" data-panel="verification" aria-labelledby="verification-title">
-            <div class="page-heading compact"><div><p class="eyebrow">QUALITY GATE</p><h1 id="verification-title">Verification before completion</h1><p class="page-summary">A feature is not complete because code exists. It needs commands, manual checks, and evidence.</p></div></div>
-            <article class="panel verification-wide"><div class="verification-list wide" data-verification-list-wide></div></article>
-          </section>
+          <section class="view-panel" data-panel="verification" aria-labelledby="verification-title"><div class="page-heading compact"><div><p class="eyebrow">QUALITY GATE</p><h1 id="verification-title">Verification before completion</h1><p class="page-summary">DeveloperB must show what it knows, what it assumes, and what still needs evidence.</p></div></div><article class="panel verification-wide"><div class="verification-list wide" data-verification-list-wide></div></article></section>
 
-          <section class="view-panel" data-panel="deploy" aria-labelledby="deploy-title">
-            <div class="page-heading compact"><div><p class="eyebrow">RELEASE PATH</p><h1 id="deploy-title">Deploy to Cloudflare Workers</h1><p class="page-summary">The root `wrangler.jsonc` deploys the Worker and Static Assets as one unit.</p></div></div>
-            <article class="panel deploy-panel"><ol class="deploy-steps"><li><span>1</span><div><strong>Connect the repository</strong><p>Use the connected Cloudflare Worker Git deployment and select the `main` branch when ready.</p></div></li><li><span>2</span><div><strong>Set build command</strong><p>Run <code>npm install</code>; deploy with <code>npx wrangler deploy</code> if the dashboard requires an explicit deploy command.</p></div></li><li><span>3</span><div><strong>Check preview routes</strong><p>Open the workspace, health endpoint, and workspace API before promoting.</p></div></li><li><span>4</span><div><strong>Keep data services deferred</strong><p>Do not add D1, auth, or secrets until the corresponding user journey is approved.</p></div></li></ol></article>
-          </section>
+          <section class="view-panel" data-panel="deploy" aria-labelledby="deploy-title"><div class="page-heading compact"><div><p class="eyebrow">PRIVATE PREVIEW</p><h1 id="deploy-title">Deploy safely, learn privately.</h1><p class="page-summary">Keep access limited until identity, authorization, data controls, and approval paths are verified.</p></div></div><article class="panel deploy-panel"><ol class="deploy-steps"><li><span>1</span><div><strong>Deploy the preview</strong><p>Use the connected Worker deployment and verify the current branch first.</p></div></li><li><span>2</span><div><strong>Protect access</strong><p>Allow only approved developers before enabling any AI feature or private data route.</p></div></li><li><span>3</span><div><strong>Verify the decision flow</strong><p>Check discovery, solution options, blueprint state, and the no-project-before-blueprint rule.</p></div></li><li><span>4</span><div><strong>Keep evidence</strong><p>Record what was tested, what remains unknown, and the next smallest safe task.</p></div></li></ol></article></section>
 
-          <section class="view-panel" data-panel="debug" aria-labelledby="debug-title">
-            <div class="page-heading compact"><div><p class="eyebrow">SAFE DEBUGGING</p><h1 id="debug-title">Debug with evidence</h1><p class="page-summary">Use the smallest possible observation before changing code or production configuration.</p></div></div>
-            <article class="panel debug-panel"><div class="debug-flow"><span>Problem</span><i>→</i><span>Evidence</span><i>→</i><span>Small safe fix</span><i>→</i><span>Verify</span><i>→</i><span>Prevent</span></div><div class="debug-actions"><button class="secondary-button" type="button" data-action="copy-prompt">Copy debug prompt</button><button class="secondary-button" type="button" data-action="show-help">Open agent workflow</button></div></article>
-          </section>
+          <section class="view-panel" data-panel="learn" aria-labelledby="learn-title"><div class="page-heading compact"><div><p class="eyebrow">LEARN WITH CONTEXT</p><h1 id="learn-title">Teach while solving.</h1><p class="page-summary">DeveloperB explains why a decision is recommended, not only what button to press.</p></div></div><article class="panel debug-panel"><div class="debug-flow"><span>Real problem</span><i>→</i><span>Clear language</span><i>→</i><span>Better decision</span><i>→</i><span>Build-ready blueprint</span><i>→</i><span>Verified delivery</span></div><div class="debug-actions"><button class="secondary-button" type="button" data-action="copy-prompt">Copy implementation prompt</button><button class="secondary-button" type="button" data-action="show-help">Open operating rules</button></div></article></section>
         </main>
 
         <aside class="context-panel" aria-label="Current build context">
-          <section class="context-section context-status">
-            <div class="context-heading"><span>BUILD STATUS</span><span class="context-live"><i></i> Live</span></div>
-            <div class="status-file"><span class="file-icon" aria-hidden="true">⌑</span><div><strong>WORKSPACE-STATUS.md</strong><small>Persistent project handoff</small></div></div>
-            <div class="status-line"><span>Current</span><strong data-current-task>UI-001</strong></div>
-            <div class="status-line"><span>State</span><strong class="text-orange">In progress</strong></div>
-          </section>
-
-          <section class="context-section">
-            <div class="context-heading"><span>BINDINGS</span><button type="button" class="mini-button" data-view-target="architecture">View</button></div>
-            <div class="binding-list" data-binding-list></div>
-          </section>
-
-          <section class="context-section">
-            <div class="context-heading"><span>NEXT SAFE TASK</span></div>
-            <p class="next-task" data-next-task>Verify the workspace foundation locally, then build a local-only project planning wizard.</p>
-            <button class="text-button" type="button" data-view-target="tasks">Open task plan →</button>
-          </section>
-
-          <section class="context-section recent-section">
-            <div class="context-heading"><span>RECENT ACTIVITY</span></div>
-            <ul class="activity-list">
-              <li><span class="activity-dot blue"></span><div><strong>Worker configuration added</strong><small>Static Assets + API routes</small></div></li>
-              <li><span class="activity-dot orange"></span><div><strong>Local verification pending</strong><small>Typecheck and browser review</small></div></li>
-              <li><span class="activity-dot gray"></span><div><strong>D1 intentionally deferred</strong><small>No user data in foundation</small></div></li>
-            </ul>
-          </section>
+          <section class="context-section context-status"><div class="context-heading"><span>BUILD STATUS</span><span class="context-live"><i></i> Private alpha</span></div><div class="status-file"><span class="file-icon" aria-hidden="true">⌑</span><div><strong>BUILD-STATUS.md</strong><small>Persistent product handoff</small></div></div><div class="status-line"><span>Current</span><strong data-current-task>B-001</strong></div><div class="status-line"><span>State</span><strong class="text-orange">In progress</strong></div></section>
+          <section class="context-section"><div class="context-heading"><span>PLATFORM BINDINGS</span><button type="button" class="mini-button" data-view-target="architecture">View</button></div><div class="binding-list" data-binding-list></div></section>
+          <section class="context-section"><div class="context-heading"><span>NEXT SAFE TASK</span></div><p class="next-task" data-next-task>Review the private preview, then provision a dedicated D1 database.</p><button class="text-button" type="button" data-view-target="tasks">Open task plan →</button></section>
+          <section class="context-section recent-section"><div class="context-heading"><span>CORE PROMISE</span></div><ul class="activity-list"><li><span class="activity-dot blue"></span><div><strong>Start with the real problem</strong><small>Natural language is enough to begin.</small></div></li><li><span class="activity-dot orange"></span><div><strong>Do not force a software build</strong><small>Build, buy, automate, improve, or wait.</small></div></li><li><span class="activity-dot gray"></span><div><strong>Keep a clear handoff</strong><small>Blueprint before project and code.</small></div></li></ul></section>
         </aside>
       </div>
     </div>
