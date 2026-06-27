@@ -4,12 +4,12 @@
 
 DeveloperB helps founders, clients, team members, and developers turn a real-world problem into a clear decision, useful documentation, a project blueprint, and a verified path to build.
 
-The repository name remains `CloudflareOS` for now because it also contains a Cloudflare-first engineering handbook. **DeveloperB is the product brand.** Cloudflare is used as technical infrastructure and knowledge scope, not as the DeveloperB product identity.
+DeveloperB is an independent product. The source repository and deployment configuration are technical implementation details that are being migrated separately. Cloudflare is referenced only as infrastructure and technical knowledge where appropriate; DeveloperB does not imply a partnership, sponsorship, or endorsement.
 
 [![Status](https://img.shields.io/badge/status-private--alpha-6C5CE7)](WORKSPACE.md)
 [![Problem First](https://img.shields.io/badge/flow-problem--to--product-5ED3A5)](private-alpha/README.md)
 [![AI Ready](https://img.shields.io/badge/AI%20agents-ready-5A67D8)](AGENTS.md)
-[![Cloudflare Infrastructure](https://img.shields.io/badge/infrastructure-Cloudflare--first-F38020)](#cloudflare-product-domains)
+[![Cloudflare Friendly](https://img.shields.io/badge/development-Cloudflare--friendly-F38020)](#cloudflare-friendly-toolkit)
 
 ## DeveloperB private alpha
 
@@ -17,7 +17,7 @@ A person should be able to say:
 
 > “This is the problem I face every day. I do not know whether I need a tool, a process change, automation, or a full product.”
 
-DeveloperB should guide the next decision:
+DeveloperB guides the next decision:
 
 ```text
 Natural language problem
@@ -28,7 +28,7 @@ Natural language problem
 → build workspace, tasks, AI guidance, evidence, and delivery
 ```
 
-DeveloperB does not assume that a software product is always the answer. It considers:
+DeveloperB does not assume that a custom product is always the answer. It considers:
 
 - Do not build yet
 - Use an existing tool
@@ -39,18 +39,18 @@ DeveloperB does not assume that a software product is always the answer. It cons
 
 Start the private workspace at [`WORKSPACE.md`](WORKSPACE.md). Product architecture, data model, and build order are in [`private-alpha/README.md`](private-alpha/README.md).
 
-## Cloudflare-first engineering handbook
+## Cloudflare-friendly toolkit
 
-This repository also remains a practical handbook for building production-ready applications on Cloudflare.
+This repository includes practical guidance for building and operating applications with Cloudflare services when they fit the technical need.
 
 | Area | What you get |
 | --- | --- |
-| **Learning** | Beginner-friendly explanations and roadmaps |
-| **Architecture** | Reference designs for real application types |
-| **Templates** | Reusable configs, folder structures, and starter files |
-| **Prompts** | AI-ready build, audit, debug, and deploy prompts |
-| **Checklists** | Production readiness, security, and deployment checks |
-| **Catalog** | Simple explanations of Cloudflare services |
+| Learning | Beginner-friendly explanations and roadmaps |
+| Architecture | Reference designs for real application types |
+| Templates | Reusable configs, folder structures, and starter files |
+| Prompts | AI-ready build, audit, debug, and deploy prompts |
+| Checklists | Production readiness, security, and deployment checks |
+| Catalog | Simple explanations of Cloudflare services |
 
 👉 **New here? Start with [`START-HERE.md`](START-HERE.md).**  
 🤖 **Using an AI coding agent? Read [`AGENTS.md`](AGENTS.md).**  
@@ -69,9 +69,9 @@ flowchart LR
   Deploy --> Improve[Monitor and improve]
 ```
 
-## Simple Cloudflare toolbox
+## Common Cloudflare services
 
-| Need | Use this |
+| Need | Common service |
 | --- | --- |
 | Website / frontend | Pages or Workers |
 | Backend/API | Workers |
@@ -83,7 +83,7 @@ flowchart LR
 | Shared live state | Durable Objects |
 | AI features | Workers AI / AI Gateway |
 | Form protection | Turnstile |
-| Admin protection | Access |
+| Internal access | Access |
 | Observability | Workers Observability / Logs / Analytics |
 
 ## What you can build with it
@@ -101,17 +101,7 @@ flowchart LR
 | Real-time app | [Real-time Collaboration](architectures/realtime-collaboration.md) |
 | Public API | [API Platform](architectures/api-platform.md) |
 
-## How to use this repository
-
-### Solve a real problem
-
-Start with the DeveloperB discovery flow in [`WORKSPACE.md`](WORKSPACE.md). Do not write a feature list before the problem, users, current workaround, cost, and success criteria are clear.
-
-### Plan a Cloudflare-first project
-
-Choose the closest design in [`architectures/README.md`](architectures/README.md). Start with the smallest useful version before adding advanced services.
-
-### Use with AI coding tools
+## Use with AI coding tools
 
 ```text
 Read BUILD-STATUS.md, WORKSPACE-STATUS.md, AGENTS.md, and the closest architecture guide.
@@ -122,7 +112,7 @@ Create a project only after an accepted blueprint.
 Keep secrets out of source code and verify every important decision.
 ```
 
-### Audit before deployment
+## Audit before deployment
 
 Review environment variables, bindings, uploads, secrets, route safety, deployment target, security gaps, monitoring gaps, and rollback readiness. Start with [`docs/production-readiness-checklist.md`](docs/production-readiness-checklist.md) and [`docs/rollback-checklist.md`](docs/rollback-checklist.md).
 
@@ -132,11 +122,11 @@ Review environment variables, bindings, uploads, secrets, route safety, deployme
 .
 ├── WORKSPACE.md                # DeveloperB private-alpha workspace guide
 ├── private-alpha/              # Problem-to-product data model and migration guidance
-├── START-HERE.md               # First page for handbook beginners
-├── AGENTS.md                   # AI coding-agent rules
-├── ROADMAP.md                  # Handbook roadmap
+├── START-HERE.md               # Beginner path
+├── AGENTS.md                   # Engineering and AI-agent rules
+├── ROADMAP.md                  # Roadmap
 ├── docs/                       # Learning guides, principles, checklists
-├── catalog/                    # Cloudflare product knowledge
+├── catalog/                    # Cloudflare technical knowledge
 ├── architectures/              # Reference application designs
 ├── playbooks/                  # Project-specific implementation guides
 ├── examples/                   # Real-world application examples
@@ -146,34 +136,21 @@ Review environment variables, bindings, uploads, secrets, route safety, deployme
 └── .github/workflows/          # Quality checks and update automation
 ```
 
-## Cloudflare product domains
-
-| Domain | Included capabilities |
-| --- | --- |
-| **Build** | Workers, Pages, Durable Objects, Containers, Queues, Workflows, Browser Rendering, Wrangler |
-| **Data** | D1, R2, Workers KV, Hyperdrive, Vectorize, Analytics Engine, Pipelines |
-| **AI** | Workers AI, AI Gateway, Agents, AI Search, Vectorize |
-| **Media** | Images, Stream, Realtime, Image Transformations |
-| **Security** | WAF, Turnstile, API Shield, Bot Management, Rate Limiting, SSL/TLS |
-| **Zero Trust** | Access, Gateway, Tunnel, WARP, Browser Isolation, DLP |
-| **Network & Delivery** | DNS, CDN, Cache Rules, Argo, Load Balancing, Waiting Room, Spectrum |
-| **Observe** | Workers Observability, Logs, Analytics, Web Analytics, Health Checks, Audit Logs |
-
 ## Design principles
 
 - **Problem first:** understand the lived problem before proposing a product.
 - **Simple first:** start with the smallest working solution.
-- **Cloudflare-first when suitable:** use Cloudflare services when they fit the job.
+- **Provider-neutral product:** choose infrastructure based on technical fit; do not imply affiliation.
 - **Production-aware:** think about security, data, deploys, and monitoring early.
 - **Beginner-safe:** explain decisions in plain language before deep engineering detail.
 - **AI-ready:** write instructions clearly enough for coding agents to follow.
-- **Freshness-aware:** verify changing Cloudflare facts against official sources.
+- **Freshness-aware:** verify changing provider facts against official sources.
 
 More principles: [`docs/09-project-principles.md`](docs/09-project-principles.md)
 
 ## Contributing
 
-DeveloperB and the handbook should be useful for real projects, justified, safe, clear about uncertainty, and understandable by both people and AI coding agents. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) before adding guides.
+DeveloperB and the toolkit should be useful for real projects, justified, safe, clear about uncertainty, and understandable by both people and AI coding agents. Read [`CONTRIBUTING.md`](CONTRIBUTING.md) before adding guides.
 
 ## The promise
 
