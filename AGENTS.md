@@ -37,6 +37,22 @@ First produce a small, token-safe decision plan:
 7. Run the most relevant local checks.
 8. Report: changed files, commands run, verification, risk, and next production step.
 
+## Persistent build record
+
+For every real project, create and maintain a root-level `BUILD-STATUS.md` from [`templates/agent-build-status.md`](templates/agent-build-status.md).
+
+- Read it before each coding session.
+- Keep a small ordered task list and one active task.
+- Every task must list acceptance criteria, a verification reference, risk, recovery note, and evidence.
+- Do not mark a task complete until the relevant checks and manual verification are recorded.
+- For a page, component, route, API, form, schema, binding, or protected screen, run the local development server when possible and inspect changed behavior before reporting completion.
+- Record where every page/component can be checked and include relevant empty, loading, error, mobile, keyboard, and permission states.
+- Use repeatable non-production test data for protected workflows and document the reset path.
+- Before a migration, record the user journey, ownership boundary, first queries, indexes, lifecycle states, server-controlled values, and migration verification plan.
+- At session end, record completed work, commands and results, unverified items, key decisions, risks, and the next smallest safe task.
+
+See [`playbooks/agent-workflow.md`](playbooks/agent-workflow.md) for the detailed workflow.
+
 ## Professional product standard
 
 Do not treat full-stack as only frontend and backend.
