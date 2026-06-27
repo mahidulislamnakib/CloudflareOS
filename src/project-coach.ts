@@ -5,6 +5,7 @@ export type ProjectCoachEnv = {
 
 const MODEL = "@cf/meta/llama-3.2-1b-instruct";
 const MAX_MESSAGE_CHARACTERS = 600;
+const MAX_REQUEST_BYTES = 4096;
 
 function response(data: unknown, status = 200): Response {
   return Response.json(data, {
@@ -33,6 +34,11 @@ export async function projectCoach(request: Request, env: ProjectCoachEnv): Prom
 
   if (!request.headers.get("content-type")?.includes("application/json")) {
     return failure("UNSUPPORTED_MEDIA_TYPE", "Send application/json.", 415);
+  }
+
+  const contentLength = Number(request.headers.get("content-length") ?? "0");
+  if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_BYTES) {
+    return failure("PAYLOAD_TOO_LARGE", "Keep the request under 4 KB.", 413);
   }
 
   let value: unknown;
