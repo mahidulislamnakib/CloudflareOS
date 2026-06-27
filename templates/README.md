@@ -6,6 +6,14 @@ Use this folder when you want a safe starting point that can be copied into a re
 
 ---
 
+## Available templates
+
+| Template | Best for | Includes |
+| --- | --- | --- |
+| [Mini CMS Worker](./mini-cms-worker/README.md) | Blog, news, resources, or simple content backend | Workers API, D1 schema, public posts, admin-protected CRUD, local setup, deploy and smoke tests |
+
+---
+
 ## What templates are for
 
 Templates should help users avoid starting from a blank folder.
@@ -25,7 +33,7 @@ Each template should answer:
 ## Copy workflow
 
 ```text
-Choose playbook
+Choose architecture or playbook
   ↓
 Choose matching template
   ↓
@@ -37,7 +45,7 @@ Set secrets/environment variables
   ↓
 Run locally
   ↓
-Deploy
+Deploy preview
   ↓
 Use checklist before production
 ```
@@ -46,20 +54,20 @@ Use checklist before production
 
 ## Planned starter templates
 
-| Template | Status | Best for |
-| --- | --- | --- |
-| Simple Workers API | Planned | Backend/API projects |
-| Next.js on Cloudflare | Planned | Full-stack web apps |
-| D1 CRUD starter | Planned | Apps needing SQL data |
-| R2 upload starter | Planned | File upload systems |
-| KV config/cache starter | Planned | Cache, flags, small config |
-| Queue worker starter | Planned | Background jobs |
-| Durable Object starter | Planned | Shared live state |
-| Turnstile protected form | Planned | Spam-safe forms |
-| Auth starter notes | Planned | Login and sessions |
-| Secure admin dashboard | Planned | Admin-only tools |
-| Server-side tracking worker | Planned | Analytics and conversion tracking |
-| Webhook receiver worker | Planned | Payment/webhook integrations |
+| Template | Best for |
+| --- | --- |
+| Simple Workers API | Backend/API projects |
+| Next.js on Cloudflare | Full-stack web apps |
+| D1 CRUD starter | Apps needing SQL data |
+| R2 upload starter | File upload systems |
+| KV config/cache starter | Cache, flags, small config |
+| Queue worker starter | Background jobs |
+| Durable Object starter | Shared live state |
+| Turnstile protected form | Spam-safe forms |
+| Auth starter notes | Login and sessions |
+| Secure admin dashboard | Admin-only tools |
+| Server-side tracking worker | Analytics and conversion tracking |
+| Webhook receiver worker | Payment/webhook integrations |
 
 ---
 
@@ -73,13 +81,13 @@ template-name/
 ├── wrangler.jsonc.example
 ├── src/
 │   └── index.ts
-├── schema/
-│   └── example.sql
-├── .env.example
+├── migrations/
+│   └── 0001_example.sql
+├── .dev.vars.example
 └── notes.md
 ```
 
-Not every template needs every file. Keep the template as small as possible.
+Not every template needs every file. Keep the template as small as possible, but include a realistic local and deployment path.
 
 ---
 
@@ -91,48 +99,16 @@ Every template README should include:
 # Template Name
 
 ## What this template does
-
-Short explanation.
-
 ## Best for
-
-When to use this template.
-
 ## Cloudflare services used
-
-- Workers
-- D1
-- R2
-- KV
-- Queues
-
 ## Folder structure
-
-Show the copied files.
-
 ## Required bindings
-
-List D1, R2, KV, Queue, Durable Object, or AI bindings.
-
 ## Required secrets
-
-List secrets without real values.
-
 ## Local setup
-
-Commands to run locally.
-
 ## Deploy
-
-Commands to deploy.
-
 ## Test
-
-Basic smoke test commands.
-
+## Production upgrades
 ## Common mistakes
-
-Known issues and fixes.
 ```
 
 ---
@@ -141,18 +117,20 @@ Known issues and fixes.
 
 - Keep templates small and understandable.
 - Never include real secrets.
-- Prefer `.example` files for configs.
+- Prefer `.example` files for configuration.
 - Explain each Cloudflare binding.
 - Add local and deploy commands.
 - Include a smoke test when possible.
 - Avoid advanced services unless the template requires them.
 - Make templates easy for AI coding agents to copy correctly.
+- Link each template to the closest architecture, playbook, and production checklist.
 
 ---
 
 ## Related docs
 
-- [`docs/PROJECT-ENGINE.md`](../docs/PROJECT-ENGINE.md)
-- [`playbooks/README.md`](../playbooks/README.md)
-- [`catalog/README.md`](../catalog/README.md)
-- [`ROADMAP.md`](../ROADMAP.md)
+- [`../architectures/README.md`](../architectures/README.md)
+- [`../playbooks/README.md`](../playbooks/README.md)
+- [`../prompts/README.md`](../prompts/README.md)
+- [`../docs/production-readiness-checklist.md`](../docs/production-readiness-checklist.md)
+- [`../ROADMAP.md`](../ROADMAP.md)
