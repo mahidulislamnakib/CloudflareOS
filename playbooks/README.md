@@ -12,6 +12,7 @@ Use this folder when you know what you need to build, launch, improve, or recove
 | --- | --- |
 | I need a product architecture | [`../architectures/README.md`](../architectures/README.md) |
 | I need a safe pre-launch checklist | [Production Readiness Checklist](../docs/production-readiness-checklist.md) |
+| I need to model product data or D1 tables | [Data Modeling & D1 Design](./data-modeling-d1.md) |
 | I need to test a feature or release | [Testing Strategy](./testing-strategy.md) |
 | I need a recovery and continuity plan | [Disaster Recovery & Business Continuity](./disaster-recovery-business-continuity.md) |
 | I need to reduce avoidable cost | [Cost Optimization](./cost-optimization.md) |
@@ -30,6 +31,8 @@ Choose architecture guide
   ↓
 Define smallest useful scope
   ↓
+Model core records and access boundaries
+  ↓
 Build in small, reviewable tasks
   ↓
 Use relevant engineering playbooks
@@ -45,6 +48,7 @@ Measure, improve, and document lessons
 
 | Playbook | Use for | Key outcomes |
 | --- | --- | --- |
+| [Data Modeling & D1 Design](./data-modeling-d1.md) | Designing durable records, ownership, tenant scope, workflows, migrations, and common query patterns | Clear schema direction, safe access boundaries, indexes, audit history, migration plan |
 | [Testing Strategy](./testing-strategy.md) | Creating meaningful coverage for core flows and releases | Test layers, risk-based cases, smoke checks, release gates |
 | [Disaster Recovery & Business Continuity](./disaster-recovery-business-continuity.md) | Preparing for outages, bad deploys, data problems, and provider failures | Response roles, recovery flows, communication, exercises |
 | [Cost Optimization](./cost-optimization.md) | Preventing avoidable infrastructure, AI, storage, and provider spend | Cost inventory, limits, monthly review, incident response |
@@ -61,17 +65,20 @@ Typical combinations:
 
 ```text
 Marketplace architecture
+  + Data Modeling & D1 Design
   + Testing Strategy
   + Accessibility & Inclusive UX
   + Cost Optimization
   + Disaster Recovery
 
 News portal architecture
+  + Data Modeling & D1 Design
   + Performance Optimization
   + Accessibility & Inclusive UX
   + Disaster Recovery
 
 SaaS architecture
+  + Data Modeling & D1 Design
   + Testing Strategy
   + Cost Optimization
   + Performance Optimization
