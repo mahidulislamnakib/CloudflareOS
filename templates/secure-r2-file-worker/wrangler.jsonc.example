@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "secure-r2-file-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-01-01",
+  "r2_buckets": [
+    {
+      "binding": "FILES",
+      "bucket_name": "REPLACE_WITH_R2_BUCKET_NAME"
+    }
+  ]
+}
