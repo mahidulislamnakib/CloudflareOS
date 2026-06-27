@@ -27,19 +27,21 @@ This file tracks the graphical interface work separately while the root `BUILD-S
 - Risk: medium.
 - Rollback or recovery: Remove root Worker files and restore this repository to documentation-only deployment configuration.
 - Evidence:
-  - Worker configuration follows the Cloudflare Static Assets pattern: a Worker entry point plus `ASSETS` binding and API-first routing.
-  - `src/index.ts` exposes only `GET /api/health` and `GET /api/workspace`, with unknown API routes returning JSON 404 responses.
+  - `npx tsc --noEmit` passed against the Worker source after setting TypeScript to use the Workers type package without the duplicate `WebWorker` standard library.
+  - `npx wrangler dev --config wrangler.jsonc --local --port 8791` started successfully in an isolated local copy of the Worker configuration.
+  - `GET /api/health` returned HTTP 200 JSON with the expected service and timestamp fields.
+  - `GET /api/workspace` returned HTTP 200 JSON with the expected read-only workspace data.
+  - Static asset routing was confirmed with a local fixture asset using the same Worker configuration. The actual repository interface still needs browser verification through the connected Worker preview.
   - `WORKSPACE.md` records the local and Cloudflare verification path.
-  - Local verification is pending because this execution environment cannot resolve GitHub or npm registry network hosts for `git clone` or dependency installation.
-- Notes: D1 is deliberately deferred until users need saved workspaces. Content/API responses are static seed data in version 1. Do not mark this task complete until the local commands and browser checks below are run.
+- Notes: D1 is deliberately deferred until users need saved workspaces. Content/API responses are static seed data in version 1. Do not mark this task complete until the actual interface is opened in a browser at desktop and mobile widths.
 
 ## Verification matrix
 
 | ID | Area | Reference | Expected result | How to verify | Status |
 | --- | --- | --- | --- | --- | --- |
 | WV-001 | Workspace UI | `/` | Developer-project workspace loads with sidebar, task board, console card, and verification panel | `npm install`, `npm run dev`, open `/` | Pending |
-| WV-002 | Health API | `/api/health` | Safe JSON health response | `curl http://127.0.0.1:8787/api/health` | Pending |
-| WV-003 | Workspace API | `/api/workspace` | Safe seed project/workspace JSON | `curl http://127.0.0.1:8787/api/workspace` | Pending |
+| WV-002 | Health API | `/api/health` | Safe JSON health response | `curl http://127.0.0.1:8787/api/health` | Complete in isolated local Worker run |
+| WV-003 | Workspace API | `/api/workspace` | Safe seed project/workspace JSON | `curl http://127.0.0.1:8787/api/workspace` | Complete in isolated local Worker run |
 | WV-004 | Responsive UI | `/` | Sidebar and panels remain usable on small screens and keyboard navigation works | Browser manual check at desktop/mobile widths | Pending |
 
 ## Decision records
@@ -55,4 +57,4 @@ This file tracks the graphical interface work separately while the root `BUILD-S
 
 ## Next safe task
 
-- Complete WV-001 through WV-004 using the connected Cloudflare Worker preview. After that, add a small project-planning wizard that generates a local-only draft build plan in the browser. Do not add login or persistence yet.
+- Complete WV-001 and WV-004 using the connected Cloudflare Worker preview. After that, add a small project-planning wizard that generates a local-only draft build plan in the browser. Do not add login or persistence yet.
