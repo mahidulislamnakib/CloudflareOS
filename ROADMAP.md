@@ -1,207 +1,65 @@
-# CloudflareOS Roadmap
+# DeveloperB Roadmap
 
-CloudflareOS should grow like a product, not a random notes repository.
+> **From real problems to build-ready products.**
 
-> Help beginners, solo developers, small teams, and AI coding agents build production-ready applications on Cloudflare with less confusion.
+DeveloperB is an independent problem-to-product workspace. This repository also maintains Cloudflare-friendly engineering guidance for teams that choose those services because they fit the technical need.
 
----
+## Product direction
 
-## Current status
+```text
+Real problem
+→ discovery and teaching
+→ solution decision
+→ accepted blueprint
+→ project workspace
+→ tasks, AI assistance, evidence, approval, and delivery
+```
+
+The private alpha stays private until access control, data safety, quality gates, and core user journeys are reliable.
+
+## Current product stages
 
 | Stage | Status | Focus |
 | --- | --- | --- |
-| **v0.1 Foundation** | ✅ Done / improving | README, beginner path, agent rules, core docs |
-| **v0.2 Project Engine** | 🚧 In progress | Playbooks, templates, prompts, starter patterns |
-| **v0.3 Product Catalog** | 🚧 In progress | Beginner and engineering guides for Cloudflare services |
-| **Architecture Library** | 🚧 In progress | Real application and cross-cutting reference designs |
-| **v0.4 Production Assistant** | 🚧 In progress | Deployment, security, cost, performance, rollback checks |
-| **v0.5 Living Knowledge Engine** | ⏳ Planned | Freshness, source tracking, change watching |
-| **v1.0 Public Standard** | 🎯 Future | Stable handbook, templates, examples, governance |
+| B-001 Problem discovery foundation | Ready for verification | Independent brand, discovery flow, blueprint-first data model |
+| B-002 Preview D1 rehearsal | Next | Preview-only database, synthetic fixtures, and isolation queries |
+| B-003 Identity and memberships | Planned | Approved users, organizations, server-side authorization |
+| B-004 Discovery workspace | Planned | Editable natural-language problem discovery |
+| B-005 Blueprint acceptance | Planned | Solution recommendation and project conversion |
+| B-006 Build workspace | Planned | Tasks, evidence, approvals, and delivery records |
+| B-007 AI routing and teaching | Planned | Provider-neutral chat, planning, explanation, and cost controls |
+| B-008 Repository context | Planned | GitHub connection and codebase understanding |
+| B-009 Controlled agent execution | Planned | Isolated runs, diffs, tests, and pull-request handoff |
 
----
+## Cloudflare-friendly technical toolkit
 
-## What is already in the repository
+The repository continues to maintain guides for common infrastructure decisions:
 
-### Foundation
+- Workers, D1, R2, KV, Queues, Durable Objects, Workflows, and Wrangler
+- Workers AI, AI Gateway, Vectorize, Browser Rendering, Images, and Analytics Engine
+- Turnstile, Access, WAF, rate limits, observability, deployment, recovery, and cost controls
+- Architecture guides, starter templates, prompts, and production checklists
 
-- [x] Public README and positioning
-- [x] Beginner-first start page
-- [x] AI coding-agent operating rules
-- [x] Newcomer roadmap
-- [x] Cloudflare-first decision guidance
-- [x] Contribution standard
+## Handbook standards
 
-### Architecture library
+Every technical guide should be:
 
-The architecture folder now includes product guides for content platforms, SaaS, marketplaces, e-commerce, LMS, travel, events, clinics, POS, IoT, APIs, real-time collaboration, search, operations, deployment, security, localization, and notifications.
+- simple enough for beginners;
+- justified by a real project need;
+- clear about when not to use a service;
+- safe for production work;
+- understandable by AI coding agents;
+- checked against official provider sources when facts may change.
 
-See [`architectures/README.md`](architectures/README.md) for the current index.
+## Private-alpha rules
 
-### Product catalog
+- Do not promote publicly yet.
+- Do not expose private write actions before server-side identity and authorization.
+- Do not store provider values, repository credentials, or production secrets in D1, source files, fixtures, logs, or artifacts.
+- Do not create a project before a solution and blueprint are accepted.
+- Require human approval before high-impact actions.
+- Keep one focused task in progress and record verification evidence.
 
-Core guide coverage exists for Workers, D1, R2, KV, Queues, Durable Objects, Pages, Wrangler, Turnstile, Access, Workflows, Hyperdrive, Analytics Engine, Images, Browser Rendering, Workers AI, AI Gateway, Vectorize, and AutoRAG.
+## Long-term outcome
 
-Catalog work remains in progress because Cloudflare coverage and freshness need continuous maintenance.
-
----
-
-## v0.2 — Project Engine
-
-**Goal:** when someone has a project idea, CloudflareOS should help them choose the right Cloudflare-first path.
-
-### Remaining priorities
-
-- [ ] Complete beginner-oriented project playbooks for CMS, news, AI chat, file management, admin dashboard, marketplace, job portal, travel, LMS, e-commerce, and tracking.
-- [ ] Add more runnable starter templates, not only guides.
-- [ ] Add prompt packs for build, audit, migration, debugging, deployment, and cost review.
-- [ ] Link each major architecture to a playbook, prompt, and starter example.
-
-### Success criteria
-
-A beginner can choose a project type, find a small version 1, and follow a clear build path without asking what to do next.
-
----
-
-## v0.3 — Cloudflare Product Catalog
-
-**Goal:** explain important Cloudflare products in beginner and engineering language.
-
-### Catalog standard
-
-Each product page should include:
-
-- simple explanation
-- when to use it and when not to
-- beginner example
-- production and security notes
-- debugging and common mistakes
-- pricing/cost awareness where relevant
-- official source links
-- last checked date
-
-### Remaining priorities
-
-- [ ] Expand Build coverage: Containers, Email Workers, Pipelines.
-- [ ] Expand Data coverage: R2 Data Catalog and related data products.
-- [ ] Expand Security coverage: WAF, Rate Limiting, API Shield, Bot Management, SSL/TLS.
-- [ ] Expand Zero Trust coverage: Tunnel, Gateway, WARP, Browser Isolation, DLP.
-- [ ] Expand Observability coverage: Workers Observability, Logs, Web Analytics, Audit Logs, Health Checks.
-- [ ] Add source freshness metadata to existing important guides.
-
-### Success criteria
-
-Someone can search a Cloudflare product name in the repository and quickly decide whether it fits their project.
-
----
-
-## Architecture Library
-
-**Goal:** give builders a practical reference design before they write code.
-
-### Next priorities
-
-- [ ] Align older architecture files to the standard architecture format.
-- [ ] Add “best for,” “not ideal for,” deployment, testing, and scaling notes to legacy guides.
-- [ ] Reduce repeated guidance by linking to shared security, billing, authentication, and operations patterns.
-- [ ] Add runnable examples for the most-used architecture patterns.
-- [ ] Maintain a clear index and merge status for new guides.
-
-### Success criteria
-
-A founder or developer can select a product type and understand its smallest safe architecture, major risks, and next implementation steps.
-
----
-
-## v0.4 — Production Assistant
-
-**Goal:** help real projects move from a working demo to safe production deployment.
-
-### Priorities
-
-- [ ] Production readiness checklist
-- [ ] Security checklist
-- [ ] Performance checklist
-- [ ] Cost checklist
-- [ ] Deployment checklist
-- [ ] Rollback checklist
-- [ ] Observability checklist
-- [ ] Environment variable checklist
-- [ ] Data backup/export checklist
-- [ ] Incident response checklist
-- [ ] One-page production readiness report template
-- [ ] AI audit prompt for a full repository review
-- [ ] Cloudflare binding verification prompt
-- [ ] Migration readiness prompt
-
-### Success criteria
-
-A project can be checked against CloudflareOS before launch and receive a clear pass/fix list.
-
----
-
-## v0.5 — Living Knowledge Engine
-
-**Goal:** keep CloudflareOS current as Cloudflare changes.
-
-### Planned systems
-
-- [ ] Official source watcher improvements
-- [ ] Cloudflare changelog summarizer
-- [ ] Documentation freshness metadata
-- [ ] Source checked date on important guides
-- [ ] Risk labels for new Cloudflare updates
-- [ ] Draft PR generator for documentation updates
-- [ ] Deprecated feature detector
-- [ ] Breaking-change watchlist
-
-### Source rule
-
-Important guides should eventually include:
-
-```text
-Source: official Cloudflare docs
-Last checked: YYYY-MM-DD
-Risk level: low / medium / high
-```
-
----
-
-## v1.0 — Public Standard
-
-**Goal:** make CloudflareOS reliable enough to use as a public reference for Cloudflare-first project planning.
-
-### v1.0 requirements
-
-- [ ] Clean README and navigation
-- [ ] Complete beginner path
-- [ ] Stable AI-agent rules
-- [ ] At least 10 project playbooks
-- [ ] At least 10 starter templates
-- [ ] At least 20 maintained Cloudflare product guides
-- [ ] Production readiness checklist
-- [ ] Deployment audit prompt
-- [ ] Debug playbook library
-- [ ] Contribution standard
-- [ ] Clear license
-- [ ] Example project references
-- [ ] Freshness and source policy enforced for important guides
-
----
-
-## Standard for every addition
-
-Every new guide, template, prompt, or playbook should be:
-
-- simple enough for beginners
-- useful for real projects
-- Cloudflare-first but not blindly Cloudflare-only
-- safe for production use
-- clear enough for AI coding agents
-- linked to related docs where possible
-- checked against official Cloudflare sources when facts can change
-
----
-
-## Final standard
-
-> Save solo developers months of confusion and help them build safely on Cloudflare.
+DeveloperB should help a non-technical person explain a real problem, learn the available choices, receive an honest recommendation, and hand a clear blueprint to a team or AI coding assistant.
