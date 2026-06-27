@@ -10,7 +10,7 @@ Read this file before every AI-assisted coding session. It keeps CloudflareOS wo
 - Stack and deployment target: Markdown-first repository with Cloudflare Workers/Pages-oriented templates and Wrangler example configuration files.
 - Current environment: Documentation/template repository; no root package manager file, no root Wrangler configuration, and no active local application runtime discovered.
 - Last updated: 2026-06-27
-- Current task: T-001 — Repository discovery and persistent build record.
+- Current task: T-008 — Add observability checklist.
 
 ## Local runbook
 
@@ -61,21 +61,159 @@ Test data seed/reset: Not applicable at the repository root; define per real pro
   - `git status --short --branch`
 - Notes: Repository inspection found many documentation, architecture, catalog, playbook, prompt, and template files, but no root package.json or root Wrangler config.
 
-### T-002 — Choose the next bounded content improvement
-- Status: Not Started
-- Goal: Pick one high-value guide, template, or checklist improvement based on roadmap priority and verify it with Markdown review.
-- Scope: One documentation or template area only.
-- Files: To be selected before implementation.
-- Dependencies: `ROADMAP.md`, relevant `docs/`, `architectures/`, `catalog/`, `playbooks/`, or `templates/` files.
+### T-002 — Add rollback checklist
+- Status: Complete
+- Goal: Add one high-value Production Assistant checklist from the roadmap: a Cloudflare-first rollback checklist for production releases and incidents.
+- Scope: Documentation only; one new checklist plus navigation links from related readiness/deployment docs.
+- Files: `docs/rollback-checklist.md`, `docs/production-readiness-checklist.md`, `architectures/deployment-release.md`, `README.md`, `BUILD-STATUS.md`
+- Dependencies: `ROADMAP.md`, `docs/production-readiness-checklist.md`, `architectures/deployment-release.md`
 - Acceptance criteria:
   - One specific improvement is selected before editing.
   - The change stays Cloudflare-native, beginner-safe, and production-aware.
+  - Rollback guidance covers code, configuration, bindings, data safety, smoke tests, communication, and post-incident follow-up.
+  - Related production readiness and deployment docs link to the new checklist.
   - Verification commands and manual review notes are recorded here before completion.
 - Verification reference: V-002
 - Risk: low
-- Rollback or recovery: Revert the focused documentation/template change.
+- Rollback or recovery: Revert the focused documentation changes or remove `docs/rollback-checklist.md` and its links.
 - Evidence:
-- Notes:
+  - `sed -n '1,260p' docs/rollback-checklist.md`
+  - `rg -n "rollback-checklist|Rollback Checklist|rollback readiness" README.md docs/production-readiness-checklist.md architectures/deployment-release.md docs/rollback-checklist.md`
+  - `python - <<'PY' ... pathlib existence check for relative Markdown links in changed files ... PY`
+  - `git diff --check`
+- Notes: No runtime app exists at the repository root, so no dev server or screenshot applies. Manual Markdown review verified the checklist structure and links.
+
+### T-003 — Add incident response checklist
+- Status: Complete
+- Goal: Add one high-value Production Assistant checklist from the roadmap: a Cloudflare-first incident response checklist for outages, data risks, security concerns, and customer-impacting failures.
+- Scope: Documentation only; one new checklist plus links from related operational docs.
+- Files: `docs/incident-response-checklist.md`, `docs/rollback-checklist.md`, `docs/production-readiness-checklist.md`, `architectures/observability-operations.md`, `BUILD-STATUS.md`
+- Dependencies: `ROADMAP.md`, `docs/rollback-checklist.md`, `docs/production-readiness-checklist.md`, `architectures/observability-operations.md`, `debug/README.md`
+- Acceptance criteria:
+  - One specific improvement is selected before editing.
+  - The change stays Cloudflare-native, beginner-safe, and production-aware.
+  - Incident response guidance covers severity, roles, stabilization, evidence collection, Cloudflare inspection surfaces, mitigation, recovery verification, communication, closure, and prevention.
+  - Related rollback, readiness, and observability docs link to the new checklist.
+  - Verification commands and manual review notes are recorded here before completion.
+- Verification reference: V-005
+- Risk: low
+- Rollback or recovery: Revert the focused documentation changes or remove `docs/incident-response-checklist.md` and its links.
+- Evidence:
+  - `sed -n '1,260p' docs/incident-response-checklist.md`
+  - `rg -n "incident-response-checklist|Incident Response Checklist|operational response checklist" docs/incident-response-checklist.md docs/rollback-checklist.md docs/production-readiness-checklist.md architectures/observability-operations.md`
+  - `python - <<'PY' ... pathlib existence check for relative Markdown links in changed files ... PY`
+  - `git diff --check`
+- Notes: No runtime app exists at the repository root, so no dev server or screenshot applies. Manual Markdown review verified the incident process, Cloudflare-specific inspection points, and cross-links.
+
+### T-004 — Add environment variable and secret checklist
+- Status: Complete
+- Goal: Add one high-value Production Assistant checklist from the roadmap: environment variable, secret, and binding configuration readiness for Cloudflare-first projects.
+- Scope: Documentation only; one new checklist plus links from related readiness, rollback, and environment/dependency docs.
+- Files: `docs/environment-variable-checklist.md`, `docs/production-readiness-checklist.md`, `docs/rollback-checklist.md`, `docs/11-external-api-env-dependency-standard.md`, `BUILD-STATUS.md`
+- Dependencies: `ROADMAP.md`, `docs/production-readiness-checklist.md`, `docs/11-external-api-env-dependency-standard.md`, `docs/rollback-checklist.md`, `prompts/cloudflare-binding-verification.md`, `debug/missing-binding.md`, `debug/secret-missing.md`
+- Acceptance criteria:
+  - One specific improvement is selected before editing.
+  - The change stays Cloudflare-native, beginner-safe, and production-aware.
+  - Configuration guidance covers classification, naming, storage, environment separation, Wrangler/binding verification, deployment, rotation/removal, logging safety, and local reset.
+  - Related readiness, rollback, and environment/dependency docs link to the new checklist.
+  - Verification commands and manual review notes are recorded here before completion.
+- Verification reference: V-006
+- Risk: low
+- Rollback or recovery: Revert the focused documentation changes or remove `docs/environment-variable-checklist.md` and its links.
+- Evidence:
+  - `sed -n '1,240p' docs/environment-variable-checklist.md`
+  - `rg -n "environment-variable-checklist|Environment Variable and Secret Checklist" docs/environment-variable-checklist.md docs/production-readiness-checklist.md docs/rollback-checklist.md docs/11-external-api-env-dependency-standard.md`
+  - `python - <<'PY' ... pathlib existence check for relative Markdown links in changed files ... PY`
+  - `git diff --check`
+- Notes: No runtime app exists at the repository root, so no dev server or screenshot applies. Manual Markdown review verified configuration safety, Cloudflare binding coverage, and cross-links.
+
+### T-005 — Add data backup and export checklist
+- Status: Complete
+- Goal: Add one high-value Production Assistant checklist from the roadmap: data backup/export and restore readiness for Cloudflare-first projects.
+- Scope: Documentation only; one new checklist plus links from related readiness, rollback, incident, and disaster-recovery docs.
+- Files: `docs/data-backup-export-checklist.md`, `docs/production-readiness-checklist.md`, `docs/rollback-checklist.md`, `docs/incident-response-checklist.md`, `playbooks/disaster-recovery-business-continuity.md`, `BUILD-STATUS.md`
+- Dependencies: `ROADMAP.md`, `docs/production-readiness-checklist.md`, `docs/rollback-checklist.md`, `docs/incident-response-checklist.md`, `playbooks/disaster-recovery-business-continuity.md`, `playbooks/data-modeling-d1.md`, `prompts/database-migration-readiness.md`
+- Acceptance criteria:
+  - One specific improvement is selected before editing.
+  - The change stays Cloudflare-native, beginner-safe, and production-aware.
+  - Data guidance covers ownership, inventory, D1, R2, KV/cache, Queues, Durable Objects, privacy/access, restore testing, and launch blockers.
+  - Related readiness, rollback, incident, and disaster-recovery docs link to the new checklist.
+  - Verification commands and manual review notes are recorded here before completion.
+- Verification reference: V-007
+- Risk: low
+- Rollback or recovery: Revert the focused documentation changes or remove `docs/data-backup-export-checklist.md` and its links.
+- Evidence:
+  - `sed -n '1,260p' docs/data-backup-export-checklist.md`
+  - `rg -n "data-backup-export-checklist|Data Backup and Export Checklist" docs/data-backup-export-checklist.md docs/production-readiness-checklist.md docs/rollback-checklist.md docs/incident-response-checklist.md playbooks/disaster-recovery-business-continuity.md`
+  - `python - <<'PY' ... pathlib existence check for relative Markdown links in changed files ... PY`
+  - `git diff --check`
+- Notes: No runtime app exists at the repository root, so no dev server or screenshot applies. Manual Markdown review verified data-safety coverage, Cloudflare storage surface coverage, restore-test expectations, and cross-links.
+
+### T-006 — Add cost checklist
+- Status: Complete
+- Goal: Add one high-value Production Assistant checklist from the roadmap: cost readiness and anomaly containment for Cloudflare-first projects.
+- Scope: Documentation only; one new checklist plus links from related readiness, cost optimization, prompt, incident, rollback, and environment docs.
+- Files: `docs/cost-checklist.md`, `docs/production-readiness-checklist.md`, `docs/environment-variable-checklist.md`, `docs/incident-response-checklist.md`, `docs/rollback-checklist.md`, `playbooks/cost-optimization.md`, `prompts/cloudflare-cost-risk-estimate.md`, `BUILD-STATUS.md`
+- Dependencies: `ROADMAP.md`, `docs/production-readiness-checklist.md`, `playbooks/cost-optimization.md`, `prompts/cloudflare-cost-risk-estimate.md`, `docs/12-ai-token-and-decision-economy.md`
+- Acceptance criteria:
+  - One specific improvement is selected before editing.
+  - The change stays Cloudflare-native, beginner-safe, and production-aware.
+  - Cost guidance covers budget ownership, service justification, request controls, D1, R2, queues, AI/token controls, third-party providers, observability, and anomaly response.
+  - Related readiness, cost optimization, prompt, incident, rollback, and environment docs link to the new checklist.
+  - Verification commands and manual review notes are recorded here before completion.
+- Verification reference: V-008
+- Risk: low
+- Rollback or recovery: Revert the focused documentation changes or remove `docs/cost-checklist.md` and its links.
+- Evidence:
+  - `sed -n '1,240p' docs/cost-checklist.md`
+  - `rg -n "cost-checklist|Cost Checklist" docs/cost-checklist.md docs/production-readiness-checklist.md docs/environment-variable-checklist.md docs/incident-response-checklist.md docs/rollback-checklist.md playbooks/cost-optimization.md prompts/cloudflare-cost-risk-estimate.md`
+  - `python - <<'PY' ... pathlib existence check for relative Markdown links in changed files ... PY`
+  - `git diff --check`
+- Notes: No runtime app exists at the repository root, so no dev server or screenshot applies. Manual Markdown review verified cost-driver coverage, AI/token efficiency, containment paths, and cross-links.
+
+### T-007 — Add performance checklist
+- Status: Complete
+- Goal: Add one high-value Production Assistant checklist from the roadmap: performance readiness and regression response for Cloudflare-first projects.
+- Scope: Documentation only; one new checklist plus links from related readiness, cost, incident, rollback, and performance docs.
+- Files: `docs/performance-checklist.md`, `docs/production-readiness-checklist.md`, `docs/cost-checklist.md`, `docs/incident-response-checklist.md`, `docs/rollback-checklist.md`, `playbooks/performance-optimization.md`, `BUILD-STATUS.md`
+- Dependencies: `ROADMAP.md`, `docs/production-readiness-checklist.md`, `playbooks/performance-optimization.md`, `playbooks/testing-strategy.md`, `architectures/observability-operations.md`
+- Acceptance criteria:
+  - One specific improvement is selected before editing.
+  - The change stays Cloudflare-native, beginner-safe, and production-aware.
+  - Performance guidance covers critical journeys, frontend/UX, Workers/API response controls, D1, R2/media, cache safety, queues/Durable Objects, search/reporting, AI/provider latency, observability, and regression response.
+  - Related readiness, cost, incident, rollback, and performance docs link to the new checklist.
+  - Verification commands and manual review notes are recorded here before completion.
+- Verification reference: V-009
+- Risk: low
+- Rollback or recovery: Revert the focused documentation changes or remove `docs/performance-checklist.md` and its links.
+- Evidence:
+  - `sed -n '1,240p' docs/performance-checklist.md`
+  - `rg -n "performance-checklist|Performance Checklist" docs/performance-checklist.md docs/production-readiness-checklist.md docs/cost-checklist.md docs/incident-response-checklist.md docs/rollback-checklist.md playbooks/performance-optimization.md`
+  - `python - <<'PY' ... pathlib existence check for relative Markdown links in changed files ... PY`
+  - `git diff --check`
+- Notes: No runtime app exists at the repository root, so no dev server or screenshot applies. Manual Markdown review verified critical journey coverage, cache/data safety, async work controls, AI/provider latency, and cross-links.
+
+### T-008 — Add observability checklist
+- Status: Complete
+- Goal: Add one high-value Production Assistant checklist from the roadmap: observability readiness for Cloudflare-first projects.
+- Scope: Documentation only; one new checklist plus links from related readiness, incident, rollback, performance, cost, and observability docs.
+- Files: `docs/observability-checklist.md`, `docs/production-readiness-checklist.md`, `docs/incident-response-checklist.md`, `docs/rollback-checklist.md`, `docs/performance-checklist.md`, `docs/cost-checklist.md`, `architectures/observability-operations.md`, `BUILD-STATUS.md`
+- Dependencies: `ROADMAP.md`, `docs/production-readiness-checklist.md`, `architectures/observability-operations.md`, `playbooks/server-side-tracking.md`, `prompts/full-production-audit.md`
+- Acceptance criteria:
+  - One specific improvement is selected before editing.
+  - The change stays Cloudflare-native, beginner-safe, and production-aware.
+  - Observability guidance covers ownership, request/correlation IDs, structured logging, error/latency visibility, audit records, queues/Durable Objects, webhooks/integrations, alerts, dashboards/review, privacy, security, and cost safety.
+  - Related readiness, incident, rollback, performance, cost, and observability docs link to the new checklist.
+  - Verification commands and manual review notes are recorded here before completion.
+- Verification reference: V-010
+- Risk: low
+- Rollback or recovery: Revert the focused documentation changes or remove `docs/observability-checklist.md` and its links.
+- Evidence:
+  - `sed -n '1,240p' docs/observability-checklist.md`
+  - `rg -n "observability-checklist|Observability Checklist" docs/observability-checklist.md docs/production-readiness-checklist.md docs/incident-response-checklist.md docs/rollback-checklist.md docs/performance-checklist.md docs/cost-checklist.md architectures/observability-operations.md`
+  - `python - <<'PY' ... pathlib existence check for relative Markdown links in changed files ... PY`
+  - `git diff --check`
+- Notes: No runtime app exists at the repository root, so no dev server or screenshot applies. Manual Markdown review verified signal ownership, privacy-safe logging, audit/job/webhook visibility, alerting, dashboards, and cross-links.
 
 ## Status definitions
 
@@ -95,9 +233,15 @@ A task is not complete because code exists. It needs local checks and recorded e
 | ID | Area | Reference | Expected result | How to verify | Status |
 | --- | --- | --- | --- | --- | --- |
 | V-001 | Repository workflow | `BUILD-STATUS.md` | Build record exists and accurately reflects repository discovery | Review file content and confirm Git sees the new file | Complete |
-| V-002 | Next content improvement | To be selected | One bounded documentation/template change improves the handbook without scope creep | Review changed Markdown/template and run any available focused checks | Pending |
+| V-002 | Rollback checklist | `docs/rollback-checklist.md` | One bounded Production Assistant checklist improves rollback readiness without adding runtime scope | Review changed Markdown and verify relative links from touched docs | Complete |
 | V-003 | Template runtime | Template-specific path | Template starts or typechecks with documented setup after copying/configuration | Run the template's package or Wrangler command when a template is changed | Pending |
 | V-004 | Database guidance | Template/playbook migration path | Migration guidance includes owner, lifecycle, first queries, indexes, and recovery plan | Review migration/readme and apply locally only for a configured real project | Pending |
+| V-005 | Incident response checklist | `docs/incident-response-checklist.md` | One bounded Production Assistant checklist improves incident handling without adding runtime scope | Review changed Markdown and verify relative links from touched docs | Complete |
+| V-006 | Environment variable and secret checklist | `docs/environment-variable-checklist.md` | One bounded Production Assistant checklist improves configuration safety without adding runtime scope | Review changed Markdown and verify relative links from touched docs | Complete |
+| V-007 | Data backup and export checklist | `docs/data-backup-export-checklist.md` | One bounded Production Assistant checklist improves data recovery readiness without adding runtime scope | Review changed Markdown and verify relative links from touched docs | Complete |
+| V-008 | Cost checklist | `docs/cost-checklist.md` | One bounded Production Assistant checklist improves cost readiness without adding runtime scope | Review changed Markdown and verify relative links from touched docs | Complete |
+| V-009 | Performance checklist | `docs/performance-checklist.md` | One bounded Production Assistant checklist improves performance readiness without adding runtime scope | Review changed Markdown and verify relative links from touched docs | Complete |
+| V-010 | Observability checklist | `docs/observability-checklist.md` | One bounded Production Assistant checklist improves observability readiness without adding runtime scope | Review changed Markdown and verify relative links from touched docs | Complete |
 
 ## Database decision records
 
@@ -119,19 +263,19 @@ A task is not complete because code exists. It needs local checks and recorded e
 ## Session handoff
 
 ```text
-completed tasks: T-001 repository discovery and persistent build record
-active or blocked task: T-002 not started
-changed files: BUILD-STATUS.md
-commands run and results: repository discovery commands completed successfully; git status confirmed a new untracked BUILD-STATUS.md before staging
-manual checks completed: README, AGENTS.md, build-status template, and workflow playbook reviewed
+completed tasks: T-001 repository discovery and persistent build record; T-002 rollback checklist; T-003 incident response checklist; T-004 environment variable and secret checklist; T-005 data backup and export checklist; T-006 cost checklist; T-007 performance checklist; T-008 observability checklist
+active or blocked task: none
+changed files: BUILD-STATUS.md, docs/observability-checklist.md, docs/production-readiness-checklist.md, docs/incident-response-checklist.md, docs/rollback-checklist.md, docs/performance-checklist.md, docs/cost-checklist.md, architectures/observability-operations.md
+commands run and results: focused Markdown review, relative-link existence check, and git diff whitespace check completed successfully
+manual checks completed: observability checklist reviewed for ownership, request IDs, structured logs, audit/job/webhook visibility, alerts, dashboards, privacy/security, and cost safety
 unverified behavior: no runnable root app behavior exists to inspect
-schema/binding/auth decisions: no schema, binding, route, secret, or auth changes made
-known risks: root repository has no package manager or automated Markdown validation command discovered
-next smallest safe task: select one roadmap-aligned documentation/template improvement before editing
+schema/binding/auth decisions: no schema, binding, route, secret, migration, or auth changes made
+known risks: root repository has no package manager or automated Markdown lint command discovered
+next smallest safe task: choose another v0.4 Production Assistant checklist, such as security, deployment, admin safety, or support/contact
 ```
 
 ## Next safe task
 
-- Task ID: T-002
-- Why this is next: The repository now has the required persistent build record, so future work should improve one bounded guide/template with recorded evidence.
-- Required context before starting: Read `BUILD-STATUS.md`, `ROADMAP.md`, and the target file(s) for the selected improvement.
+- Task ID: T-009
+- Why this is next: The rollback, incident response, environment variable, data backup/export, cost, performance, and observability checklists complete seven roadmap-aligned Production Assistant items; another bounded checklist can improve launch safety without changing runtime code.
+- Required context before starting: Read `BUILD-STATUS.md`, `ROADMAP.md`, `docs/production-readiness-checklist.md`, and the target checklist area selected for T-009.

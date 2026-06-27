@@ -29,7 +29,7 @@ Use this architecture for:
 | Application logs | Workers Logs / observability tools |
 | Incident notes and audits | D1 |
 
-Start with useful logs, clear error responses, audit records, and a lightweight incident process before adding complex monitoring systems.
+Start with useful logs, clear error responses, audit records, and a lightweight incident process before adding complex monitoring systems. Use [`../docs/observability-checklist.md`](../docs/observability-checklist.md) before launch to verify the operational signals are in place.
 
 ## Core model
 
@@ -208,7 +208,7 @@ Write incident note
 Create follow-up tasks
 ```
 
-Keep incident notes factual: time, impact, root cause, mitigation, and prevention work.
+Keep incident notes factual: time, impact, root cause, mitigation, and prevention work. For an operational response checklist, use [`../docs/incident-response-checklist.md`](../docs/incident-response-checklist.md).
 
 ## Backup and recovery model
 
