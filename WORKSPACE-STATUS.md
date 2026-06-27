@@ -8,50 +8,53 @@ This file tracks the DeveloperB private-alpha workspace. `BUILD-STATUS.md` is th
 - Promise: **From real problems to build-ready products.**
 - First user journey: natural-language problem → discovery → solution decision → accepted blueprint → project workspace.
 - Access: private alpha only. No public promotion or private write routes yet.
-- Infrastructure: Cloudflare Worker and Static Assets now; gated Workers AI; later D1/R2/identity/provider routes as bounded tasks.
+- Infrastructure: Cloudflare services can be used where technically appropriate. They are not part of the DeveloperB product identity.
 
 ## Task ledger
 
 ### UI-001 — Workspace foundation
 - Status: Ready for Verification
-- Evidence: original Worker typecheck and isolated local API checks passed; connected-preview visual checks remain pending.
+- Remaining: connected-preview visual and keyboard checks.
 
 ### UI-002 — Guarded AI Guide
 - Status: Ready for Verification
-- Evidence: local compilation, dry-run deployment, disabled-route response, and document enhancement were checked before merge; connected-preview checks remain pending.
+- Remaining: disabled/validation checks and one protected enabled response.
 
-### B-001 — DeveloperB rebrand and problem discovery foundation
+### B-001 — DeveloperB naming and problem discovery foundation
 - Status: Ready for Verification
-- Goal: make the workspace independent from infrastructure branding and begin every user journey with a real problem.
-- Scope: DeveloperB customer-facing copy, discovery-first UI, guided discovery prompt, discovery/solution/blueprint schema, provider capabilities, and documentation.
-- Files: `public/index.html`, `public/app.js`, `public/ai-coach.js`, `public/preview.css`, `src/workspace-app.ts`, `src/project-coach.ts`, `src/private-alpha/provider-types.ts`, `private-alpha/README.md`, `private-alpha/migrations/0002_discovery.sql`, `private-alpha/migrations/README.md`, `WORKSPACE.md`, `BUILD-STATUS.md`, `WORKSPACE-STATUS.md`.
+- Goal: make DeveloperB the sole customer-facing product identity and begin every user journey with a real problem.
+- Scope: independent branding, discovery-first UI, guided discovery prompt, discovery/solution/blueprint schema, provider capabilities, package/Worker names, and deployment migration documentation.
+- Current implementation names:
+  - package: `developerb-workspace`
+  - Worker config: `developerb-workspace`
+  - health service: `developerb-workspace`
 - Acceptance criteria:
-  - The first screen asks the user to explain what happened.
-  - Discovery output distinguishes facts, assumptions, unanswered questions, solution options, recommendation, and what not to build yet.
-  - A blueprint is required before a project is created.
-  - Future providers can be selected for discovery, recommendation, teaching, planning, and coding capabilities.
+  - Product UI and metadata use DeveloperB.
+  - Provider names remain factual technical references only.
+  - No provider logo, product-name combination, or affiliation claim appears in the workspace.
+  - A blueprint is required before project creation.
   - No D1 binding, user write route, provider value, repository credential, or public rollout is introduced.
-- Risk: medium.
-- Recovery: revert the focused branch; `0002_discovery.sql` is not applied yet.
-- Evidence:
-  - `0002_discovery.sql` applied successfully in a SQLite 3.46.1 rehearsal with the required parent-table shape.
-  - The rehearsal created 11 tables and 19 indexes, and `PRAGMA foreign_key_check` returned zero errors.
-  - Full repository typecheck, link review, and connected-preview inspection remain pending.
+- Evidence: both prepared D1 migrations passed SQLite rehearsal with zero foreign-key errors.
+- Remaining verification:
+  - Root typecheck and link review.
+  - Connected-preview interface/API checks.
+  - Worker dashboard migration and custom-domain verification.
+  - GitHub source-repository rename/replacement planned as a separate remote and integration migration.
+- Recovery: retain the previous Worker until `developerb-workspace` is deployed and verified; do not apply D1 migrations yet.
 
 ## Verification matrix
 
 | ID | Area | Expected result | How to verify | Status |
 | --- | --- | --- | --- | --- |
-| WV-001 | DeveloperB workspace | `/` shows DeveloperB, problem discovery, blueprint flow, and build workspace navigation | Connected preview browser review | Pending |
-| WV-002 | Health API | `/api/health` returns safe JSON | Curl preview route | Complete in isolated local Worker run |
-| WV-003 | Workspace API | `/api/workspace` returns DeveloperB task data | Curl preview route | Pending after B-001 update |
+| WV-001 | Product UI | `/` shows DeveloperB and the problem-to-product flow | Connected preview browser review | Pending |
+| WV-002 | Health API | `/api/health` returns safe DeveloperB JSON | Curl preview route | Pending after Worker migration |
+| WV-003 | Workspace API | `/api/workspace` returns DeveloperB task data | Curl preview route | Pending after Worker migration |
 | WV-004 | Responsive and keyboard | Sidebar, views, actions, and discovery input are usable | Manual desktop/mobile review | Pending |
 | WV-005 | AI disabled guard | `POST /api/ai/coach` remains disabled before enablement | Send one valid request while disabled | Pending |
 | WV-006 | AI discovery format | Protected preview returns facts, assumptions, questions, options, recommendation, and non-goals | Enable only after access/rate limit then test one request | Pending |
-| WV-007 | Migration 0001 | Control-plane schema applies in SQLite-compatible rehearsal | Empty database rehearsal | Complete in prior rehearsal |
-| WV-008 | Migration 0002 | Discovery schema applies after `0001` and foreign keys pass | Apply both then run `PRAGMA foreign_key_check` | Complete in SQLite rehearsal |
-| WV-009 | Provider contract | Discovery capabilities compile under strict TypeScript | `npm run typecheck` | Pending |
-| WV-010 | Documentation | Product/migration docs describe the problem-first boundary | Manual review and relative-link check | Pending |
+| WV-007 | Migration rehearsal | `0001` and `0002` apply with valid foreign keys | SQLite/D1 rehearsal | Complete in SQLite rehearsal |
+| WV-008 | Brand boundary | UI, package, Worker config, and docs use independent naming | Review `BRAND-BOUNDARY.md` and preview | Pending |
+| WV-009 | No persistence change | No D1 binding or private write route exists | Review config and Worker routes | Pending |
 
 ## Decision records
 
@@ -60,18 +63,10 @@ This file tracks the DeveloperB private-alpha workspace. `BUILD-STATUS.md` is th
 - Source of truth: D1 for structured records; R2 for larger artifacts; provider route/model profile for AI dispatch; external repository host for code.
 - Ownership: each discovery intake, blueprint, and project belongs to an organization.
 - Access: server-side identity and membership checks are mandatory before returning or changing private records.
-- Lifecycle: `discovery_intakes` move from discovery to solution review and blueprint readiness. `project_blueprints` move from draft to accepted to project conversion.
-- First queries: discovery list; findings by discovery; solution options; blueprint-to-project conversion; projects by identity; pending approvals.
-- Indexes: defined in `0001_control_plane.sql` and `0002_discovery.sql`.
+- Lifecycle: discovery intake → solution review → blueprint readiness → blueprint accepted → project conversion.
 - Recovery: migrations are append-only; use preview rehearsal and forward corrections.
-
-### AI-001 — Provider-neutral problem guidance
-- User journey: a natural-language message requests problem discovery, solution recommendation, teaching, planning, or future code reasoning.
-- Source of truth: provider route and model profile records, not a hard-coded provider list.
-- Provider scope: Workers AI, AI Gateway-native providers, OpenRouter through AI Gateway, compatible APIs, and future external coding agents.
-- Safety: provider values remain outside D1; route status, capability, rate limits, and approval requirements gate use.
-- Recovery: disable the route or preview variable without altering discovery/project records.
 
 ## Next safe task
 
-- **B-002 — Preview D1 binding and fixture rehearsal.** Provision a dedicated preview database, bind it only to preview, apply `0001_control_plane.sql` then `0002_discovery.sql`, use synthetic fixtures, and verify discovery-to-blueprint-to-project queries plus organization isolation. Do not add public write routes, repository credentials, or stored conversation history.
+1. Create or rename the connected Worker to `developerb-workspace`, reconnect the Git build if required, protect the preview, and verify its routes.
+2. Then start B-002: attach a dedicated preview D1 database, apply both migrations with synthetic fixtures, and verify isolation queries.

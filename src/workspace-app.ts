@@ -16,7 +16,7 @@ type WorkspaceTask = {
 
 const workspace = {
   product: "DeveloperB",
-  repository: "mahidulislamnakib/CloudflareOS",
+  repository: "DeveloperB private source",
   branch: "main",
   environment: "private alpha",
   stage: "Problem-to-product foundation",
