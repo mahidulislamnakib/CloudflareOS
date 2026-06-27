@@ -98,7 +98,7 @@ The migration is committed but deliberately not bound to the live Worker yet. Th
 
 ## Current build order
 
-1. **P-001A — Complete:** define private-alpha control-plane schema and provider-neutral routing contract.
+1. **P-001A — Ready for verification:** define private-alpha control-plane schema and provider-neutral routing contract. SQLite schema rehearsal and standalone TypeScript validation passed; repository-level checks and link review remain.
 2. **P-001B — Next:** provision the D1 database, bind it in preview, and apply the migration with repeatable fixture data.
 3. **P-002:** protected identity and organization bootstrap.
 4. **P-003:** GitHub repository connection and safe repository import.
