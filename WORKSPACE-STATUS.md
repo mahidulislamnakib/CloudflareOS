@@ -24,7 +24,7 @@ This file tracks the DeveloperB private-alpha workspace. `BUILD-STATUS.md` is th
 - Status: Ready for Verification
 - Goal: make the workspace independent from infrastructure branding and begin every user journey with a real problem.
 - Scope: DeveloperB customer-facing copy, discovery-first UI, guided discovery prompt, discovery/solution/blueprint schema, provider capabilities, and documentation.
-- Files: `public/index.html`, `public/app.js`, `public/ai-coach.js`, `src/workspace-app.ts`, `src/project-coach.ts`, `src/private-alpha/provider-types.ts`, `private-alpha/README.md`, `private-alpha/migrations/0002_discovery.sql`, `private-alpha/migrations/README.md`, `WORKSPACE.md`, `BUILD-STATUS.md`, `WORKSPACE-STATUS.md`.
+- Files: `public/index.html`, `public/app.js`, `public/ai-coach.js`, `public/preview.css`, `src/workspace-app.ts`, `src/project-coach.ts`, `src/private-alpha/provider-types.ts`, `private-alpha/README.md`, `private-alpha/migrations/0002_discovery.sql`, `private-alpha/migrations/README.md`, `WORKSPACE.md`, `BUILD-STATUS.md`, `WORKSPACE-STATUS.md`.
 - Acceptance criteria:
   - The first screen asks the user to explain what happened.
   - Discovery output distinguishes facts, assumptions, unanswered questions, solution options, recommendation, and what not to build yet.
@@ -33,7 +33,10 @@ This file tracks the DeveloperB private-alpha workspace. `BUILD-STATUS.md` is th
   - No D1 binding, user write route, provider value, repository credential, or public rollout is introduced.
 - Risk: medium.
 - Recovery: revert the focused branch; `0002_discovery.sql` is not applied yet.
-- Evidence: pending preview inspection, repository typecheck, migration rehearsal, and link review.
+- Evidence:
+  - `0002_discovery.sql` applied successfully in a SQLite 3.46.1 rehearsal with the required parent-table shape.
+  - The rehearsal created 11 tables and 19 indexes, and `PRAGMA foreign_key_check` returned zero errors.
+  - Full repository typecheck, link review, and connected-preview inspection remain pending.
 
 ## Verification matrix
 
@@ -46,7 +49,7 @@ This file tracks the DeveloperB private-alpha workspace. `BUILD-STATUS.md` is th
 | WV-005 | AI disabled guard | `POST /api/ai/coach` remains disabled before enablement | Send one valid request while disabled | Pending |
 | WV-006 | AI discovery format | Protected preview returns facts, assumptions, questions, options, recommendation, and non-goals | Enable only after access/rate limit then test one request | Pending |
 | WV-007 | Migration 0001 | Control-plane schema applies in SQLite-compatible rehearsal | Empty database rehearsal | Complete in prior rehearsal |
-| WV-008 | Migration 0002 | Discovery schema applies after `0001` and foreign keys pass | Apply both then run `PRAGMA foreign_key_check` | Pending |
+| WV-008 | Migration 0002 | Discovery schema applies after `0001` and foreign keys pass | Apply both then run `PRAGMA foreign_key_check` | Complete in SQLite rehearsal |
 | WV-009 | Provider contract | Discovery capabilities compile under strict TypeScript | `npm run typecheck` | Pending |
 | WV-010 | Documentation | Product/migration docs describe the problem-first boundary | Manual review and relative-link check | Pending |
 
