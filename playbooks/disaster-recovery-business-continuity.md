@@ -178,6 +178,7 @@ For every application using D1, maintain:
 - a data reconciliation procedure for records created after a restore point
 
 Test a restore process before it is needed. Document the exact commands and access requirements in a restricted internal runbook.
+Use [`../docs/data-backup-export-checklist.md`](../docs/data-backup-export-checklist.md) to turn the recovery plan into a launch checklist.
 
 ---
 
@@ -377,4 +378,3 @@ next test date
 - [`../architectures/observability-operations.md`](../architectures/observability-operations.md)
 - [`../architectures/security-threat-modeling.md`](../architectures/security-threat-modeling.md)
 - [`../architectures/data-pipeline-reporting.md`](../architectures/data-pipeline-reporting.md)
-- [`../architectures/payments-billing.md`](../architectures/payments-billing.md)

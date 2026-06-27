@@ -108,6 +108,7 @@ Give the 5 most important actions in priority order.
 
 ## Related guides
 
+- [`../docs/cost-checklist.md`](../docs/cost-checklist.md)
 - [`../playbooks/cost-optimization.md`](../playbooks/cost-optimization.md)
 - [`./full-production-audit.md`](./full-production-audit.md)
 - [`../architectures/observability-operations.md`](../architectures/observability-operations.md)
