@@ -14,9 +14,12 @@ jobs:
   markdown-check:
     name: Markdown structure check
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Check required beginner files
         run: |
@@ -27,8 +30,11 @@ jobs:
 
       - name: Check for real secrets in docs
         run: |
-          if grep -RInE "(sk-[A-Za-z0-9]|api[_-]?key\s*=\s*['\"][A-Za-z0-9_-]{20,}|secret\s*=\s*['\"][A-Za-z0-9_-]{20,})" . --include="*.md"; then
+          matches=$(grep -RInE "(sk-[A-Za-z0-9]|api[_-]?key\s*=\s*['\"][A-Za-z0-9_-]{20,}|secret\s*=\s*['\"][A-Za-z0-9_-]{20,})" . --include="*.md" || true)
+          if [ -n "$matches" ]; then
             echo "Possible secret found in Markdown. Remove it before merge."
+            echo "Potential locations:"
+            printf '%s\n' "$matches" | cut -d: -f1-2
             exit 1
           fi
 
