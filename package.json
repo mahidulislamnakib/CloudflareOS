@@ -21,7 +21,7 @@
     "@biomejs/biome": "^2.5.1",
     "@cloudflare/vitest-pool-workers": "^0.16.20",
     "@cloudflare/workers-types": "^4.0.0",
-    "typescript": "^5.0.0",
+    "typescript": "^6.0.3",
     "vitest": "^4.1.0",
     "wrangler": "^4.0.0"
   }
