@@ -38,6 +38,22 @@ Legacy GitHub repository name: migration still required outside this code change
 - Status: Complete
 - Delivered: persistent build record plus rollback, incident, environment/secret, data recovery, and cost-readiness documentation.
 
+### T-007 — Workspace quality and security baseline
+- Status: Ready for Verification
+- Goal: make the current Worker safer to change before persistent data, identity, or autonomous AI capabilities are introduced.
+- Delivered:
+  - Zod request validation for the AI coach route, including actual request-byte limits.
+  - Biome formatter and linter with `npm run check` as the combined local gate.
+  - Cloudflare Workers Vitest configuration plus safety-boundary route tests.
+  - GitHub Actions quality checks, CodeQL, Gitleaks, Zizmor, and Dependabot configuration.
+  - `docs/tooling-roadmap.md`, which records installed tools and milestone-gated tools.
+- Risk: no lockfile exists yet, so the first `npm install` must be reviewed and its generated `package-lock.json` committed after the quality checks pass.
+- Recovery: revert the quality-foundation pull request. No production binding, D1 migration, deployment configuration, or private write route is changed.
+- Remaining verification:
+  - Run `npm install` and `npm run check` locally.
+  - Confirm the pull request's Quality, CodeQL, Gitleaks, and Zizmor workflows pass.
+  - Commit the generated lockfile only after the resolved dependency tree is reviewed.
+
 ### UI-001 — Workspace foundation
 - Status: Ready for Verification
 - Remaining: connected preview review at desktop/mobile widths and keyboard flow.
@@ -89,8 +105,11 @@ Legacy GitHub repository name: migration still required outside this code change
 | V-008 | AI Guide response | Protected preview returns a bounded discovery answer after enablement | Apply access/rate limit then send one request | Pending |
 | V-009 | Control-plane schema | `0001` and `0002` apply in rehearsal with valid foreign keys | SQLite/D1 rehearsal | Complete in SQLite rehearsal |
 | V-010 | No persistence change | No D1 binding or private write route exists | Review `wrangler.jsonc` and Worker routes | Complete locally |
+| V-011 | Quality baseline | Typecheck, formatting/linting, and Worker tests pass together | Run `npm install` then `npm run check` | Pending |
+| V-012 | Security automation | CodeQL, secret scanning, and workflow analysis report no blocking configuration failure | Review pull request checks and GitHub Security findings | Pending |
 
 ## Next safe task
 
-1. Complete the **DeveloperB Worker migration**: create or rename the connected Worker to `developerb-workspace`, reconnect the Git build if needed, protect the preview, and verify `/`, `/api/health`, and `/api/workspace`.
-2. Then begin **B-002**: attach a dedicated preview D1 database, apply both migrations with synthetic fixtures, and verify organization isolation plus discovery-to-blueprint-to-project queries.
+1. Review the **quality-foundation** pull request. Run `npm install` and `npm run check`, inspect the generated dependency lockfile, then verify the Quality, CodeQL, Gitleaks, and Zizmor workflow results.
+2. Complete the **DeveloperB Worker migration**: create or rename the connected Worker to `developerb-workspace`, reconnect the Git build if needed, protect the preview, and verify `/`, `/api/health`, and `/api/workspace`.
+3. Then begin **B-002**: attach a dedicated preview D1 database, apply both migrations with synthetic fixtures, and verify organization isolation plus discovery-to-blueprint-to-project queries.

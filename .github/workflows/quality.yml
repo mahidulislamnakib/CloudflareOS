@@ -19,7 +19,9 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
       - name: Check required root files
         run: |
@@ -32,7 +34,6 @@ jobs:
         run: |
           test -f catalog/README.md
           test -f playbooks/README.md
-          test -f templates/README.md
           test -f prompts/README.md
           test -f architectures/README.md
 
@@ -48,3 +49,32 @@ jobs:
       - name: Summary
         run: |
           echo "Repository quality checks passed."
+
+  workspace-quality:
+    name: Typecheck, format, lint, and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run typecheck
+        run: npm run typecheck
+
+      - name: Run formatting and lint checks
+        run: npx biome check .
+
+      - name: Run Worker tests
+        run: npm run test
