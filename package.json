@@ -15,7 +15,7 @@
     "check": "npm run typecheck && biome check . && npm run test"
   },
   "dependencies": {
-    "zod": "^3.25.76"
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.1",
