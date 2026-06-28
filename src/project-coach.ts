@@ -35,9 +35,10 @@ function textFromResult(result: unknown): string | null {
   return typeof text === "string" ? text.trim() : null;
 }
 
-async function parseProjectCoachRequest(request: Request): Promise<
-  | { success: true; message: string }
-  | { success: false; response: Response }
+async function parseProjectCoachRequest(
+  request: Request,
+): Promise<
+  { success: true; message: string } | { success: false; response: Response }
 > {
   const contentLength = Number(request.headers.get("content-length") ?? "0");
   if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_BYTES) {
@@ -89,7 +90,10 @@ async function parseProjectCoachRequest(request: Request): Promise<
   return { success: true, message: parsed.data.message };
 }
 
-export async function projectCoach(request: Request, env: ProjectCoachEnv): Promise<Response> {
+export async function projectCoach(
+  request: Request,
+  env: ProjectCoachEnv,
+): Promise<Response> {
   if (env.AI_PREVIEW_ENABLED !== "true") {
     return failure(
       "AI_PREVIEW_DISABLED",
@@ -117,7 +121,13 @@ export async function projectCoach(request: Request, env: ProjectCoachEnv): Prom
   try {
     const result = await env.AI.run(MODEL, { prompt });
     const text = textFromResult(result);
-    if (!text) return failure("AI_RESPONSE_INVALID", "No usable response. Try again later.", 502);
+    if (!text) {
+      return failure(
+        "AI_RESPONSE_INVALID",
+        "No usable response. Try again later.",
+        502,
+      );
+    }
     return response({ data: { response: text, model: MODEL } });
   } catch {
     return failure("AI_UNAVAILABLE", "DeveloperB Guide is unavailable. Try again later.", 503);
