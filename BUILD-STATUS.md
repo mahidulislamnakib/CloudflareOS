@@ -61,28 +61,34 @@ Legacy GitHub repository name: migration still required outside this code change
   - `0001_control_plane.sql` completed a SQLite rehearsal with zero foreign-key errors.
   - `0002_discovery.sql` completed a SQLite rehearsal with zero foreign-key errors.
   - Brand-boundary and deployment-migration documentation added.
+- Local evidence added 2026-06-28:
+  - `npm run typecheck` passed.
+  - Local `wrangler dev --local --port 8787 --compatibility-date 2026-05-03` served `/`, `/api/health`, and `/api/workspace`.
+  - Local `POST /api/ai/coach` returned `AI_PREVIEW_DISABLED` as expected.
+  - Repository Worker config review found no production D1 binding or private D1 write route in `wrangler.jsonc` or `src/`.
 - Remaining verification:
-  - `npm run typecheck`.
   - Connected-preview UI and keyboard review.
-  - Disabled AI Guide response, then one protected enabled response.
+  - Protected enabled AI Guide response after preview access and rate limits are in place.
   - Worker dashboard migration to a Worker named `developerb-workspace` and subsequent custom-domain verification.
   - GitHub source-repository rename or replacement after a deliberate remote/integration migration plan.
+- Local limitation:
+  - Wrangler local runtime currently supports compatibility dates through `2026-05-03`; local route checks used that override instead of the configured `2026-06-27` date.
 - Recovery: revert the naming branch; do not apply D1 migrations yet. Restore the previous Worker configuration only if the new Worker preview is not ready.
 
 ## Verification matrix
 
 | ID | Area | Expected result | How to verify | Status |
 | --- | --- | --- | --- | --- |
-| V-001 | Product UI | DeveloperB appears in browser title, workspace, and generated prompts | Connected preview review | Pending |
+| V-001 | Product UI | DeveloperB appears in browser title, workspace, and generated prompts | Local route check passed for title; connected preview review still required | Partial |
 | V-002 | Brand boundary | Provider names are factual technical references only | Review `BRAND-BOUNDARY.md`, UI, metadata, and docs | Pending |
-| V-003 | Package name | Package reports `developerb-workspace` | Inspect `package.json` and run install/typecheck | Pending |
-| V-004 | Worker config | Wrangler targets `developerb-workspace` | Inspect `wrangler.jsonc`; verify dashboard setup before deploy | Pending |
-| V-005 | Workspace APIs | Health and workspace APIs return safe DeveloperB data | Curl preview routes | Pending after Worker migration |
+| V-003 | Package name | Package reports `developerb-workspace` | Inspect `package.json` and run typecheck | Complete locally |
+| V-004 | Worker config | Wrangler targets `developerb-workspace` | Inspect `wrangler.jsonc`; verify dashboard setup before deploy | Partial — config verified, dashboard pending |
+| V-005 | Workspace APIs | Health and workspace APIs return safe DeveloperB data | Curl local routes; repeat on preview after Worker migration | Partial — local passed, preview pending |
 | V-006 | Responsive and keyboard | Sidebar, views, actions, and discovery input are usable | Manual desktop/mobile review | Pending |
-| V-007 | AI Guide guard | Guide stays disabled before enablement | Send valid request while disabled | Pending |
+| V-007 | AI Guide guard | Guide stays disabled before enablement | Send valid request while disabled | Complete locally |
 | V-008 | AI Guide response | Protected preview returns a bounded discovery answer after enablement | Apply access/rate limit then send one request | Pending |
 | V-009 | Control-plane schema | `0001` and `0002` apply in rehearsal with valid foreign keys | SQLite/D1 rehearsal | Complete in SQLite rehearsal |
-| V-010 | No persistence change | No D1 binding or private write route exists | Review `wrangler.jsonc` and Worker routes | Pending |
+| V-010 | No persistence change | No D1 binding or private write route exists | Review `wrangler.jsonc` and Worker routes | Complete locally |
 
 ## Next safe task
 

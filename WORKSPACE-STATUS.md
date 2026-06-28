@@ -35,26 +35,34 @@ This file tracks the DeveloperB private-alpha workspace. `BUILD-STATUS.md` is th
   - A blueprint is required before project creation.
   - No D1 binding, user write route, provider value, repository credential, or public rollout is introduced.
 - Evidence: both prepared D1 migrations passed SQLite rehearsal with zero foreign-key errors.
+- Local evidence added 2026-06-28:
+  - `npm run typecheck` passed.
+  - Local `wrangler dev --local --port 8787 --compatibility-date 2026-05-03` served the root page and workspace APIs.
+  - Local disabled AI Guide request returned `AI_PREVIEW_DISABLED`.
+  - Repository config/route review found no production D1 binding or private write route.
 - Remaining verification:
-  - Root typecheck and link review.
   - Connected-preview interface/API checks.
+  - Manual visual, mobile, and keyboard review.
+  - One protected enabled AI Guide response after access/rate limits are in place.
   - Worker dashboard migration and custom-domain verification.
   - GitHub source-repository rename/replacement planned as a separate remote and integration migration.
+- Local limitation:
+  - Wrangler local runtime currently supports compatibility dates through `2026-05-03`; local route checks used that override instead of the configured `2026-06-27` date.
 - Recovery: retain the previous Worker until `developerb-workspace` is deployed and verified; do not apply D1 migrations yet.
 
 ## Verification matrix
 
 | ID | Area | Expected result | How to verify | Status |
 | --- | --- | --- | --- | --- |
-| WV-001 | Product UI | `/` shows DeveloperB and the problem-to-product flow | Connected preview browser review | Pending |
-| WV-002 | Health API | `/api/health` returns safe DeveloperB JSON | Curl preview route | Pending after Worker migration |
-| WV-003 | Workspace API | `/api/workspace` returns DeveloperB task data | Curl preview route | Pending after Worker migration |
+| WV-001 | Product UI | `/` shows DeveloperB and the problem-to-product flow | Local title check passed; connected preview browser review remains | Partial |
+| WV-002 | Health API | `/api/health` returns safe DeveloperB JSON | Curl local route; repeat on preview after Worker migration | Partial — local passed, preview pending |
+| WV-003 | Workspace API | `/api/workspace` returns DeveloperB task data | Curl local route; repeat on preview after Worker migration | Partial — local passed, preview pending |
 | WV-004 | Responsive and keyboard | Sidebar, views, actions, and discovery input are usable | Manual desktop/mobile review | Pending |
-| WV-005 | AI disabled guard | `POST /api/ai/coach` remains disabled before enablement | Send one valid request while disabled | Pending |
+| WV-005 | AI disabled guard | `POST /api/ai/coach` remains disabled before enablement | Send one valid request while disabled | Complete locally |
 | WV-006 | AI discovery format | Protected preview returns facts, assumptions, questions, options, recommendation, and non-goals | Enable only after access/rate limit then test one request | Pending |
 | WV-007 | Migration rehearsal | `0001` and `0002` apply with valid foreign keys | SQLite/D1 rehearsal | Complete in SQLite rehearsal |
 | WV-008 | Brand boundary | UI, package, Worker config, and docs use independent naming | Review `BRAND-BOUNDARY.md` and preview | Pending |
-| WV-009 | No persistence change | No D1 binding or private write route exists | Review config and Worker routes | Pending |
+| WV-009 | No persistence change | No D1 binding or private write route exists | Review config and Worker routes | Complete locally |
 
 ## Decision records
 
