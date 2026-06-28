@@ -34,7 +34,6 @@ jobs:
         run: |
           test -f catalog/README.md
           test -f playbooks/README.md
-          test -f templates/README.md
           test -f prompts/README.md
           test -f architectures/README.md
 
@@ -71,5 +70,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run workspace quality checks
-        run: npm run check
+      - name: Run typecheck
+        run: npm run typecheck
+
+      - name: Run formatting and lint checks
+        run: npx biome check .
+
+      - name: Run Worker tests
+        run: npm run test
